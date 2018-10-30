@@ -2,15 +2,15 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Product = db.define('product', {
-  make:{
+  make: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  price:{
+  price: {
     type: Sequelize.INTEGER,
     allowNull: false
   },
-  imageArray:{
+  imageArray: {
     type: Sequelize.ARRAY(Sequelize.TEXT),
     allowNull: false
   },
@@ -33,34 +33,41 @@ const Product = db.define('product', {
       min: 0,
       max: 300
     },
-    get(){
-      return this.getDataValue('maxSpeed') +' KM/H'
+    get() {
+      return this.getDataValue('maxSpeed') + ' KM/H'
     }
   },
-  engingeType: {
+  engineType: {
     type: Sequelize.ENUM('V8', 'V12', 'Electric'),
-    allowNull: false,
+    allowNull: false
   },
   transmission: {
     type: Sequelize.ENUM('Standard', 'Automatic'),
-    allowNull: false,
+    allowNull: false
   },
-  acceleration:{
+  acceleration: {
     type: Sequelize.DECIMAL,
     allowNull: false,
     validate: {
       min: 0.0,
       max: 5.0
     },
-    get(){
-      return this.getDataValue('accleration') +' KM/S'
+    get() {
+      return this.getDataValue('accleration') + ' KM/S'
     }
   },
   colors: {
-    type: Sequelize.ENUM('White', 'Black', 'Red', 'Blue', 'Silver', 'Green', 'Yellow' ),
-    allowNull: false,
+    type: Sequelize.ENUM(
+      'White',
+      'Black',
+      'Red',
+      'Blue',
+      'Silver',
+      'Green',
+      'Yellow'
+    ),
+    allowNull: false
   }
-
 })
 
 module.exports = Product

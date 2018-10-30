@@ -13,7 +13,7 @@ async function seed() {
   ])
 
   const collection = await Promise.all([
-    Collection.bulkCreate(
+    Collection.bulkCreate([
       {
         id: 1,
         name: 'Lambo',
@@ -36,11 +36,11 @@ async function seed() {
         description:
           'Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.'
       }
-    )
+    ])
   ])
 
   const car = await Promise.all([
-    Product.bulkCreate(
+    Product.bulkCreate([
       {
         id: 1,
         make: 'Grand Caravan',
@@ -201,10 +201,11 @@ async function seed() {
         acceleration: 3.4,
         colors: 'Blue'
       }
-    )
+    ])
   ])
 
   console.log(`seeded ${users.length} users`)
+  console.log(`seeded ${car.length} car`)
   console.log(`seeded successfully`)
 }
 
