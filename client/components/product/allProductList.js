@@ -2,9 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchAllProducts} from '../../store'
-import singleProductCard from './singleProductCard'
+import SingleProductCard from './singleProductCard'
 
-class allProductList extends React.Component {
+class AllProductList extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -17,7 +17,7 @@ class allProductList extends React.Component {
     return (
       <div>
         {this.props.productList.map(product => {
-          return <singleProductCard key={product.id} product={product} />
+          return <SingleProductCard key={product.id} product={product} />
         })}
       </div>
     )
@@ -25,6 +25,7 @@ class allProductList extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log('stattte', state)
   return {
     productList: state.product.allProducts
   }
@@ -32,10 +33,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllProducts: dispatch(fetchAllProducts())
+    getAllProducts: () => dispatch(fetchAllProducts())
   }
 }
 
-const Connected = connect(mapStateToProps, mapDispatchToProps)(allProductList)
+const Connected = connect(mapStateToProps, mapDispatchToProps)(AllProductList)
 
 export default Connected

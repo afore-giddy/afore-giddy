@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
-const singleProductCard = props => {
+const SingleProductCard = props => {
   const product = props.product
   const collection = props.product.collection
   return (
@@ -18,4 +18,4 @@ const singleProductCard = props => {
   )
 }
 
-export default singleProductCard
+export default SingleProductCard
