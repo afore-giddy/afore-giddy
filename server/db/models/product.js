@@ -11,7 +11,7 @@ const Product = db.define('product', {
     allowNull: false
   },
   imageArray: {
-    type: Sequelize.ARRAY(Sequelize.TEXT),
+    type: Sequelize.ARRAY(Sequelize.JSON),
     allowNull: false
   },
   onSale: {
