@@ -16,36 +16,45 @@ async function seed() {
     Review.bulkCreate([
       {
         id: 1,
-        rating: 1,
-        title: 'Versatile',
+        rating: 2,
+        title: 'leading edge',
         text:
-          'Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.'
+          'Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.',
+        productId: 3,
+        userId: 1
       },
       {
         id: 2,
         rating: 4,
-        title: 'needs-based',
-        text: 'Nulla ac enim.'
+        title: 'migration',
+        text: 'Morbi non quam nec dui luctus rutrum.',
+        productId: 10,
+        userId: 2
       },
       {
         id: 3,
-        rating: 4,
-        title: 'Integrated',
-        text:
-          'Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.'
+        rating: 1,
+        title: 'Vision-oriented',
+        text: 'Sed ante. Vivamus tortor. Duis mattis egestas metus.',
+        productId: 5,
+        userId: 2
       },
       {
         id: 4,
         rating: 1,
-        title: 'Digitized',
-        text: 'Nulla tellus. In sagittis dui vel nisl.'
+        title: 'cohesive',
+        text: 'Morbi non quam nec dui luctus rutrum. Nulla tellus.',
+        productId: 10,
+        userId: 1
       },
       {
         id: 5,
         rating: 0,
-        title: 'function',
+        title: 'Business-focused',
         text:
-          'Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.'
+          'In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.',
+        productId: 1,
+        userId: 1
       }
     ])
   ])
