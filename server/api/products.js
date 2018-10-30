@@ -4,6 +4,21 @@ const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 module.exports = router
 
+//get by featured
+router.get('/featured', async (req, res, next) => {
+  try {
+    const featuredProducts = await Product.findAll({
+      where: {
+        isFeatured: true
+      }
+    })
+
+    !featuredProducts ? res.sendStatus(404) : res.send(featuredProducts)
+  } catch (err) {
+    next(err)
+  }
+})
+
 //get all products
 router.get('/', async (req, res, next) => {
   try {
@@ -47,19 +62,6 @@ router.get('/collections/:collectionId', async (req, res, next) => {
   }
 })
 
-//get by featured
-router.get('/featured', async (req, res, next) => {
-  try {
-    const featuredProducts = await Product.findAll({
-      where: {
-        featured: true
-      }
-    })
 
-    !featuredProducts ? res.sendStatus(404) : res.send(featuredProducts)
-  } catch (err) {
-    next(err)
-  }
-})
 
 
