@@ -19,3 +19,40 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.product-list-container {
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+/* Single Product Card */
+.single-product-card-container {
+  display: flex;
+  width: 400px;
+  justify-content: center;
+  margin: 5px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.single-product-card-container a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 97%;
+}
+
+.single-product-card-container img {
+  height: 375px;
+  width: 375px;
+}
+
+.single-product-card-container span {
+  font-family: sans-serif;
+  margin: 5px;
+}

@@ -6,13 +6,11 @@ const SingleProductCard = props => {
   const product = props.product
   const collection = props.product.collection
   return (
-    <div>
+    <div className="single-product-card-container">
       <Link to={`/products/${product.id}`}>
-        <div>
-          <img src={product.imageArray[0]} />
-          <h2>{`${collection.name}: ${product.make}`}</h2>
-          <h5>{product.price}</h5>
-        </div>
+        <img src={product.imageArray[0]} />
+        <span>{`${collection.name}: ${product.make}`}</span>
+        <span>{product.price}</span>
       </Link>
     </div>
   )

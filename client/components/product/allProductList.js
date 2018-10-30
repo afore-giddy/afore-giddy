@@ -16,7 +16,7 @@ class AllProductList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="product-list-container">
         {this.props.productList.map(product => {
           return <SingleProductCard key={product.id} product={product} />
         })}

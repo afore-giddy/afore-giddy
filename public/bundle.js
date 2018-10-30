@@ -409,6 +409,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+//
 var AllProductList =
 /*#__PURE__*/
 function (_React$Component) {
@@ -428,7 +429,9 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", null, this.props.productList.map(function (product) {
+      return _react.default.createElement("div", {
+        className: "product-list-container"
+      }, this.props.productList.map(function (product) {
         return _react.default.createElement(_singleProductCard.default, {
           key: product.id,
           product: product
@@ -487,11 +490,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var SingleProductCard = function SingleProductCard(props) {
   var product = props.product;
   var collection = props.product.collection;
-  return _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
+  return _react.default.createElement("div", {
+    className: "single-product-card-container"
+  }, _react.default.createElement(_reactRouterDom.Link, {
     to: "/products/".concat(product.id)
-  }, _react.default.createElement("div", null, _react.default.createElement("img", {
+  }, _react.default.createElement("img", {
     src: product.imageArray[0]
-  }), _react.default.createElement("h2", null, "".concat(collection.name, ": ").concat(product.make)), _react.default.createElement("h5", null, product.price))));
+  }), _react.default.createElement("span", null, "".concat(collection.name, ": ").concat(product.make)), _react.default.createElement("span", null, product.price)));
 };
 
 var _default = SingleProductCard;
