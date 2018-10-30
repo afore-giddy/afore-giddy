@@ -14,14 +14,14 @@ notifications:
 install:
   - npm ci # faster, goes only from package-lock
 before_script:
-  - psql -c 'create database "afore-giddy";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
+  - psql -c 'create database "afore-giddy-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
 
-# before_deploy:
-#   - npm run build-client # make the bundle
-#   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-# deploy:
-#   skip_cleanup: true # prevents travis from deleting the build
-#   provider: heroku
-#   app: YOUR-HEROKU-APP-NAME-HERE # see README
-#   api_key:
-#     secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
+before_deploy:
+  - npm run build-client # make the bundle
+  - rm -rf node_modules # omit from the tarball, since we skip cleanup
+deploy:
+  skip_cleanup: true # prevents travis from deleting the build
+  provider: heroku
+  app: afore-giddy # see README
+  api_key:
+    secure: A48i/qXmolxx284xs3MHCNA+Dxf2Cw61b4CX3TqITHE60RRFyMZEyui2Id1aZbPL8y4jsLpECZP0eS2kWHwUNppyDEWmX9bDIaiUJrRcosccV2taeq893dxnplff5JM2RGO9TtTgre4rlhFqcinMfLDxp+96129CbX4iOAPuMzBvyN/vR8ZLJ4GE1RIQCrxI8zJZAIwtU28SGwZLTQHDQbGRWq8sMiNmCU8OBBDna2KJ121UQV6HOAv0AZVj3aaSBFfBH+/Vnrs1Os7H1c0aIUTjm6/C61rPc/UgRmcxlHNzQwuVIqeAR7GZP5XchNdwSbBZcaprJgGmi1MC1vzVuDfS44YdkbLZUtIm9obBfwZn869bHbIJnyT46PmxI1MU9xZWAlz8teoMX3jYYJalJBe7tIFDXtxWrRm+39Eg2CBCBEBUeEVQ5pCphI6QiP+I4Rh1KwV3T6uPzh+cFKH7EFmqZMjF4deYrZJAR7m5T2JlD1lG2cC4ORcH08BGuJc5Ta5Fc+qTBi5gkyG9HxzS166rNGK7IWL3mpueyy8loPp02eiicvyxTlyX36/rQtTz83WoUZeX/5uM4X0+nCbV43R8xjKAQAYf4x2sQanGb5UIL6k6VXX6crIhk2X4/DXL47taYZlg+FaEScfHFeKcpmDf9BTXzOLL9vW6OumsnfQ= # see README
