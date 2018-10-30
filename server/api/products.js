@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Product, Review} = require('../db/models')
+const {Product, Review, Collection} = require('../db/models')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 module.exports = router
@@ -22,7 +22,11 @@ router.get('/featured', async (req, res, next) => {
 //get all products
 router.get('/', async (req, res, next) => {
   try {
-    const products = await Product.findAll()
+    const products = await Product.findAll({
+      include: [{
+        model: Collection
+      }]
+    })
     res.send(products)
   } catch (err) {
     next(err)
