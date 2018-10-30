@@ -2,16 +2,18 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
-const singleProductCard = props => {
+const SingleProductCard = props => {
   const product = props.product
   const collection = props.product.collection
   return (
-    <div>
-      <img src={product.imageArray[0]} />
-      <h2>{`${collection.name}: ${product.make}`}</h2>
-      <h5>{product.price}</h5>
+    <div className="single-product-card-container">
+      <Link to={`/products/${product.id}`}>
+        <img src={product.imageArray[0]} />
+        <span>{`${collection.name}: ${product.make}`}</span>
+        <span>{product.price}</span>
+      </Link>
     </div>
   )
 }
 
-export default singleProductCard
+export default SingleProductCard
