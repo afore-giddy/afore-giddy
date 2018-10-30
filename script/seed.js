@@ -45,7 +45,7 @@ async function seed() {
         id: 1,
         make: 'Grand Caravan',
         price: 78356.15,
-        imageArray: [{}],
+        imageArray: ['http://dummyimage.com/400x400.png/dddddd/000000'],
         onSale: true,
         isFeatured: false,
         description:
@@ -61,7 +61,7 @@ async function seed() {
         id: 2,
         make: 'Insight',
         price: 80642.28,
-        imageArray: [{}],
+        imageArray: ['http://dummyimage.com/400x400.png/dddddd/000000'],
         onSale: true,
         isFeatured: false,
         description:
@@ -77,7 +77,7 @@ async function seed() {
         id: 3,
         make: 'Rio',
         price: 88072.53,
-        imageArray: [{}],
+        imageArray: ['http://dummyimage.com/400x400.png/dddddd/000000'],
         onSale: false,
         isFeatured: true,
         description:
@@ -93,7 +93,7 @@ async function seed() {
         id: 4,
         make: 'Bonneville',
         price: 71797.87,
-        imageArray: [{}],
+        imageArray: ['http://dummyimage.com/400x400.png/dddddd/000000'],
         onSale: false,
         isFeatured: false,
         description:
@@ -109,7 +109,7 @@ async function seed() {
         id: 5,
         make: 'Grand Caravan',
         price: 79480.01,
-        imageArray: [{}],
+        imageArray: ['http://dummyimage.com/400x400.png/dddddd/000000'],
         onSale: true,
         isFeatured: false,
         description:
@@ -125,7 +125,7 @@ async function seed() {
         id: 6,
         make: 'C-Class',
         price: 80764.33,
-        imageArray: [{}],
+        imageArray: ['http://dummyimage.com/400x400.png/dddddd/000000'],
         onSale: false,
         isFeatured: false,
         description:
@@ -141,7 +141,7 @@ async function seed() {
         id: 7,
         make: 'Town & Country',
         price: 78233.43,
-        imageArray: [{}],
+        imageArray: ['http://dummyimage.com/400x400.png/dddddd/000000'],
         onSale: true,
         isFeatured: true,
         description:
@@ -157,7 +157,7 @@ async function seed() {
         id: 8,
         make: 'Elantra',
         price: 96057.71,
-        imageArray: [{}],
+        imageArray: ['http://dummyimage.com/400x400.png/dddddd/000000'],
         onSale: false,
         isFeatured: false,
         description:
@@ -173,7 +173,7 @@ async function seed() {
         id: 9,
         make: 'Excel',
         price: 97148.1,
-        imageArray: [{}],
+        imageArray: ['http://dummyimage.com/400x400.png/dddddd/000000'],
         onSale: true,
         isFeatured: false,
         description:
@@ -189,7 +189,7 @@ async function seed() {
         id: 10,
         make: 'Passat',
         price: 98163.93,
-        imageArray: [{}],
+        imageArray: ['http://dummyimage.com/400x400.png/dddddd/000000'],
         onSale: false,
         isFeatured: true,
         description:
