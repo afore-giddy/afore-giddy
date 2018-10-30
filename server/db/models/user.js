@@ -27,6 +27,10 @@ const User = db.define('user', {
       isCreditCard: true
     }
   },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,
