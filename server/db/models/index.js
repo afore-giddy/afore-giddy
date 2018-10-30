@@ -3,7 +3,7 @@ const Product = require('./product')
 const Review = require('./review')
 const Collection = require('./collection')
 
-Review.belongsTo(Product)
+// Review.belongsTo(Product)
 Review.belongsTo(User)
 
 User.hasMany(Review)
