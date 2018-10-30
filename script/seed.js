@@ -1,7 +1,13 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Product, Collection, Review} = require('../server/db/models')
+const {
+  User,
+  Product,
+  Collection,
+  Review,
+  Order
+} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -251,8 +257,102 @@ async function seed() {
     ])
   ])
 
+  const orders = await Promise.all([
+    Order.bulkCreate([
+      {
+        id: 1,
+        userId: 1,
+        total: 3029.91,
+        status: 'Processing',
+        items: [
+          {
+            id: 1,
+            make: 'Grand Caravan',
+            price: 78356.15,
+            imageArray: ['http://dummyimage.com/400x400.png/dddddd/000000'],
+            onSale: true,
+            isFeatured: false,
+            description:
+              'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+            collectionId: 2,
+            maxSpeed: 152,
+            engineType: 'V12',
+            transmission: 'Automatic',
+            acceleration: 3.3,
+            colors: 'Red'
+          }
+        ]
+      },
+      {
+        id: 2,
+        userId: 2,
+        total: 4488.12,
+        status: 'Processing',
+        items: [
+          {
+            id: 9,
+            make: 'Excel',
+            price: 97148.1,
+            imageArray: ['http://dummyimage.com/400x400.png/dddddd/000000'],
+            onSale: true,
+            isFeatured: false,
+            description:
+              'Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.',
+            collectionId: 2,
+            maxSpeed: 169,
+            engineType: 'V8',
+            transmission: 'Standard',
+            acceleration: 4.6,
+            colors: 'Green'
+          }
+        ]
+      },
+      {
+        id: 3,
+        userId: 1,
+        total: 9126.87,
+        status: 'Processing',
+        items: [
+          {
+            id: 6,
+            make: 'C-Class',
+            price: 80764.33,
+            imageArray: ['http://dummyimage.com/400x400.png/dddddd/000000'],
+            onSale: false,
+            isFeatured: false,
+            description:
+              'Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.',
+            collectionId: 1,
+            maxSpeed: 123,
+            engineType: 'Electric',
+            transmission: 'Standard',
+            acceleration: 4.3,
+            colors: 'Silver'
+          },
+          {
+            id: 4,
+            make: 'Bonneville',
+            price: 71797.87,
+            imageArray: ['http://dummyimage.com/400x400.png/dddddd/000000'],
+            onSale: false,
+            isFeatured: false,
+            description:
+              'Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.',
+            collectionId: 2,
+            maxSpeed: 191,
+            engineType: 'V8',
+            transmission: 'Standard',
+            acceleration: 3.1,
+            colors: 'Red'
+          }
+        ]
+      }
+    ])
+  ])
+
   console.log(`seeded ${users.length} users`)
-  // console.log(`seeded ${cars.length} car`)
+  console.log(`seeded ${orders.length} users`)
+  console.log(`seeded ${products.length} car`)
   console.log(`seeded ${reviews.length} car`)
   console.log(`seeded ${collections.length} car`)
   console.log(`seeded successfully`)
