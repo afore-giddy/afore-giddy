@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Product, Collection} = require('../server/db/models')
+const {User, Product, Collection, Review} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -12,7 +12,45 @@ async function seed() {
     User.create({email: 'murphy@email.com', password: '123'})
   ])
 
-  const collection = await Promise.all([
+  const reviews = await Promise.all([
+    Review.bulkCreate([
+      {
+        id: 1,
+        rating: 1,
+        title: 'Versatile',
+        text:
+          'Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.'
+      },
+      {
+        id: 2,
+        rating: 4,
+        title: 'needs-based',
+        text: 'Nulla ac enim.'
+      },
+      {
+        id: 3,
+        rating: 4,
+        title: 'Integrated',
+        text:
+          'Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.'
+      },
+      {
+        id: 4,
+        rating: 1,
+        title: 'Digitized',
+        text: 'Nulla tellus. In sagittis dui vel nisl.'
+      },
+      {
+        id: 5,
+        rating: 0,
+        title: 'function',
+        text:
+          'Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.'
+      }
+    ])
+  ])
+
+  const collections = await Promise.all([
     Collection.bulkCreate([
       {
         id: 1,
@@ -39,7 +77,7 @@ async function seed() {
     ])
   ])
 
-  const car = await Promise.all([
+  const cars = await Promise.all([
     Product.bulkCreate([
       {
         id: 1,
@@ -205,7 +243,9 @@ async function seed() {
   ])
 
   console.log(`seeded ${users.length} users`)
-  console.log(`seeded ${car.length} car`)
+  console.log(`seeded ${cars.length} car`)
+  console.log(`seeded ${reviews.length} car`)
+  console.log(`seeded ${collections.length} car`)
   console.log(`seeded successfully`)
 }
 
