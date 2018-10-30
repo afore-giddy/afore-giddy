@@ -12,53 +12,6 @@ async function seed() {
     User.create({email: 'murphy@email.com', password: '123'})
   ])
 
-  const reviews = await Promise.all([
-    Review.bulkCreate([
-      {
-        id: 1,
-        rating: 2,
-        title: 'leading edge',
-        text:
-          'Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.',
-        productId: 3,
-        userId: 1
-      },
-      {
-        id: 2,
-        rating: 4,
-        title: 'migration',
-        text: 'Morbi non quam nec dui luctus rutrum.',
-        productId: 10,
-        userId: 2
-      },
-      {
-        id: 3,
-        rating: 1,
-        title: 'Vision-oriented',
-        text: 'Sed ante. Vivamus tortor. Duis mattis egestas metus.',
-        productId: 5,
-        userId: 2
-      },
-      {
-        id: 4,
-        rating: 1,
-        title: 'cohesive',
-        text: 'Morbi non quam nec dui luctus rutrum. Nulla tellus.',
-        productId: 10,
-        userId: 1
-      },
-      {
-        id: 5,
-        rating: 0,
-        title: 'Business-focused',
-        text:
-          'In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.',
-        productId: 1,
-        userId: 1
-      }
-    ])
-  ])
-
   const collections = await Promise.all([
     Collection.bulkCreate([
       {
@@ -86,7 +39,7 @@ async function seed() {
     ])
   ])
 
-  const cars = await Promise.all([
+  const products = await Promise.all([
     Product.bulkCreate([
       {
         id: 1,
@@ -251,8 +204,55 @@ async function seed() {
     ])
   ])
 
+  const reviews = await Promise.all([
+    Review.bulkCreate([
+      {
+        id: 1,
+        rating: 2,
+        title: 'leading edge',
+        text:
+          'Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.',
+        productId: 3,
+        userId: 1
+      },
+      {
+        id: 2,
+        rating: 4,
+        title: 'migration',
+        text: 'Morbi non quam nec dui luctus rutrum.',
+        productId: 10,
+        userId: 2
+      },
+      {
+        id: 3,
+        rating: 1,
+        title: 'Vision-oriented',
+        text: 'Sed ante. Vivamus tortor. Duis mattis egestas metus.',
+        productId: 5,
+        userId: 2
+      },
+      {
+        id: 4,
+        rating: 1,
+        title: 'cohesive',
+        text: 'Morbi non quam nec dui luctus rutrum. Nulla tellus.',
+        productId: 10,
+        userId: 1
+      },
+      {
+        id: 5,
+        rating: 0,
+        title: 'Business-focused',
+        text:
+          'In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.',
+        productId: 1,
+        userId: 1
+      }
+    ])
+  ])
+
   console.log(`seeded ${users.length} users`)
-  console.log(`seeded ${cars.length} car`)
+  // console.log(`seeded ${cars.length} car`)
   console.log(`seeded ${reviews.length} car`)
   console.log(`seeded ${collections.length} car`)
   console.log(`seeded successfully`)
