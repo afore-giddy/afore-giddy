@@ -112,7 +112,7 @@ var _routes = _interopRequireDefault(__webpack_require__(/*! ./routes */ "./clie
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
-  return _react.default.createElement("div", null, _react.default.createElement(_components.Navbar, null), _react.default.createElement(_routes.default, null));
+  return _react.default.createElement("div", null, _react.default.createElement(_components.Navbar, null), _react.default.createElement(_routes.default, null), _react.default.createElement(_components.Footer, null));
 };
 
 var _default = App;
@@ -226,6 +226,44 @@ AuthForm.propTypes = {
 
 /***/ }),
 
+/***/ "./client/components/footer.js":
+/*!*************************************!*\
+  !*** ./client/components/footer.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Footer = function Footer() {
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "FOOTER"), _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
+    to: "/home"
+  }, "Home"), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/all-cars"
+  }, "All Products"), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/signup"
+  }, "Sign Up"), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/all-cars"
+  }, "All Cars")));
+};
+
+var _default = Footer;
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./client/components/index.js":
 /*!************************************!*\
   !*** ./client/components/index.js ***!
@@ -243,6 +281,12 @@ Object.defineProperty(exports, "Navbar", {
   enumerable: true,
   get: function get() {
     return _navbar.default;
+  }
+});
+Object.defineProperty(exports, "Footer", {
+  enumerable: true,
+  get: function get() {
+    return _footer.default;
   }
 });
 Object.defineProperty(exports, "UserHome", {
@@ -265,6 +309,8 @@ Object.defineProperty(exports, "Signup", {
 });
 
 var _navbar = _interopRequireDefault(__webpack_require__(/*! ./navbar */ "./client/components/navbar.js"));
+
+var _footer = _interopRequireDefault(__webpack_require__(/*! ./footer */ "./client/components/footer.js"));
 
 var _userHome = _interopRequireDefault(__webpack_require__(/*! ./user-home */ "./client/components/user-home.js"));
 
@@ -306,7 +352,9 @@ var Navbar = function Navbar(_ref) {
       isLoggedIn = _ref.isLoggedIn;
   return _react.default.createElement("div", null, _react.default.createElement("h1", null, "CARS CARS CARS"), _react.default.createElement("nav", null, isLoggedIn ? _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
     to: "/home"
-  }, "Home"), _react.default.createElement("a", {
+  }, "Home"), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/all-cars"
+  }, "All Cars"), _react.default.createElement("a", {
     href: "#",
     onClick: handleClick
   }, "Logout")) : _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
@@ -524,13 +572,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 var SelectedCar =
 /*#__PURE__*/
@@ -544,8 +592,11 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SelectedCar).call(this, props));
     _this.state = {
-      quantity: 0
+      quantity: 1
     };
+    _this.quantityIncrement = _this.quantityIncrement.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.quantityDecrement = _this.quantityDecrement.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -555,10 +606,51 @@ function (_React$Component) {
       this.props.getSelectedCar(this.props.match.params.id);
     }
   }, {
+    key: "quantityIncrement",
+    value: function quantityIncrement() {
+      var qty = this.state.quantity;
+      qty++;
+      this.setState({
+        quantity: qty
+      });
+      console.log(this.state);
+    }
+  }, {
+    key: "quantityDecrement",
+    value: function quantityDecrement() {
+      var qty = this.state.quantity;
+
+      if (qty > 1) {
+        qty--;
+        this.setState({
+          quantity: qty
+        });
+      } else {
+        console.log('cant do that');
+      }
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit() {
+      if (localStorage.cart) {
+        var newCart = JSON.stringify({
+          quantity: this.state.quantity,
+          price: this.props.selectedCar[0].price
+        });
+        localStorage.cart += ',';
+        localStorage.cart += newCart;
+      } else {
+        var cart = JSON.stringify({
+          quantity: this.state.quantity,
+          price: this.props.selectedCar[0].price
+        });
+        localStorage.setItem('cart', cart);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var car = this.props.selectedCar;
-      console.log(car[0]);
       return _react.default.createElement("div", null, _react.default.createElement("div", {
         className: "selected-car-card-top-container"
       }, _react.default.createElement("div", {
@@ -575,21 +667,29 @@ function (_React$Component) {
         className: "side-cart-price-text"
       }, "$".concat(car[0].price))), _react.default.createElement("div", {
         className: "reviews"
-      }, "Total Reviews: ".concat(car[0].reviews.length)), _react.default.createElement("select", null, _react.default.createElement("option", null, "Color")), _react.default.createElement("div", {
+      }, "Total Reviews: ".concat(car[0].reviews.length)), _react.default.createElement("form", {
+        className: "side-cart-form"
+      }, _react.default.createElement("select", null, _react.default.createElement("option", null, "Color")), _react.default.createElement("div", {
         className: "side-cart-quantity"
       }, _react.default.createElement("span", null, "Quantity"), _react.default.createElement("div", {
         className: "side-cart-quantity-button-container"
       }, _react.default.createElement("button", {
-        className: "side-cart-quantity-btn"
+        type: "button",
+        className: "side-cart-quantity-btn",
+        onClick: this.quantityDecrement
       }, "-"), _react.default.createElement("span", {
         className: "side-cart-quantity-state"
       }, this.state.quantity), _react.default.createElement("button", {
-        className: "side-cart-quantity-btn"
+        type: "button",
+        className: "side-cart-quantity-btn",
+        onClick: this.quantityIncrement
       }, "+"))), _react.default.createElement("button", {
-        className: "add-to-cart-btn"
+        type: "button",
+        className: "add-to-cart-btn",
+        onClick: this.handleSubmit
       }, "Add To Cart"), _react.default.createElement("button", {
         className: "purchase-btn"
-      }, "Buy It Now")))));
+      }, "Buy It Now"))))));
     }
   }]);
 
