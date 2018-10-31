@@ -7,7 +7,7 @@ const GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT'
 //Initial State
 const initialState = {
   allProducts: [],
-  selectedProduct: {reviews: []}
+  selectedProduct: [{imageArray: [], reviews: []}]
 }
 
 //Action Creators
@@ -37,7 +37,6 @@ export const fetchSingleProduct = productId => async dispatch => {
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_PRODUCTS:
-      console.log('hittinggggg')
       return {...state, allProducts: action.allProducts}
     case GET_SINGLE_PRODUCT:
       return {...state, selectedProduct: action.selectedProduct}

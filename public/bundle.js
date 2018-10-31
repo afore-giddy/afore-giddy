@@ -430,7 +430,6 @@ function (_React$Component) {
 }(_react.default.Component);
 
 var mapStateToProps = function mapStateToProps(state) {
-  console.log('stattte', state);
   return {
     productList: state.product.allProducts
   };
@@ -463,16 +462,22 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "allProductList", {
+Object.defineProperty(exports, "AllProductList", {
   enumerable: true,
   get: function get() {
     return _allProductList.default;
   }
 });
-Object.defineProperty(exports, "singleProductCard", {
+Object.defineProperty(exports, "SingleProductCard", {
   enumerable: true,
   get: function get() {
     return _singleProductCard.default;
+  }
+});
+Object.defineProperty(exports, "SelectedCar", {
+  enumerable: true,
+  get: function get() {
+    return _selectedCar.default;
   }
 });
 
@@ -480,7 +485,112 @@ var _allProductList = _interopRequireDefault(__webpack_require__(/*! ./allProduc
 
 var _singleProductCard = _interopRequireDefault(__webpack_require__(/*! ./singleProductCard */ "./client/components/product/singleProductCard.js"));
 
+var _selectedCar = _interopRequireDefault(__webpack_require__(/*! ./selectedCar */ "./client/components/product/selectedCar.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ "./client/components/product/selectedCar.js":
+/*!**************************************************!*\
+  !*** ./client/components/product/selectedCar.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _store = __webpack_require__(/*! ../../store */ "./client/store/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var SelectedCar =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SelectedCar, _React$Component);
+
+  function SelectedCar(props) {
+    _classCallCheck(this, SelectedCar);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SelectedCar).call(this, props));
+  }
+
+  _createClass(SelectedCar, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.getSelectedCar(this.props.match.params.id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var car = this.props.selectedCar;
+      console.log(car);
+      return _react.default.createElement("div", null, _react.default.createElement("div", {
+        className: "selected-car-card-top-container"
+      }, _react.default.createElement("div", {
+        className: "selected-car-card-top-container-header"
+      }, _react.default.createElement("span", null, "Home > Collection > ".concat(car[0].make))), _react.default.createElement("div", {
+        className: "selected-car-card-top-container-main"
+      }, _react.default.createElement("img", {
+        src: "car[0].imageArray.silver"
+      }), _react.default.createElement("div", {
+        className: "cart"
+      }, _react.default.createElement("div", {
+        className: "cart-price"
+      }, _react.default.createElement("span", {
+        className: "cart-price-text"
+      }, "$".concat(car[0].price))), _react.default.createElement("button", null, "Add To Cart"), _react.default.createElement("button", null, "Buy It Now")))));
+    }
+  }]);
+
+  return SelectedCar;
+}(_react.default.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    selectedCar: state.product.selectedProduct
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    getSelectedCar: function getSelectedCar(id) {
+      return dispatch((0, _store.fetchSingleProduct)(id));
+    }
+  };
+};
+
+var Connected = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SelectedCar);
+var _default = Connected;
+exports.default = _default;
 
 /***/ }),
 
@@ -510,12 +620,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var SingleProductCard = function SingleProductCard(props) {
   var product = props.product;
   var collection = props.product.collection;
+  console.log(product.imageArray[0]);
   return _react.default.createElement("div", {
     className: "single-product-card-container"
   }, _react.default.createElement(_reactRouterDom.Link, {
-    to: "/products/".concat(product.id)
+    to: "/all-cars/".concat(product.id)
   }, _react.default.createElement("img", {
-    src: product.imageArray[0]
+    src: product.imageArray[0].silver
   }), _react.default.createElement("span", null, "".concat(collection.name, ": ").concat(product.make)), _react.default.createElement("span", null, "$".concat(product.price))));
 };
 
@@ -733,7 +844,11 @@ function (_Component) {
       })), _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/all-cars",
-        component: _product.allProductList
+        component: _product.AllProductList
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/all-cars/:id",
+        component: _product.SelectedCar
       }));
     }
   }]);
@@ -905,9 +1020,10 @@ var GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT'; //Initial State
 
 var initialState = {
   allProducts: [],
-  selectedProduct: {
+  selectedProduct: [{
+    imageArray: [],
     reviews: []
-  } //Action Creators
+  }] //Action Creators
 
 };
 
@@ -1011,7 +1127,6 @@ var productsReducer = function productsReducer() {
 
   switch (action.type) {
     case GET_ALL_PRODUCTS:
-      console.log('hittinggggg');
       return _objectSpread({}, state, {
         allProducts: action.allProducts
       });
