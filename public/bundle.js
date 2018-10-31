@@ -112,7 +112,7 @@ var _routes = _interopRequireDefault(__webpack_require__(/*! ./routes */ "./clie
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
-  return _react.default.createElement("div", null, _react.default.createElement(_components.Navbar, null), _react.default.createElement(_allProductList.default, null), _react.default.createElement(_routes.default, null));
+  return _react.default.createElement("div", null, _react.default.createElement(_components.Navbar, null), _react.default.createElement(_routes.default, null));
 };
 
 var _default = App;
@@ -263,28 +263,12 @@ Object.defineProperty(exports, "Signup", {
     return _authForm.Signup;
   }
 });
-Object.defineProperty(exports, "allProductList", {
-  enumerable: true,
-  get: function get() {
-    return _allProductList.default;
-  }
-});
-Object.defineProperty(exports, "singleProductCard", {
-  enumerable: true,
-  get: function get() {
-    return _singleProductCard.default;
-  }
-});
 
 var _navbar = _interopRequireDefault(__webpack_require__(/*! ./navbar */ "./client/components/navbar.js"));
 
 var _userHome = _interopRequireDefault(__webpack_require__(/*! ./user-home */ "./client/components/user-home.js"));
 
 var _authForm = __webpack_require__(/*! ./auth-form */ "./client/components/auth-form.js");
-
-var _allProductList = _interopRequireDefault(__webpack_require__(/*! ./product/allProductList */ "./client/components/product/allProductList.js"));
-
-var _singleProductCard = _interopRequireDefault(__webpack_require__(/*! ./product/singleProductCard */ "./client/components/product/singleProductCard.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -320,7 +304,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Navbar = function Navbar(_ref) {
   var handleClick = _ref.handleClick,
       isLoggedIn = _ref.isLoggedIn;
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Graceshopper"), _react.default.createElement("nav", null, isLoggedIn ? _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "CARS CARS CARS"), _react.default.createElement("nav", null, isLoggedIn ? _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
     to: "/home"
   }, "Home"), _react.default.createElement("a", {
     href: "#",
@@ -329,7 +313,9 @@ var Navbar = function Navbar(_ref) {
     to: "/login"
   }, "Login"), _react.default.createElement(_reactRouterDom.Link, {
     to: "/signup"
-  }, "Sign Up"))), _react.default.createElement("hr", null));
+  }, "Sign Up"), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/all-cars"
+  }, "All Cars"))), _react.default.createElement("hr", null));
 };
 /**
  * CONTAINER
@@ -464,6 +450,40 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "./client/components/product/index.js":
+/*!********************************************!*\
+  !*** ./client/components/product/index.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "allProductList", {
+  enumerable: true,
+  get: function get() {
+    return _allProductList.default;
+  }
+});
+Object.defineProperty(exports, "singleProductCard", {
+  enumerable: true,
+  get: function get() {
+    return _singleProductCard.default;
+  }
+});
+
+var _allProductList = _interopRequireDefault(__webpack_require__(/*! ./allProductList */ "./client/components/product/allProductList.js"));
+
+var _singleProductCard = _interopRequireDefault(__webpack_require__(/*! ./singleProductCard */ "./client/components/product/singleProductCard.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
 /***/ "./client/components/product/singleProductCard.js":
 /*!********************************************************!*\
   !*** ./client/components/product/singleProductCard.js ***!
@@ -496,7 +516,7 @@ var SingleProductCard = function SingleProductCard(props) {
     to: "/products/".concat(product.id)
   }, _react.default.createElement("img", {
     src: product.imageArray[0]
-  }), _react.default.createElement("span", null, "".concat(collection.name, ": ").concat(product.make)), _react.default.createElement("span", null, product.price)));
+  }), _react.default.createElement("span", null, "".concat(collection.name, ": ").concat(product.make)), _react.default.createElement("span", null, "$".concat(product.price))));
 };
 
 var _default = SingleProductCard;
@@ -649,6 +669,8 @@ var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ ".
 
 var _components = __webpack_require__(/*! ./components */ "./client/components/index.js");
 
+var _product = __webpack_require__(/*! ./components/product */ "./client/components/product/index.js");
+
 var _store = __webpack_require__(/*! ./store */ "./client/store/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -697,16 +719,21 @@ function (_Component) {
     value: function render() {
       var isLoggedIn = this.props.isLoggedIn;
       return _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
-        path: "/login",
-        component: _components.Login
-      }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
         path: "/signup",
         component: _components.Signup
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/login",
+        component: _components.Login
       }), isLoggedIn && _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
         path: "/home",
         component: _components.UserHome
       })), _react.default.createElement(_reactRouterDom.Route, {
-        component: _components.Login
+        exact: true,
+        path: "/all-cars",
+        component: _product.allProductList
       }));
     }
   }]);

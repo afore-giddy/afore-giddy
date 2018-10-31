@@ -10,7 +10,7 @@ const SingleProductCard = props => {
       <Link to={`/products/${product.id}`}>
         <img src={product.imageArray[0]} />
         <span>{`${collection.name}: ${product.make}`}</span>
-        <span>{product.price}</span>
+        <span>{`$${product.price}`}</span>
       </Link>
     </div>
   )
