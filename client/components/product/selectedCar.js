@@ -38,18 +38,31 @@ class SelectedCar extends React.Component {
   }
   handleSubmit() {
     if (localStorage.cart) {
-      let newCart = JSON.stringify({
+      let newCart = {
+        id: this.props.selectedCar[0].id,
+        quantity: this.state.quantity,
+        price: this.props.selectedCar[0].price
+      }
+
+      let localCart = localStorage.getItem('cart')
+      let existingCart = JSON.parse(localCart)
+      console.log(localCart)
+
+      let updatedCart = JSON.stringify({
+        ...existingCart,
+        id: this.props.selectedCar[0].id,
         quantity: this.state.quantity,
         price: this.props.selectedCar[0].price
       })
-      localStorage.cart += ','
-      localStorage.cart += newCart
+      console.log('updatedcart', updatedCart)
+      localStorage.setItem('cart', `[${updatedCart}]`)
     } else {
       let cart = JSON.stringify({
+        id: this.props.selectedCar[0].id,
         quantity: this.state.quantity,
         price: this.props.selectedCar[0].price
       })
-      localStorage.setItem('cart', cart)
+      localStorage.setItem('cart', `[${cart}]`)
     }
   }
 
