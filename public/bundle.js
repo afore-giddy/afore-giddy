@@ -538,9 +538,15 @@ function (_React$Component) {
   _inherits(SelectedCar, _React$Component);
 
   function SelectedCar(props) {
+    var _this;
+
     _classCallCheck(this, SelectedCar);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SelectedCar).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SelectedCar).call(this, props));
+    _this.state = {
+      quantity: 0
+    };
+    return _this;
   }
 
   _createClass(SelectedCar, [{
@@ -562,12 +568,28 @@ function (_React$Component) {
       }, _react.default.createElement("img", {
         src: car[0].imageArray[0].default
       }), _react.default.createElement("div", {
-        className: "cart"
+        className: "side-cart"
       }, _react.default.createElement("div", {
-        className: "cart-price"
+        className: "side-cart-price"
       }, _react.default.createElement("span", {
-        className: "cart-price-text"
-      }, "$".concat(car[0].price))), _react.default.createElement("div", null, "Reviews will go here!"), _react.default.createElement("select", null, _react.default.createElement("option", null, "Color")), _react.default.createElement("button", null, "Add To Cart"), _react.default.createElement("button", null, "Buy It Now")))));
+        className: "side-cart-price-text"
+      }, "$".concat(car[0].price))), _react.default.createElement("div", {
+        className: "reviews"
+      }, "Total Reviews: ".concat(car[0].reviews.length)), _react.default.createElement("select", null, _react.default.createElement("option", null, "Color")), _react.default.createElement("div", {
+        className: "side-cart-quantity"
+      }, _react.default.createElement("span", null, "Quantity"), _react.default.createElement("div", {
+        className: "side-cart-quantity-button-container"
+      }, _react.default.createElement("button", {
+        className: "side-cart-quantity-btn"
+      }, "-"), _react.default.createElement("span", {
+        className: "side-cart-quantity-state"
+      }, this.state.quantity), _react.default.createElement("button", {
+        className: "side-cart-quantity-btn"
+      }, "+"))), _react.default.createElement("button", {
+        className: "add-to-cart-btn"
+      }, "Add To Cart"), _react.default.createElement("button", {
+        className: "purchase-btn"
+      }, "Buy It Now")))));
     }
   }]);
 
