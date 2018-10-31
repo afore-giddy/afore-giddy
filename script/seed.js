@@ -14,40 +14,42 @@ async function seed() {
   console.log('db synced!')
 
   const users = await Promise.all([
-    User.create({
-      firstName: 'Jeanine',
-      lastName: 'Cossentine',
-      phoneNumber: '400-187-9525',
-      creditCard: '3574672923346668',
-      address: '440 Merchant Court',
-      billingAddress: '65478 Beilfuss Center',
-      isAdmin: false,
-      email: 'cody@email.com',
-      password: '123'
-    }),
-    User.create({
-      firstName: 'Glen',
-      lastName: 'Grute',
-      phoneNumber: '361-664-2445',
-      creditCard: '374288565834651',
-      address: '5006 Ramsey Junction',
-      billingAddress: '714 Nova Terrace',
-      isAdmin: true,
-      email: 'murphy@email.com',
-      password: '123'
-    }),
-    User.create({
-      id: 3,
-      firstName: 'Casper',
-      lastName: 'Farny',
-      phoneNumber: '183-755-5261',
-      creditCard: '3555848853230568',
-      address: '1 Aberg Place',
-      billingAddress: '6368 Meadow Ridge Point',
-      isAdmin: false,
-      email: 'casper@email.com',
-      password: '123'
-    })
+    User.bulkCreate([
+      {
+        firstName: 'Jeanine',
+        lastName: 'Cossentine',
+        phoneNumber: '400-187-9525',
+        creditCard: '3574672923346668',
+        address: '440 Merchant Court',
+        billingAddress: '65478 Beilfuss Center',
+        isAdmin: false,
+        email: 'cody@email.com',
+        password: '123'
+      },
+      {
+        firstName: 'Glen',
+        lastName: 'Grute',
+        phoneNumber: '361-664-2445',
+        creditCard: '374288565834651',
+        address: '5006 Ramsey Junction',
+        billingAddress: '714 Nova Terrace',
+        isAdmin: true,
+        email: 'murphy@email.com',
+        password: '123'
+      },
+      {
+        id: 3,
+        firstName: 'Casper',
+        lastName: 'Farny',
+        phoneNumber: '183-755-5261',
+        creditCard: '3555848853230568',
+        address: '1 Aberg Place',
+        billingAddress: '6368 Meadow Ridge Point',
+        isAdmin: false,
+        email: 'casper@email.com',
+        password: '123'
+      }
+    ])
   ])
 
   const collections = await Promise.all([
