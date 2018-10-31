@@ -552,15 +552,15 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var car = this.props.selectedCar;
-      console.log(car);
+      console.log(car[0].imageArray[0].default);
       return _react.default.createElement("div", null, _react.default.createElement("div", {
         className: "selected-car-card-top-container"
       }, _react.default.createElement("div", {
         className: "selected-car-card-top-container-header"
-      }, _react.default.createElement("span", null, "Home > Collection > ".concat(car[0].make))), _react.default.createElement("div", {
+      }, _react.default.createElement("span", null, "Home > Collection > ".concat(car.make))), _react.default.createElement("div", {
         className: "selected-car-card-top-container-main"
       }, _react.default.createElement("img", {
-        src: "car[0].imageArray.silver"
+        src: car[0].imageArray[0].default
       }), _react.default.createElement("div", {
         className: "cart"
       }, _react.default.createElement("div", {
@@ -626,7 +626,7 @@ var SingleProductCard = function SingleProductCard(props) {
   }, _react.default.createElement(_reactRouterDom.Link, {
     to: "/all-cars/".concat(product.id)
   }, _react.default.createElement("img", {
-    src: product.imageArray[0].silver
+    src: product.imageArray[0].default
   }), _react.default.createElement("span", null, "".concat(collection.name, ": ").concat(product.make)), _react.default.createElement("span", null, "$".concat(product.price))));
 };
 
@@ -1021,7 +1021,11 @@ var GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT'; //Initial State
 var initialState = {
   allProducts: [],
   selectedProduct: [{
-    imageArray: [],
+    make: '',
+    price: '$',
+    imageArray: [{
+      default: ''
+    }],
     reviews: []
   }] //Action Creators
 
