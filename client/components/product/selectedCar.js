@@ -13,12 +13,12 @@ class SelectedCar extends React.Component {
 
   render() {
     const car = this.props.selectedCar
-    console.log(car[0].imageArray[0].default)
+    console.log(car[0])
     return (
       <div>
         <div className="selected-car-card-top-container">
           <div className="selected-car-card-top-container-header">
-            <span>{`Home > Collection > ${car.make}`}</span>
+            <span>{`Home > ${car[0].collection.name} > ${car[0].make}`}</span>
           </div>
           <div className="selected-car-card-top-container-main">
             {
