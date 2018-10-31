@@ -84,8 +84,8 @@ async function seed() {
         price: 7835615,
         imageArray: [
           {
-            silver:
-              'https://en.wikipedia.org/wiki/Lamborghini_Aventador#/media/File:Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+            default:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
           }
         ],
         onSale: true,
@@ -103,7 +103,12 @@ async function seed() {
         id: 2,
         make: 'Insight',
         price: 8064228,
-        imageArray: [{red: 'http://dummyimage.com/400x400.png/dddddd/000000'}],
+        imageArray: [
+          {
+            default:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+          }
+        ],
         onSale: true,
         isFeatured: false,
         description:
@@ -119,7 +124,12 @@ async function seed() {
         id: 3,
         make: 'Rio',
         price: 8807253,
-        imageArray: [{red: 'http://dummyimage.com/400x400.png/dddddd/000000'}],
+        imageArray: [
+          {
+            default:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+          }
+        ],
         onSale: false,
         isFeatured: true,
         description:
@@ -135,7 +145,12 @@ async function seed() {
         id: 4,
         make: 'Bonneville',
         price: 7179787,
-        imageArray: [{red: 'http://dummyimage.com/400x400.png/dddddd/000000'}],
+        imageArray: [
+          {
+            default:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+          }
+        ],
         onSale: false,
         isFeatured: false,
         description:
@@ -151,7 +166,12 @@ async function seed() {
         id: 5,
         make: 'Grand Caravan',
         price: 7948001,
-        imageArray: [{red: 'http://dummyimage.com/400x400.png/dddddd/000000'}],
+        imageArray: [
+          {
+            default:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+          }
+        ],
         onSale: true,
         isFeatured: false,
         description:
@@ -167,7 +187,12 @@ async function seed() {
         id: 6,
         make: 'C-Class',
         price: 8076433,
-        imageArray: [{red: 'http://dummyimage.com/400x400.png/dddddd/000000'}],
+        imageArray: [
+          {
+            default:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+          }
+        ],
         onSale: false,
         isFeatured: false,
         description:
@@ -183,7 +208,12 @@ async function seed() {
         id: 7,
         make: 'Town & Country',
         price: 7823343,
-        imageArray: [{red: 'http://dummyimage.com/400x400.png/dddddd/000000'}],
+        imageArray: [
+          {
+            default:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+          }
+        ],
         onSale: true,
         isFeatured: true,
         description:
@@ -199,7 +229,12 @@ async function seed() {
         id: 8,
         make: 'Elantra',
         price: 9605771,
-        imageArray: [{red: 'http://dummyimage.com/400x400.png/dddddd/000000'}],
+        imageArray: [
+          {
+            default:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+          }
+        ],
         onSale: false,
         isFeatured: false,
         description:
@@ -215,7 +250,12 @@ async function seed() {
         id: 9,
         make: 'Excel',
         price: 971481,
-        imageArray: [{red: 'http://dummyimage.com/400x400.png/dddddd/000000'}],
+        imageArray: [
+          {
+            default:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+          }
+        ],
         onSale: true,
         isFeatured: false,
         description:
@@ -231,7 +271,12 @@ async function seed() {
         id: 10,
         make: 'Passat',
         price: 9816393,
-        imageArray: [{red: 'http://dummyimage.com/400x400.png/dddddd/000000'}],
+        imageArray: [
+          {
+            default:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+          }
+        ],
         onSale: false,
         isFeatured: true,
         description:
