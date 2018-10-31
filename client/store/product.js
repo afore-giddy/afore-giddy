@@ -8,7 +8,13 @@ const GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT'
 const initialState = {
   allProducts: [],
   selectedProduct: [
-    {make: '', price: '$', imageArray: [{default: ''}], reviews: []}
+    {
+      make: '',
+      price: '$',
+      collection: {name: ''},
+      imageArray: [{default: ''}],
+      reviews: []
+    }
   ]
 }
 

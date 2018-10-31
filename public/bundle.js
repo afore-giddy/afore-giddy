@@ -552,12 +552,12 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var car = this.props.selectedCar;
-      console.log(car[0].imageArray[0].default);
+      console.log(car[0]);
       return _react.default.createElement("div", null, _react.default.createElement("div", {
         className: "selected-car-card-top-container"
       }, _react.default.createElement("div", {
         className: "selected-car-card-top-container-header"
-      }, _react.default.createElement("span", null, "Home > Collection > ".concat(car.make))), _react.default.createElement("div", {
+      }, _react.default.createElement("span", null, "Home > ".concat(car[0].collection.name, " > ").concat(car[0].make))), _react.default.createElement("div", {
         className: "selected-car-card-top-container-main"
       }, _react.default.createElement("img", {
         src: car[0].imageArray[0].default
@@ -1023,6 +1023,9 @@ var initialState = {
   selectedProduct: [{
     make: '',
     price: '$',
+    collection: {
+      name: ''
+    },
     imageArray: [{
       default: ''
     }],
