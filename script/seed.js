@@ -83,9 +83,14 @@ async function seed() {
     Product.bulkCreate([
       {
         id: 1,
-        make: 'Grand Caravan',
+        make: 'Aventador',
         price: 78356.15,
-        imageArray: [{red: 'http://dummyimage.com/400x400.png/dddddd/000000'}],
+        imageArray: [
+          {
+            silver:
+              'https://en.wikipedia.org/wiki/Lamborghini_Aventador#/media/File:Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+          }
+        ],
         onSale: true,
         isFeatured: false,
         description:
@@ -95,7 +100,7 @@ async function seed() {
         engineType: 'V12',
         transmission: 'Automatic',
         acceleration: 3.3,
-        colors: 'Red'
+        colors: 'Silver'
       },
       {
         id: 2,

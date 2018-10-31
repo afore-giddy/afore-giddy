@@ -5,12 +5,13 @@ import {Link} from 'react-router-dom'
 const SingleProductCard = props => {
   const product = props.product
   const collection = props.product.collection
+  console.log(product.imageArray[0])
   return (
     <div className="single-product-card-container">
-      <Link to={`/products/${product.id}`}>
-        <img src={product.imageArray[0]} />
+      <Link to={`/all-cars/${product.id}`}>
+        <img src={product.imageArray[0].default} />
         <span>{`${collection.name}: ${product.make}`}</span>
-        <span>{product.price}</span>
+        <span>{`$${product.price}`}</span>
       </Link>
     </div>
   )
