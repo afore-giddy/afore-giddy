@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Product, Review, Collection} = require('../db/models')
+const {Product, Review, Collection} = require('../../db/models')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 module.exports = router
@@ -55,22 +55,4 @@ router.get('/:productId', async (req, res, next) => {
     next(err)
   }
 })
-
-//get products by collectionId
-router.get('/collections/:collectionId', async (req, res, next) => {
-  try {
-    const collectionProducts = await Product.findAll({
-      where: {
-        collectionId: req.params.collectionId
-      }
-    })
-
-    !collectionProducts ? res.status(404).send('That collection is not in our inventory') : res.send(collectionProducts)
-  } catch (err) {
-    next(err)
-  }
-})
-
-
-
 
