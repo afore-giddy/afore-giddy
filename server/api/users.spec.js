@@ -12,11 +12,19 @@ describe('User routes', () => {
   })
 
   describe('/api/users/', () => {
-    const codysEmail = 'cody@puppybook.com'
+    const codysEmail = 'cody@email.com'
 
     beforeEach(() => {
       return User.create({
-        email: codysEmail
+        firstName: 'Jeanine',
+        lastName: 'Cossentine',
+        phoneNumber: '400-187-9525',
+        creditCard: '3574672923346668',
+        address: '440 Merchant Court',
+        billingAddress: '65478 Beilfuss Center',
+        isAdmin: false,
+        email: 'cody@email.com',
+        password: '123'
       })
     })
 
