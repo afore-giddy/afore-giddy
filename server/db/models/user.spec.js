@@ -15,13 +15,20 @@ describe('User model', () => {
 
       beforeEach(async () => {
         cody = await User.create({
-          email: 'cody@puppybook.com',
-          password: 'bones'
+          firstName: 'Jeanine',
+          lastName: 'Cossentine',
+          phoneNumber: '400-187-9525',
+          creditCard: '3574672923346668',
+          address: '440 Merchant Court',
+          billingAddress: '65478 Beilfuss Center',
+          isAdmin: false,
+          email: 'cody@email.com',
+          password: '123'
         })
       })
 
       it('returns true if the password is correct', () => {
-        expect(cody.correctPassword('bones')).to.be.equal(true)
+        expect(cody.correctPassword('123')).to.be.equal(true)
       })
 
       it('returns false if the password is incorrect', () => {
