@@ -49,8 +49,8 @@ const Product = db.define('product', {
     type: Sequelize.DECIMAL,
     allowNull: false,
     validate: {
-      min: 0.0,
-      max: 5.0
+      min: 0,
+      max: 5
     },
     get() {
       return this.getDataValue('accleration') + ' KM/S'

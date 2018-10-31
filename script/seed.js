@@ -19,7 +19,6 @@ async function seed() {
         firstName: 'Jeanine',
         lastName: 'Cossentine',
         phoneNumber: '400-187-9525',
-        creditCard: '3574672923346668',
         address: '440 Merchant Court',
         billingAddress: '65478 Beilfuss Center',
         isAdmin: false,
@@ -30,7 +29,6 @@ async function seed() {
         firstName: 'Glen',
         lastName: 'Grute',
         phoneNumber: '361-664-2445',
-        creditCard: '374288565834651',
         address: '5006 Ramsey Junction',
         billingAddress: '714 Nova Terrace',
         isAdmin: true,
@@ -42,7 +40,6 @@ async function seed() {
         firstName: 'Casper',
         lastName: 'Farny',
         phoneNumber: '183-755-5261',
-        creditCard: '3555848853230568',
         address: '1 Aberg Place',
         billingAddress: '6368 Meadow Ridge Point',
         isAdmin: false,
@@ -84,7 +81,7 @@ async function seed() {
       {
         id: 1,
         make: 'Aventador',
-        price: 78356.15,
+        price: 7835615,
         imageArray: [
           {
             default:
@@ -105,7 +102,7 @@ async function seed() {
       {
         id: 2,
         make: 'Insight',
-        price: 80642.28,
+        price: 8064228,
         imageArray: [
           {
             default:
@@ -126,7 +123,7 @@ async function seed() {
       {
         id: 3,
         make: 'Rio',
-        price: 88072.53,
+        price: 8807253,
         imageArray: [
           {
             default:
@@ -147,7 +144,7 @@ async function seed() {
       {
         id: 4,
         make: 'Bonneville',
-        price: 71797.87,
+        price: 7179787,
         imageArray: [
           {
             default:
@@ -168,7 +165,7 @@ async function seed() {
       {
         id: 5,
         make: 'Grand Caravan',
-        price: 79480.01,
+        price: 7948001,
         imageArray: [
           {
             default:
@@ -189,7 +186,7 @@ async function seed() {
       {
         id: 6,
         make: 'C-Class',
-        price: 80764.33,
+        price: 8076433,
         imageArray: [
           {
             default:
@@ -210,7 +207,7 @@ async function seed() {
       {
         id: 7,
         make: 'Town & Country',
-        price: 78233.43,
+        price: 7823343,
         imageArray: [
           {
             default:
@@ -231,7 +228,7 @@ async function seed() {
       {
         id: 8,
         make: 'Elantra',
-        price: 96057.71,
+        price: 9605771,
         imageArray: [
           {
             default:
@@ -252,7 +249,7 @@ async function seed() {
       {
         id: 9,
         make: 'Excel',
-        price: 97148.1,
+        price: 971481,
         imageArray: [
           {
             default:
@@ -273,7 +270,7 @@ async function seed() {
       {
         id: 10,
         make: 'Passat',
-        price: 98163.93,
+        price: 9816393,
         imageArray: [
           {
             default:

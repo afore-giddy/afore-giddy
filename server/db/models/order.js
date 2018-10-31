@@ -2,10 +2,13 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Order = db.define('order', {
-  items: {
-    type: Sequelize.ARRAY(Sequelize.JSON)
+  quantity: {
+    type: Sequelize.INTEGER
   },
   total: {
+    type: Sequelize.INTEGER
+  },
+  finalPrice: {
     type: Sequelize.INTEGER
   },
   status: {
