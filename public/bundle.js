@@ -567,7 +567,7 @@ function (_React$Component) {
         className: "cart-price"
       }, _react.default.createElement("span", {
         className: "cart-price-text"
-      }, "$".concat(car[0].price))), _react.default.createElement("button", null, "Add To Cart"), _react.default.createElement("button", null, "Buy It Now")))));
+      }, "$".concat(car[0].price))), _react.default.createElement("div", null, "Reviews will go here!"), _react.default.createElement("select", null, _react.default.createElement("option", null, "Color")), _react.default.createElement("button", null, "Add To Cart"), _react.default.createElement("button", null, "Buy It Now")))));
     }
   }]);
 
