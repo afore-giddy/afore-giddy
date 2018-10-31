@@ -14,6 +14,10 @@ Product.belongsTo(Collection)
 Collection.hasMany(Product)
 
 User.hasMany(Order)
+Order.belongsTo(User)
+
+Order.belongsToMany(Product, {through: 'lineItem'})
+Product.belongsToMany(Order, {through: 'lineItem'})
 
 module.exports = {
   User,

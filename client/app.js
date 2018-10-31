@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Navbar} from './components'
+import {Navbar, Footer} from './components'
 import AllProductList from './components/product/allProductList'
 
 import Routes from './routes'
@@ -11,6 +11,7 @@ const App = () => {
       <Navbar />
       {/* <AllProductList /> */}
       <Routes />
+      <Footer />
     </div>
   )
 }

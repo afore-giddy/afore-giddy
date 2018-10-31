@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
     <h1>CARS CARS CARS</h1>

@@ -21,12 +21,6 @@ const User = db.define('user', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  creditCard: {
-    type: Sequelize.STRING,
-    validate: {
-      isCreditCard: true
-    }
-  },
   isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
@@ -34,7 +28,10 @@ const User = db.define('user', {
   email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isEmail: true
+    }
   },
   password: {
     type: Sequelize.STRING,
