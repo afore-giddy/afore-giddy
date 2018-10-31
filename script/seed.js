@@ -337,6 +337,24 @@ async function seed() {
           'In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.',
         productId: 1,
         userId: 1
+      },
+      {
+        id: 6,
+        rating: 1,
+        title: 'Business-focused',
+        text:
+          'In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.',
+        productId: 1,
+        userId: 1
+      },
+      {
+        id: 7,
+        rating: 1,
+        title: 'Business-focused',
+        text:
+          'In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.',
+        productId: 1,
+        userId: 1
       }
     ])
   ])

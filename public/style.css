@@ -99,7 +99,7 @@ form div {
 
 /*Cart */
 
-.cart {
+.side-cart {
   display: flex;
   flex-direction: column;
   width: 250px;
@@ -107,16 +107,17 @@ form div {
   border: 1px black solid;
   background-color: white;
   justify-content: center;
+  height: 230px;
 }
 
-.cart-price {
+.side-cart-price {
   display: flex;
   align-items: center;
   width: 100%;
   background-color: #f5f5f5;
   height: 30px;
 }
-.cart-price-text {
+.side-cart-price-text {
   margin-left: 5px;
   color: #212121;
   font-family: Nunito, sans-serif;
@@ -126,8 +127,56 @@ form div {
   text-transform: uppercase;
 }
 
-.cart button {
+.side-cart-quantity {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  width: 95%;
+}
+.side-cart-quantity span {
+  margin-left: 5px;
+  color: #212121;
+  font-family: Nunito, sans-serif;
+  font-style: normal;
+}
+.side-cart-quantity-button-container {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.side-cart-quantity-btn {
+  height: 22px;
+  width: 22px;
+}
+
+.side-cart-quantity-state {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.side-cart .reviews {
+  width: 95%;
+  margin: auto;
+}
+
+.side-cart select {
+  width: 95%;
+  margin: auto;
+  height: 20px;
+}
+
+.add-to-cart-btn {
   width: 95%;
   margin: auto;
   background-color: #e4e4e4;
+  height: 35px;
+}
+
+.purchase-btn {
+  width: 95%;
+  margin: auto;
+  background-color: #141414;
+  height: 35px;
+  color: #e4e4e4;
 }
