@@ -21,14 +21,14 @@ class SelectedCar extends React.Component {
             <span>{`Home > ${car[0].collection.name} > ${car[0].make}`}</span>
           </div>
           <div className="selected-car-card-top-container-main">
-            {
-              // must be careful here with image
-            }
             <img src={car[0].imageArray[0].default} />
             <div className="cart">
               <div className="cart-price">
                 <span className="cart-price-text">{`$${car[0].price}`}</span>
               </div>
+              <select>
+                <option>Color</option>
+              </select>
               <button>Add To Cart</button>
               <button>Buy It Now</button>
             </div>
