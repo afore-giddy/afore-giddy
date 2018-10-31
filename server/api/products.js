@@ -40,9 +40,14 @@ router.get('/:productId', async (req, res, next) => {
       where: {
         id: req.params.productId
       },
-      include: [{
-        model: Review
-      }]
+      include: [
+        {
+          model: Collection
+        },
+        {
+          model: Review
+        }
+      ]
     })
 
     !foundProduct ? res.status(404).send('That product is not in our inventory') : res.send(foundProduct)
