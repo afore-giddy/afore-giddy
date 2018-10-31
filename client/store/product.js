@@ -7,7 +7,9 @@ const GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT'
 //Initial State
 const initialState = {
   allProducts: [],
-  selectedProduct: [{imageArray: [], reviews: []}]
+  selectedProduct: [
+    {make: '', price: '$', imageArray: [{default: ''}], reviews: []}
+  ]
 }
 
 //Action Creators
