@@ -26,6 +26,7 @@ class SelectedCar extends React.Component {
               <div className="cart-price">
                 <span className="cart-price-text">{`$${car[0].price}`}</span>
               </div>
+              <div>Reviews will go here!</div>
               <select>
                 <option>Color</option>
               </select>
