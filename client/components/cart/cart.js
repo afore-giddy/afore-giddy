@@ -1,32 +1,44 @@
-import React from 'react'
+import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
+import {Row, Well} from 'react-dom'
 import {Link} from 'react-router-dom'
-import {SingleProductCard} from '../product'
+import CartCard from './cart-card'
 
-//
-export default class Cart extends React.Component {
+class Cart extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      currentCart: []
+    }
   }
-  componentDidMount() {}
+  componentDidMount() {
+    const cart = localStorage.cart
+    const items = cart.split('&').map(item => JSON.parse(item))
+    this.setState({currentCart: items})
+  }
 
   render() {
-    const cart = localStorage.cart.split('&')
-
-    console.log('INSIDE THE CART COMPONENT', JSON.parse(cart[0]))
     return (
-      // <h3>CART</h3>
-
       <div>
-        <h2>CART</h2>
-        {cart.map((item, i) => {
-          let parsedItem = JSON.parse(item)
-          return (
-            <SingleProductCard name="order" key={i} product={parsedItem}>
-              {parsedItem}
-            </SingleProductCard>
-          )
-        })}
+        <h2>SHOPPING CART</h2>
+        <br />
+        <br />
+        <br />
+        {this.state.currentCart.map((item, i) => (
+          <CartCard key={i} state={this.state} />
+        ))}
+        <Link to="/home">
+          <button type="submit">X</button>
+        </Link>
+        <br />
+        <br />
+        <br />
+        <div>
+          <h2>SHIPPING AND TAXES</h2>
+          <h2>SUBTOTAL</h2>
+          <button type="submit"> CONTINUE SHOPPING </button>
+          <button type="submit">CHECKOUT > </button>
+        </div>
       </div>
     )
   }
@@ -37,3 +49,4 @@ export default class Cart extends React.Component {
 // const mapDispatchToProps = dispatch => {}
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+export default Cart
