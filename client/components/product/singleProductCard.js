@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 const SingleProductCard = props => {
   const product = props.product
   const collection = props.product.collection
-  console.log(product.imageArray[0])
   return (
     <div className="single-product-card-container">
       <Link to={`/all-cars/${product.id}`}>

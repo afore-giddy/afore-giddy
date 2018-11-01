@@ -287,10 +287,10 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var cart = localStorage.cart.split('&');
-      console.log('INSIDE THE CART COMPONENT', JSON.parse(cart[0]));
+      var cart = localStorage.cart.split('&'); // console.log('INSIDE THE CART COMPONENT', JSON.parse(cart[0]))
+
       return (// <h3>CART</h3>
-        _react.default.createElement("div", null, _react.default.createElement("h2", null, "CART"), _react.default.createElement("h2", null, cart))
+        _react.default.createElement("div", null, _react.default.createElement("h2", null, "CART"))
       );
     }
   }]);
@@ -1048,7 +1048,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var SingleProductCard = function SingleProductCard(props) {
   var product = props.product;
   var collection = props.product.collection;
-  console.log(product.imageArray[0]);
   return _react.default.createElement("div", {
     className: "single-product-card-container"
   }, _react.default.createElement(_reactRouterDom.Link, {
