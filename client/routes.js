@@ -47,7 +47,6 @@ class Routes extends Component {
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
-        <Route exact path="/" component={MainPage} />
         <Route exact path="/all-cars" component={AllProductList} />
         <Route exact path="/all-cars/:id" component={SelectedCar} />
       </Switch>
