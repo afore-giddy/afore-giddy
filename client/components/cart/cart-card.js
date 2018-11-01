@@ -6,7 +6,9 @@ export default class CartCard extends Component {
   constructor(props) {
     super(props)
   }
+
   render() {
+    const {quanity, price, color} = this.props.state
     return (
       <div>
         <h2>PRODUCT IMAGE</h2>
