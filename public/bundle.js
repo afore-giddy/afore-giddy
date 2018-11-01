@@ -845,10 +845,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -877,11 +873,13 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SelectedCar).call(this, props));
     _this.state = {
-      quantity: 1
+      quantity: 1,
+      color: 'default'
     };
     _this.quantityIncrement = _this.quantityIncrement.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.quantityDecrement = _this.quantityDecrement.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -915,37 +913,52 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "handleChange",
+    value: function handleChange(evt) {
+      this.setState({
+        color: evt.target.value
+      });
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit() {
       if (localStorage.cart) {
-        var newCart = {
+        var newCartObj = {
           id: this.props.selectedCar[0].id,
           quantity: this.state.quantity,
-          price: this.props.selectedCar[0].price
+          price: this.props.selectedCar[0].price,
+          color: this.state.color
         };
         var localCart = localStorage.getItem('cart');
-        var existingCart = JSON.parse(localCart);
-        console.log(localCart);
-        var updatedCart = JSON.stringify(_objectSpread({}, existingCart, {
-          id: this.props.selectedCar[0].id,
-          quantity: this.state.quantity,
-          price: this.props.selectedCar[0].price
-        }));
-        console.log('updatedcart', updatedCart);
-        localStorage.setItem('cart', "[".concat(updatedCart, "]"));
+        var newCart = JSON.stringify({
+          newCartObj: newCartObj
+        });
+        var finalCart = newCart.slice(14, newCart.length - 1);
+        console.log(finalCart);
+        var updatedCart = localCart + ',' + finalCart;
+        localStorage.setItem('cart', updatedCart);
       } else {
         var cart = JSON.stringify({
           id: this.props.selectedCar[0].id,
           quantity: this.state.quantity,
-          price: this.props.selectedCar[0].price
+          price: this.props.selectedCar[0].price,
+          color: this.state.color
         });
-        localStorage.setItem('cart', "[".concat(cart, "]"));
+        localStorage.setItem('cart', cart);
       }
     }
   }, {
     key: "render",
     value: function render() {
-      var car = this.props.selectedCar;
+      var car = this.props.selectedCar; // console.log('car', car[0].imageArray[0])
+
+      var colors = Object.keys(car[0].imageArray[0]).slice(1);
+      var currentColor = this.state.color;
+
+      if (currentColor === 'Select A Color') {
+        currentColor = 'default';
+      }
+
       return _react.default.createElement("div", null, _react.default.createElement("div", {
         className: "selected-car-card-top-container"
       }, _react.default.createElement("div", {
@@ -953,7 +966,7 @@ function (_React$Component) {
       }, _react.default.createElement("span", null, "Home > ".concat(car[0].collection.name, " > ").concat(car[0].make))), _react.default.createElement("div", {
         className: "selected-car-card-top-container-main"
       }, _react.default.createElement("img", {
-        src: car[0].imageArray[0].default
+        src: car[0].imageArray[0][currentColor]
       }), _react.default.createElement("div", {
         className: "side-cart"
       }, _react.default.createElement("div", {
@@ -964,7 +977,14 @@ function (_React$Component) {
         className: "reviews"
       }, "Total Reviews: ".concat(car[0].reviews.length)), _react.default.createElement("form", {
         className: "side-cart-form"
-      }, _react.default.createElement("select", null, _react.default.createElement("option", null, "Color")), _react.default.createElement("div", {
+      }, _react.default.createElement("select", {
+        onChange: this.handleChange
+      }, _react.default.createElement("option", null, "Select A Color"), colors.map(function (color) {
+        return _react.default.createElement("option", {
+          key: color,
+          value: color
+        }, color);
+      })), _react.default.createElement("div", {
         className: "side-cart-quantity"
       }, _react.default.createElement("span", null, "Quantity"), _react.default.createElement("div", {
         className: "side-cart-quantity-button-container"
@@ -1286,6 +1306,14 @@ function (_Component) {
     value: function render() {
       var isLoggedIn = this.props.isLoggedIn;
       return _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/signup",
+        component: _components.Signup
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/login",
+        component: _components.Login
+      }), _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/home",
         component: _components.UserHome

@@ -9,10 +9,6 @@ const Footer = () => (
       <Link to="/all-cars">All Products</Link>
       <Link to="/signup">Sign Up</Link>
       <Link to="/all-cars">All Cars</Link>
-<<<<<<< HEAD
-=======
-      {/* <Link>Social Media PlaceHolder</Link> */}
->>>>>>> master
     </div>
   </div>
 )

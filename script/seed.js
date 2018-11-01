@@ -85,7 +85,13 @@ async function seed() {
         imageArray: [
           {
             default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+            Red:
+              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
+            Yellow:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
+            Black:
+              'https://upload.wikimedia.org/wikipedia/commons/8/87/Black_Lamborghini_Aventador_%287560011520%29.jpg'
           }
         ],
         onSale: true,
@@ -106,7 +112,13 @@ async function seed() {
         imageArray: [
           {
             default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+            Red:
+              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
+            Yellow:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
+            Black:
+              'https://upload.wikimedia.org/wikipedia/commons/8/87/Black_Lamborghini_Aventador_%287560011520%29.jpg'
           }
         ],
         onSale: true,
@@ -127,7 +139,13 @@ async function seed() {
         imageArray: [
           {
             default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+            Red:
+              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
+            Yellow:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
+            Black:
+              'https://upload.wikimedia.org/wikipedia/commons/8/87/Black_Lamborghini_Aventador_%287560011520%29.jpg'
           }
         ],
         onSale: false,
@@ -148,7 +166,13 @@ async function seed() {
         imageArray: [
           {
             default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+            Red:
+              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
+            Yellow:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
+            Black:
+              'https://upload.wikimedia.org/wikipedia/commons/8/87/Black_Lamborghini_Aventador_%287560011520%29.jpg'
           }
         ],
         onSale: false,
@@ -169,7 +193,13 @@ async function seed() {
         imageArray: [
           {
             default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+            Red:
+              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
+            Yellow:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
+            Black:
+              'https://upload.wikimedia.org/wikipedia/commons/8/87/Black_Lamborghini_Aventador_%287560011520%29.jpg'
           }
         ],
         onSale: true,
@@ -190,7 +220,13 @@ async function seed() {
         imageArray: [
           {
             default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+            Red:
+              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
+            Yellow:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
+            Black:
+              'https://upload.wikimedia.org/wikipedia/commons/8/87/Black_Lamborghini_Aventador_%287560011520%29.jpg'
           }
         ],
         onSale: false,
@@ -211,7 +247,13 @@ async function seed() {
         imageArray: [
           {
             default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+            Red:
+              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
+            Yellow:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
+            Black:
+              'https://upload.wikimedia.org/wikipedia/commons/8/87/Black_Lamborghini_Aventador_%287560011520%29.jpg'
           }
         ],
         onSale: true,
@@ -232,7 +274,13 @@ async function seed() {
         imageArray: [
           {
             default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+            Red:
+              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
+            Yellow:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
+            Black:
+              'https://upload.wikimedia.org/wikipedia/commons/8/87/Black_Lamborghini_Aventador_%287560011520%29.jpg'
           }
         ],
         onSale: false,
@@ -253,7 +301,13 @@ async function seed() {
         imageArray: [
           {
             default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+            Red:
+              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
+            Yellow:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
+            Black:
+              'https://upload.wikimedia.org/wikipedia/commons/8/87/Black_Lamborghini_Aventador_%287560011520%29.jpg'
           }
         ],
         onSale: true,
@@ -274,7 +328,13 @@ async function seed() {
         imageArray: [
           {
             default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+            Red:
+              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
+            Yellow:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
+            Black:
+              'https://upload.wikimedia.org/wikipedia/commons/8/87/Black_Lamborghini_Aventador_%287560011520%29.jpg'
           }
         ],
         onSale: false,
