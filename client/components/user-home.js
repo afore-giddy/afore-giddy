@@ -11,6 +11,9 @@ export const UserHome = props => {
   return (
     <div>
       <h3>Welcome, {email}</h3>
+      <button type="submit">Edit User information</button>
+      <button type="submit">View Cart</button>
+      <button type="submit">Track Orders</button>
     </div>
   )
 }
