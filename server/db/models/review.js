@@ -27,6 +27,10 @@ const Review = db.define('review', {
         max: 100
       }
     }
+  },
+  isFeatured: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 

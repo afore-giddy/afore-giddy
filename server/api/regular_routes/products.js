@@ -10,7 +10,10 @@ router.get('/featured', async (req, res, next) => {
     const featuredProducts = await Product.findAll({
       where: {
         isFeatured: true
-      }
+      },
+      include: [{
+        model: Collection
+      }]
     })
 
     !featuredProducts ? res.sendStatus(404) : res.send(featuredProducts)
