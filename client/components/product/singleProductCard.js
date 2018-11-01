@@ -10,7 +10,7 @@ const SingleProductCard = props => {
   return (
     <div className="single-product-card-container">
       <Link to={`/all-cars/${product.id}`}>
-        {/* <img src={product.imageArray[0].default} /> */}
+        <img src={product.imageArray[0].default} />
         {props.name === 'order' ? (
           <span />
         ) : (
@@ -18,7 +18,7 @@ const SingleProductCard = props => {
         )}
         <span>{`$${product.price}`}</span>
 
-  
+
 
       </Link>
     </div>
