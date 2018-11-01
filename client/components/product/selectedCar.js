@@ -66,7 +66,7 @@ class SelectedCar extends React.Component {
 
       let newCart = JSON.stringify({newCartObj})
       let finalCart = newCart.slice(14, newCart.length - 1)
-      console.log(finalCart)
+
       let updatedCart = localCart + '&' + finalCart
 
       localStorage.setItem('cart', updatedCart)
