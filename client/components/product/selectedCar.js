@@ -46,12 +46,14 @@ class SelectedCar extends React.Component {
   }
 
   handleSubmit() {
+    const carImage = this.props.selectedCar[0].imageArray[0][this.state.color]
     if (localStorage.cart) {
       let newCartObj = {
         id: this.props.selectedCar[0].id,
         quantity: this.state.quantity,
         price: this.props.selectedCar[0].price,
-        color: this.state.color
+        color: this.state.color,
+        image: carImage
       }
 
       let localCart = localStorage.getItem('cart')
@@ -59,7 +61,7 @@ class SelectedCar extends React.Component {
       let newCart = JSON.stringify({newCartObj})
       let finalCart = newCart.slice(14, newCart.length - 1)
       console.log(finalCart)
-      let updatedCart = localCart + ',' + finalCart
+      let updatedCart = localCart + '&' + finalCart
 
       localStorage.setItem('cart', updatedCart)
     } else {
@@ -67,7 +69,8 @@ class SelectedCar extends React.Component {
         id: this.props.selectedCar[0].id,
         quantity: this.state.quantity,
         price: this.props.selectedCar[0].price,
-        color: this.state.color
+        color: this.state.color,
+        imageArray: [carImage]
       })
       localStorage.setItem('cart', cart)
     }
@@ -75,7 +78,7 @@ class SelectedCar extends React.Component {
 
   render() {
     const car = this.props.selectedCar
-    // console.log('car', car[0].imageArray[0])
+
     const colors = Object.keys(car[0].imageArray[0]).slice(1)
 
     let currentColor = this.state.color

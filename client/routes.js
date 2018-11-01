@@ -12,6 +12,7 @@ import {
 } from './components'
 import {AllProductList, SelectedCar} from './components/product'
 import {me} from './store'
+import PaymentMethod from './components/cart/payment-method'
 
 /**
  * COMPONENT
@@ -49,6 +50,7 @@ class Routes extends Component {
         <Route exact path="/" component={MainPage} />
         <Route exact path="/all-cars" component={AllProductList} />
         <Route exact path="/all-cars/:id" component={SelectedCar} />
+        <Route exact path="/payment-method" component={PaymentMethod} />
       </Switch>
     )
   }

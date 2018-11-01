@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom'
 import {fetchAllProducts} from '../../store'
 import SingleProductCard from './singleProductCard'
 
-
 class AllProductList extends React.Component {
   constructor(props) {
     super(props)
