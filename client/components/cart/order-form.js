@@ -23,7 +23,7 @@ class OrderForm extends Component {
     const {name, displayName, handleSubmit, error} = this.props
     return (
       <Fragment>
-        <Cart item={cart} />
+        <Cart />
 
         <form onSubmit={handleSubmit} name={name}>
           <div>
@@ -38,7 +38,7 @@ class OrderForm extends Component {
             <input name="lastName" type="text" />
 
             <label htmlFor="streetName">
-              <small>Strret Name</small>
+              <small>Street Name</small>
             </label>
             <input name="streetName" type="text" />
 

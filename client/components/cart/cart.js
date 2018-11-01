@@ -1,33 +1,19 @@
-import React from 'react'
+import React, {Component, Fragment, Button, Row} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {SingleProductCard} from '../product'
+import CartCard from './cart-card'
 
-//
-export default class Cart extends React.Component {
+class Cart extends Component {
   constructor(props) {
     super(props)
   }
-  componentDidMount() {}
 
   render() {
-    const cart = localStorage.cart.split('&')
-
-    console.log('INSIDE THE CART COMPONENT', JSON.parse(cart[0]))
     return (
-      // <h3>CART</h3>
-
-      <div>
-        <h2>CART</h2>
-        {cart.map((item, i) => {
-          let parsedItem = JSON.parse(item)
-          return (
-            <SingleProductCard name="order" key={i} product={parsedItem}>
-              {parsedItem}
-            </SingleProductCard>
-          )
-        })}
-      </div>
+      <h3>SHOPPING CART</h3>
+      // <Button>X</Button>
+      // <Button> CONTINUE SHOPPING </Button>
+      // <Button>CHECKOUT > </Button>
     )
   }
 }
@@ -37,3 +23,4 @@ export default class Cart extends React.Component {
 // const mapDispatchToProps = dispatch => {}
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+export default Cart
