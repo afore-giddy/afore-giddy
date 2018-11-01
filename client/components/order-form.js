@@ -17,25 +17,43 @@ const OrderForm = props => {
             <small>First Name</small>
           </label>
           <input name="firstName" type="text" />
+
           <label htmlFor="lastName">
             <small>Last Name</small>
           </label>
           <input name="lastName" type="text" />
+
+          <label htmlFor="streetName">
+            <small>Strret Name</small>
+          </label>
+          <input name="streetName" type="text" />
+
+          <label htmlFor="city">
+            <small>City</small>
+          </label>
+          <input name="city" type="text" />
+
+          <label htmlFor="state">
+            <small>State</small>
+          </label>
+          <input name="state" type="text" />
+
+          <label htmlFor="zipcode">
+            <small>Zipcode</small>
+          </label>
+          <input name="zipcode" type="text" />
+
           <label htmlFor="phoneNumber">
             <small>Phone Number</small>
           </label>
           <input name="phoneNumber" type="text" />
+
           <label htmlFor="email">
             <small>Email</small>
           </label>
           <input name="email" type="text" />
         </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
+
         <div>
           <button type="submit">{displayName}</button>
         </div>
@@ -53,18 +71,18 @@ const OrderForm = props => {
  *   function, and share the same Component. This is a good example of how we
  *   can stay DRY with interfaces that are very similar to each other!
  */
-const mapLogin = state => {
+const mapShipping = state => {
   return {
-    name: 'login',
-    displayName: 'Login',
+    name: 'shipping',
+    displayName: 'Place Order',
     error: state.user.error
   }
 }
 
-const mapSignup = state => {
+const mapBilling = state => {
   return {
-    name: 'signup',
-    displayName: 'Sign Up',
+    name: 'billing',
+    displayName: 'Place Order',
     error: state.user.error
   }
 }
@@ -75,14 +93,13 @@ const mapDispatch = dispatch => {
       evt.preventDefault()
       const formName = evt.target.name
       const email = evt.target.email.value
-      const password = evt.target.password.value
-      dispatch(auth(email, password, formName))
+      dispatch(auth(email, formName))
     }
   }
 }
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatch)(OrderForm)
+export const Shipping = connect(mapShipping, mapDispatch)(OrderForm)
+export const Billing = connect(mapBilling, mapDispatch)(OrderForm)
 
 /**
  * PROP TYPES
