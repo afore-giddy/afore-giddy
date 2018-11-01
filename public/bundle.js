@@ -226,6 +226,278 @@ AuthForm.propTypes = {
 
 /***/ }),
 
+/***/ "./client/components/cart/cart.js":
+/*!****************************************!*\
+  !*** ./client/components/cart/cart.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _product = __webpack_require__(/*! ../product */ "./client/components/product/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+//
+var Cart =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Cart, _React$Component);
+
+  function Cart(props) {
+    _classCallCheck(this, Cart);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Cart).call(this, props));
+  }
+
+  _createClass(Cart, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
+    key: "render",
+    value: function render() {
+      var cart = localStorage.cart.split('&');
+      console.log('INSIDE THE CART COMPONENT', JSON.parse(cart[0]));
+      return (// <h3>CART</h3>
+        _react.default.createElement("div", null, _react.default.createElement("h2", null, "CART"), _react.default.createElement("h2", null, cart))
+      );
+    }
+  }]);
+
+  return Cart;
+}(_react.default.Component); // const mapStateToProps = state => {}
+// const mapDispatchToProps = dispatch => {}
+// export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+
+
+exports.default = Cart;
+
+/***/ }),
+
+/***/ "./client/components/cart/order-form.js":
+/*!**********************************************!*\
+  !*** ./client/components/cart/order-form.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Billing = exports.Shipping = void 0;
+
+var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _store = __webpack_require__(/*! ../../store */ "./client/store/index.js");
+
+var _cart = _interopRequireDefault(__webpack_require__(/*! ./cart */ "./client/components/cart/cart.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+/**
+ * COMPONENT
+ */
+var OrderForm =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(OrderForm, _Component);
+
+  function OrderForm(props) {
+    var _this;
+
+    _classCallCheck(this, OrderForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(OrderForm).call(this, props));
+    _this.state = {
+      cart: {}
+    };
+    return _this;
+  }
+
+  _createClass(OrderForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _localStorage = localStorage,
+          cart = _localStorage.cart;
+      this.setState({
+        cart: cart
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var cart = this.state.cart;
+      var _this$props = this.props,
+          name = _this$props.name,
+          displayName = _this$props.displayName,
+          handleSubmit = _this$props.handleSubmit,
+          error = _this$props.error;
+      return _react.default.createElement(_react.Fragment, null, _react.default.createElement(_cart.default, {
+        item: cart
+      }), _react.default.createElement("form", {
+        onSubmit: handleSubmit,
+        name: name
+      }, _react.default.createElement("div", null, _react.default.createElement("label", {
+        htmlFor: "firstName"
+      }, _react.default.createElement("small", null, "First Name")), _react.default.createElement("input", {
+        name: "firstName",
+        type: "text"
+      }), _react.default.createElement("label", {
+        htmlFor: "lastName"
+      }, _react.default.createElement("small", null, "Last Name")), _react.default.createElement("input", {
+        name: "lastName",
+        type: "text"
+      }), _react.default.createElement("label", {
+        htmlFor: "streetName"
+      }, _react.default.createElement("small", null, "Strret Name")), _react.default.createElement("input", {
+        name: "streetName",
+        type: "text"
+      }), _react.default.createElement("label", {
+        htmlFor: "city"
+      }, _react.default.createElement("small", null, "City")), _react.default.createElement("input", {
+        name: "city",
+        type: "text"
+      }), _react.default.createElement("label", {
+        htmlFor: "state"
+      }, _react.default.createElement("small", null, "State")), _react.default.createElement("input", {
+        name: "state",
+        type: "text"
+      }), _react.default.createElement("label", {
+        htmlFor: "zipcode"
+      }, _react.default.createElement("small", null, "Zipcode")), _react.default.createElement("input", {
+        name: "zipcode",
+        type: "text"
+      }), _react.default.createElement("label", {
+        htmlFor: "phoneNumber"
+      }, _react.default.createElement("small", null, "Phone Number")), _react.default.createElement("input", {
+        name: "phoneNumber",
+        type: "text"
+      }), _react.default.createElement("label", {
+        htmlFor: "email"
+      }, _react.default.createElement("small", null, "Email")), _react.default.createElement("input", {
+        name: "email",
+        type: "text"
+      })), _react.default.createElement("div", null, _react.default.createElement("button", {
+        type: "submit"
+      }, displayName)), error && error.response && _react.default.createElement("div", null, " ", error.response.data, " ")), _react.default.createElement("a", {
+        href: "/auth/google"
+      }, displayName, " with Google"));
+    }
+  }]);
+
+  return OrderForm;
+}(_react.Component);
+/**
+ * CONTAINER
+ *   Note that we have two different sets of 'mapStateToProps' functions -
+ *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
+ *   function, and share the same Component. This is a good example of how we
+ *   can stay DRY with interfaces that are very similar to each other!
+ */
+
+
+var mapShipping = function mapShipping(state) {
+  return {
+    name: 'shipping',
+    displayName: 'Place Order',
+    error: state.user.error
+  };
+};
+
+var mapBilling = function mapBilling(state) {
+  return {
+    name: 'billing',
+    displayName: 'Place Order',
+    error: state.user.error
+  };
+};
+
+var mapDispatch = function mapDispatch(dispatch) {
+  return {
+    handleSubmit: function handleSubmit(evt) {
+      evt.preventDefault();
+      var formName = evt.target.name;
+      var email = evt.target.email.value;
+      dispatch((0, _store.auth)(email, formName));
+    }
+  };
+};
+
+var Shipping = (0, _reactRedux.connect)(mapShipping, mapDispatch)(OrderForm);
+exports.Shipping = Shipping;
+var Billing = (0, _reactRedux.connect)(mapBilling, mapDispatch)(OrderForm);
+/**
+ * PROP TYPES
+ */
+
+exports.Billing = Billing;
+OrderForm.propTypes = {
+  name: _propTypes.default.string.isRequired,
+  displayName: _propTypes.default.string.isRequired,
+  handleSubmit: _propTypes.default.func.isRequired,
+  error: _propTypes.default.object
+};
+
+/***/ }),
+
 /***/ "./client/components/footer.js":
 /*!*************************************!*\
   !*** ./client/components/footer.js ***!
@@ -328,7 +600,7 @@ var _userHome = _interopRequireDefault(__webpack_require__(/*! ./user-home */ ".
 
 var _authForm = __webpack_require__(/*! ./auth-form */ "./client/components/auth-form.js");
 
-var _orderForm = __webpack_require__(/*! ./order-form */ "./client/components/order-form.js");
+var _orderForm = __webpack_require__(/*! ./cart/order-form */ "./client/components/cart/order-form.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -414,141 +686,6 @@ exports.default = _default;
 Navbar.propTypes = {
   handleClick: _propTypes.default.func.isRequired,
   isLoggedIn: _propTypes.default.bool.isRequired
-};
-
-/***/ }),
-
-/***/ "./client/components/order-form.js":
-/*!*****************************************!*\
-  !*** ./client/components/order-form.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Billing = exports.Shipping = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
-
-var _store = __webpack_require__(/*! ../store */ "./client/store/index.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * COMPONENT
- */
-var OrderForm = function OrderForm(props) {
-  var name = props.name,
-      displayName = props.displayName,
-      handleSubmit = props.handleSubmit,
-      error = props.error;
-  return _react.default.createElement("div", null, _react.default.createElement("form", {
-    onSubmit: handleSubmit,
-    name: name
-  }, _react.default.createElement("div", null, _react.default.createElement("label", {
-    htmlFor: "firstName"
-  }, _react.default.createElement("small", null, "First Name")), _react.default.createElement("input", {
-    name: "firstName",
-    type: "text"
-  }), _react.default.createElement("label", {
-    htmlFor: "lastName"
-  }, _react.default.createElement("small", null, "Last Name")), _react.default.createElement("input", {
-    name: "lastName",
-    type: "text"
-  }), _react.default.createElement("label", {
-    htmlFor: "streetName"
-  }, _react.default.createElement("small", null, "Strret Name")), _react.default.createElement("input", {
-    name: "streetName",
-    type: "text"
-  }), _react.default.createElement("label", {
-    htmlFor: "city"
-  }, _react.default.createElement("small", null, "City")), _react.default.createElement("input", {
-    name: "city",
-    type: "text"
-  }), _react.default.createElement("label", {
-    htmlFor: "state"
-  }, _react.default.createElement("small", null, "State")), _react.default.createElement("input", {
-    name: "state",
-    type: "text"
-  }), _react.default.createElement("label", {
-    htmlFor: "zipcode"
-  }, _react.default.createElement("small", null, "Zipcode")), _react.default.createElement("input", {
-    name: "zipcode",
-    type: "text"
-  }), _react.default.createElement("label", {
-    htmlFor: "phoneNumber"
-  }, _react.default.createElement("small", null, "Phone Number")), _react.default.createElement("input", {
-    name: "phoneNumber",
-    type: "text"
-  }), _react.default.createElement("label", {
-    htmlFor: "email"
-  }, _react.default.createElement("small", null, "Email")), _react.default.createElement("input", {
-    name: "email",
-    type: "text"
-  })), _react.default.createElement("div", null, _react.default.createElement("button", {
-    type: "submit"
-  }, displayName)), error && error.response && _react.default.createElement("div", null, " ", error.response.data, " ")), _react.default.createElement("a", {
-    href: "/auth/google"
-  }, displayName, " with Google"));
-};
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
-
-
-var mapShipping = function mapShipping(state) {
-  return {
-    name: 'shipping',
-    displayName: 'Place Order',
-    error: state.user.error
-  };
-};
-
-var mapBilling = function mapBilling(state) {
-  return {
-    name: 'billing',
-    displayName: 'Place Order',
-    error: state.user.error
-  };
-};
-
-var mapDispatch = function mapDispatch(dispatch) {
-  return {
-    handleSubmit: function handleSubmit(evt) {
-      evt.preventDefault();
-      var formName = evt.target.name;
-      var email = evt.target.email.value;
-      dispatch((0, _store.auth)(email, formName));
-    }
-  };
-};
-
-var Shipping = (0, _reactRedux.connect)(mapShipping, mapDispatch)(OrderForm);
-exports.Shipping = Shipping;
-var Billing = (0, _reactRedux.connect)(mapBilling, mapDispatch)(OrderForm);
-/**
- * PROP TYPES
- */
-
-exports.Billing = Billing;
-OrderForm.propTypes = {
-  name: _propTypes.default.string.isRequired,
-  displayName: _propTypes.default.string.isRequired,
-  handleSubmit: _propTypes.default.func.isRequired,
-  error: _propTypes.default.object
 };
 
 /***/ }),
