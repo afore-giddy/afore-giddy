@@ -6,11 +6,13 @@ class SelectedCar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      quantity: 1
+      quantity: 1,
+      color: 'default'
     }
     this.quantityIncrement = this.quantityIncrement.bind(this)
     this.quantityDecrement = this.quantityDecrement.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -36,38 +38,51 @@ class SelectedCar extends React.Component {
       console.log('cant do that')
     }
   }
+
+  handleChange(evt) {
+    this.setState({
+      color: evt.target.value
+    })
+  }
+
   handleSubmit() {
     if (localStorage.cart) {
-      let newCart = {
+      let newCartObj = {
         id: this.props.selectedCar[0].id,
         quantity: this.state.quantity,
-        price: this.props.selectedCar[0].price
+        price: this.props.selectedCar[0].price,
+        color: this.state.color
       }
 
       let localCart = localStorage.getItem('cart')
-      let existingCart = JSON.parse(localCart)
-      console.log(localCart)
 
-      let updatedCart = JSON.stringify({
-        ...existingCart,
-        id: this.props.selectedCar[0].id,
-        quantity: this.state.quantity,
-        price: this.props.selectedCar[0].price
-      })
-      console.log('updatedcart', updatedCart)
-      localStorage.setItem('cart', `[${updatedCart}]`)
+      let newCart = JSON.stringify({newCartObj})
+      let finalCart = newCart.slice(14, newCart.length - 1)
+      console.log(finalCart)
+      let updatedCart = localCart + ',' + finalCart
+
+      localStorage.setItem('cart', updatedCart)
     } else {
       let cart = JSON.stringify({
         id: this.props.selectedCar[0].id,
         quantity: this.state.quantity,
-        price: this.props.selectedCar[0].price
+        price: this.props.selectedCar[0].price,
+        color: this.state.color
       })
-      localStorage.setItem('cart', `[${cart}]`)
+      localStorage.setItem('cart', cart)
     }
   }
 
   render() {
     const car = this.props.selectedCar
+    // console.log('car', car[0].imageArray[0])
+    const colors = Object.keys(car[0].imageArray[0]).slice(1)
+
+    let currentColor = this.state.color
+
+    if (currentColor === 'Select A Color') {
+      currentColor = 'default'
+    }
     return (
       <div>
         <div className="selected-car-card-top-container">
@@ -75,7 +90,7 @@ class SelectedCar extends React.Component {
             <span>{`Home > ${car[0].collection.name} > ${car[0].make}`}</span>
           </div>
           <div className="selected-car-card-top-container-main">
-            <img src={car[0].imageArray[0].default} />
+            <img src={car[0].imageArray[0][currentColor]} />
             <div className="side-cart">
               <div className="side-cart-price">
                 <span className="side-cart-price-text">{`$${
@@ -86,8 +101,13 @@ class SelectedCar extends React.Component {
                 car[0].reviews.length
               }`}</div>
               <form className="side-cart-form">
-                <select>
-                  <option>Color</option>
+                <select onChange={this.handleChange}>
+                  <option>Select A Color</option>
+                  {colors.map(color => (
+                    <option key={color} value={color}>
+                      {color}
+                    </option>
+                  ))}
                 </select>
                 <div className="side-cart-quantity">
                   <span>Quantity</span>

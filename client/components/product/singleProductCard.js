@@ -17,6 +17,9 @@ const SingleProductCard = props => {
           <span>{`${collection.name}: ${product.make}`}</span>
         )}
         <span>{`$${product.price}`}</span>
+
+  
+
       </Link>
     </div>
   )
