@@ -3,23 +3,16 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 export default class CartCard extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
   }
   render() {
-    const product = props.product
-    const collection = props.product.collection
     return (
-      <div className="single-product-card-container">
-        <Link to={`/all-cars/${product.id}`}>
-          <Image src={product.imageArray[0].default} rounded responsive />
-          {props.name === 'order' ? (
-            <span />
-          ) : (
-            <span>{`${collection.name}: ${product.make}`}</span>
-          )}
-          <span>{`$${product.price}`}</span>
-        </Link>
+      <div>
+        <h2>PRODUCT IMAGE</h2>
+        <h2>PRODUCT NAME</h2>
+        <h2> - QUANITY + </h2>
+        <h2>PRICE</h2>
       </div>
     )
   }

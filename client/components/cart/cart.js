@@ -1,5 +1,6 @@
-import React, {Component, Fragment, Button, Row} from 'react'
+import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
+import {Row, Well} from 'react-dom'
 import {Link} from 'react-router-dom'
 import CartCard from './cart-card'
 
@@ -10,10 +11,17 @@ class Cart extends Component {
 
   render() {
     return (
-      <h3>SHOPPING CART</h3>
-      // <Button>X</Button>
-      // <Button> CONTINUE SHOPPING </Button>
-      // <Button>CHECKOUT > </Button>
+      <div>
+        <h2>SHOPPING CART</h2>
+        <CartCard />
+        <button type="submit">X</button>
+        <div>
+          <h2>SHIPPING AND TAXES</h2>
+          <h2>SUBTOTAL</h2>
+          <button type="submit"> CONTINUE SHOPPING </button>
+          <button type="submit">CHECKOUT > </button>
+        </div>
+      </div>
     )
   }
 }
