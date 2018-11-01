@@ -10,7 +10,6 @@ import {
   Billing,
   Shipping
 } from './components'
-// import MainPage from './components/
 import {AllProductList, SelectedCar} from './components/product'
 import {me} from './store'
 
@@ -32,6 +31,7 @@ class Routes extends Component {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
 
+        <Route exact path="/" component={MainPage} />
         <Route exact path="/home" component={UserHome} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />

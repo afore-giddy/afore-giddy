@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {MainPage} from './index'
 
 /**
  * COMPONENT
@@ -14,6 +15,7 @@ export const UserHome = props => {
       <button type="submit">Edit User information</button>
       <button type="submit">View Cart</button>
       <button type="submit">Track Orders</button>
+      <MainPage />
     </div>
   )
 }
