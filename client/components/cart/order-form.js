@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../../store'
 import Cart from './cart'
+import PaymentMethod from './payment-method'
 
 /**
  * COMPONENT
@@ -31,7 +32,7 @@ class OrderForm extends Component {
     const {name, displayName, handleSubmit, error} = this.props
     return (
       <Fragment>
-        <Cart />
+        <Cart item={cart} />
 
         <form onSubmit={handleSubmit} name={name}>
           <div>
