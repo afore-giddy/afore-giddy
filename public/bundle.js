@@ -295,6 +295,18 @@ Object.defineProperty(exports, "UserHome", {
     return _userHome.default;
   }
 });
+Object.defineProperty(exports, "MainPage", {
+  enumerable: true,
+  get: function get() {
+    return _mainpage.default;
+  }
+});
+Object.defineProperty(exports, "SingleReviewCard", {
+  enumerable: true,
+  get: function get() {
+    return _singleReviewCard.default;
+  }
+});
 Object.defineProperty(exports, "Login", {
   enumerable: true,
   get: function get() {
@@ -326,11 +338,126 @@ var _footer = _interopRequireDefault(__webpack_require__(/*! ./footer */ "./clie
 
 var _userHome = _interopRequireDefault(__webpack_require__(/*! ./user-home */ "./client/components/user-home.js"));
 
+var _mainpage = _interopRequireDefault(__webpack_require__(/*! ./mainpage */ "./client/components/mainpage.js"));
+
+var _singleReviewCard = _interopRequireDefault(__webpack_require__(/*! ./singleReviewCard */ "./client/components/singleReviewCard.js"));
+
 var _authForm = __webpack_require__(/*! ./auth-form */ "./client/components/auth-form.js");
 
 var _orderForm = __webpack_require__(/*! ./order-form */ "./client/components/order-form.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ "./client/components/mainpage.js":
+/*!***************************************!*\
+  !*** ./client/components/mainpage.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _store = __webpack_require__(/*! ../store */ "./client/store/index.js");
+
+var _singleProductCard = _interopRequireDefault(__webpack_require__(/*! ./product/singleProductCard */ "./client/components/product/singleProductCard.js"));
+
+var _singleReviewCard = _interopRequireDefault(__webpack_require__(/*! ./singleReviewCard */ "./client/components/singleReviewCard.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var MainPage =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(MainPage, _React$Component);
+
+  function MainPage(props) {
+    _classCallCheck(this, MainPage);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MainPage).call(this, props));
+  }
+
+  _createClass(MainPage, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchFeaturedProducts();
+      this.props.fetchFeaturedReviews();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", null, _react.default.createElement("div", {
+        className: "featured-product-list-container"
+      }, this.props.featuredList.map(function (product) {
+        return _react.default.createElement(_singleProductCard.default, {
+          key: product.id,
+          product: product
+        });
+      })), _react.default.createElement("div", {
+        className: "review-list-container"
+      }, _react.default.createElement("h2", null, "OUR CUSTOMERS SAY"), this.props.featuredReviews.map(function (review) {
+        return _react.default.createElement(_singleReviewCard.default, {
+          key: review.id,
+          review: review
+        });
+      })));
+    }
+  }]);
+
+  return MainPage;
+}(_react.default.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  console.log('state.review.featuredReviews: ', state.review.featuredReviews);
+  return {
+    featuredList: state.product.featuredProducts,
+    featuredReviews: state.review.featuredReviews
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchFeaturedProducts: function fetchFeaturedProducts() {
+      return dispatch((0, _store.fetchFeaturedProducts)());
+    },
+    fetchFeaturedReviews: function fetchFeaturedReviews() {
+      return dispatch((0, _store.fetchFeaturedReviews)());
+    }
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(MainPage);
+
+exports.default = _default;
 
 /***/ }),
 
@@ -598,7 +725,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-//
 var AllProductList =
 /*#__PURE__*/
 function (_React$Component) {
@@ -931,17 +1057,50 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var SingleProductCard = function SingleProductCard(props) {
   var product = props.product;
   var collection = props.product.collection;
-  console.log(product.imageArray[0]);
   return _react.default.createElement("div", {
     className: "single-product-card-container"
   }, _react.default.createElement(_reactRouterDom.Link, {
     to: "/all-cars/".concat(product.id)
   }, _react.default.createElement("img", {
     src: product.imageArray[0].default
-  }), _react.default.createElement("span", null, "".concat(collection.name, ": ").concat(product.make)), _react.default.createElement("span", null, "$".concat(product.price))));
+  }), _react.default.createElement("span", null, "".concat(collection.name, ": ").concat(product.make)), _react.default.createElement("span", null, "".concat(product.price))));
 };
 
 var _default = SingleProductCard;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./client/components/singleReviewCard.js":
+/*!***********************************************!*\
+  !*** ./client/components/singleReviewCard.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SingleReviewCard = function SingleReviewCard(props) {
+  var review = props.review;
+  console.log('props.review: ', props);
+  return _react.default.createElement("div", {
+    className: "single-review-card-container"
+  }, _react.default.createElement("h3", null, _react.default.createElement("span", null, review.title)), _react.default.createElement("span", null, review.text));
+};
+
+var _default = SingleReviewCard;
 exports.default = _default;
 
 /***/ }),
@@ -1148,6 +1307,14 @@ function (_Component) {
       var isLoggedIn = this.props.isLoggedIn;
       return _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
+        path: "/signup",
+        component: _components.Signup
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/login",
+        component: _components.Login
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
         path: "/home",
         component: _components.UserHome
       }), _react.default.createElement(_reactRouterDom.Route, {
@@ -1179,6 +1346,10 @@ function (_Component) {
         path: "/all-cars/:id",
         component: _product.SelectedCar
       })), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/",
+        component: _components.MainPage
+      }), _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/all-cars",
         component: _product.AllProductList
@@ -1307,13 +1478,27 @@ Object.keys(_product).forEach(function (key) {
   });
 });
 
+var _review = _interopRequireWildcard(__webpack_require__(/*! ./review */ "./client/store/review.js"));
+
+Object.keys(_review).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _review[key];
+    }
+  });
+});
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var reducer = (0, _redux.combineReducers)({
   user: _user.default,
-  product: _product.default
+  product: _product.default,
+  review: _review.default
 });
 var middleware = (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxThunk.default, (0, _reduxLogger.default)({
   collapsed: true
@@ -1337,7 +1522,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.fetchSingleProduct = exports.fetchAllProducts = exports.getSingleProduct = exports.getAllProducts = void 0;
+exports.default = exports.fetchFeaturedProducts = exports.fetchSingleProduct = exports.fetchAllProducts = exports.getFeaturedProducts = exports.getSingleProduct = exports.getAllProducts = exports.initialState = void 0;
 
 var _axios = _interopRequireDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
 
@@ -1353,7 +1538,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 //Action types
 var GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
-var GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT'; //Initial State
+var GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT';
+var GET_FEATURED_PRODUCTS = 'GET_FEATURED_PRODUCTS'; //Initial State
 
 var initialState = {
   allProducts: [],
@@ -1367,9 +1553,41 @@ var initialState = {
       default: ''
     }],
     reviews: []
+  }],
+  featuredProducts: [{
+    make: '',
+    price: '$55',
+    collection: {
+      name: ''
+    },
+    imageArray: [{
+      default: ''
+    }],
+    reviews: []
+  }, {
+    make: '',
+    price: '$100',
+    collection: {
+      name: ''
+    },
+    imageArray: [{
+      default: ''
+    }],
+    reviews: []
+  }, {
+    make: '',
+    price: '$25',
+    collection: {
+      name: ''
+    },
+    imageArray: [{
+      default: ''
+    }],
+    reviews: []
   }] //Action Creators
 
 };
+exports.initialState = initialState;
 
 var getAllProducts = function getAllProducts(allProducts) {
   return {
@@ -1385,10 +1603,19 @@ var getSingleProduct = function getSingleProduct(selectedProduct) {
     type: GET_SINGLE_PRODUCT,
     selectedProduct: selectedProduct
   };
+};
+
+exports.getSingleProduct = getSingleProduct;
+
+var getFeaturedProducts = function getFeaturedProducts(featuredProducts) {
+  return {
+    type: GET_FEATURED_PRODUCTS,
+    featuredProducts: featuredProducts
+  };
 }; //Thunk
 
 
-exports.getSingleProduct = getSingleProduct;
+exports.getFeaturedProducts = getFeaturedProducts;
 
 var fetchAllProducts = function fetchAllProducts() {
   return (
@@ -1460,10 +1687,48 @@ var fetchSingleProduct = function fetchSingleProduct(productId) {
       };
     }()
   );
+};
+
+exports.fetchSingleProduct = fetchSingleProduct;
+
+var fetchFeaturedProducts = function fetchFeaturedProducts() {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref3 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee3(dispatch) {
+        var res, featured;
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return _axios.default.get('/api/products/featured');
+
+              case 2:
+                res = _context3.sent;
+                console.log("featured res", res);
+                featured = res.data;
+                dispatch(getFeaturedProducts(featured));
+
+              case 6:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      return function (_x3) {
+        return _ref3.apply(this, arguments);
+      };
+    }()
+  );
 }; //Reducer
 
 
-exports.fetchSingleProduct = fetchSingleProduct;
+exports.fetchFeaturedProducts = fetchFeaturedProducts;
 
 var productsReducer = function productsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -1480,12 +1745,189 @@ var productsReducer = function productsReducer() {
         selectedProduct: action.selectedProduct
       });
 
+    case GET_FEATURED_PRODUCTS:
+      return _objectSpread({}, state, {
+        featuredProducts: action.featuredProducts
+      });
+
     default:
       return state;
   }
 };
 
 var _default = productsReducer;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./client/store/review.js":
+/*!********************************!*\
+  !*** ./client/store/review.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.fetchFeaturedReviews = exports.fetchAllReviews = exports.getFeaturedReviews = exports.getAllReviews = exports.defaultReview = void 0;
+
+var _axios = _interopRequireDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//Action types
+var GET_FEATURED_REVIEWs = 'GET_FEATURED_REVIEWs';
+var GET_ALL_REVIEWs = 'GET_ALL_REVIEWs'; //Initial State
+
+var defaultReview = {
+  allReviews: [],
+  featuredReviews: [{
+    rating: '0',
+    title: '',
+    text: '',
+    isFeatured: true
+  }, {
+    rating: '0',
+    title: '',
+    text: '',
+    isFeatured: true
+  }, {
+    rating: '0',
+    title: '',
+    text: '',
+    isFeatured: true
+  }] //Action Creators
+
+};
+exports.defaultReview = defaultReview;
+
+var getAllReviews = function getAllReviews(allReviews) {
+  return {
+    type: GET_ALL_REVIEWs,
+    allReviews: allReviews
+  };
+};
+
+exports.getAllReviews = getAllReviews;
+
+var getFeaturedReviews = function getFeaturedReviews(featuredReviews) {
+  return {
+    type: GET_FEATURED_REVIEWs,
+    featuredReviews: featuredReviews
+  };
+}; //Thunk
+
+
+exports.getFeaturedReviews = getFeaturedReviews;
+
+var fetchAllReviews = function fetchAllReviews() {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee(dispatch) {
+        var res, reviews;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _axios.default.get('/api/reviews');
+
+              case 2:
+                res = _context.sent;
+                reviews = res.data;
+                dispatch(getAllReviews(reviews));
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }()
+  );
+};
+
+exports.fetchAllReviews = fetchAllReviews;
+
+var fetchFeaturedReviews = function fetchFeaturedReviews() {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref2 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee2(dispatch) {
+        var res, featured;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return _axios.default.get('/api/reviews/featured');
+
+              case 2:
+                res = _context2.sent;
+                featured = res.data;
+                dispatch(getFeaturedReviews(featured));
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      return function (_x2) {
+        return _ref2.apply(this, arguments);
+      };
+    }()
+  );
+}; //Reducer
+
+
+exports.fetchFeaturedReviews = fetchFeaturedReviews;
+
+var reviewsReducer = function reviewsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultReview;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case GET_ALL_REVIEWs:
+      return _objectSpread({}, state, {
+        allReviews: action.allReviews
+      });
+
+    case GET_FEATURED_REVIEWs:
+      return _objectSpread({}, state, {
+        featuredReviews: action.featuredReviews
+      });
+
+    default:
+      return state;
+  }
+};
+
+var _default = reviewsReducer;
 exports.default = _default;
 
 /***/ }),

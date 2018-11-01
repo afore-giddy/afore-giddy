@@ -360,7 +360,8 @@ async function seed() {
         text:
           'Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.',
         productId: 3,
-        userId: 1
+        userId: 1,
+        isFeatured: false
       },
       {
         id: 2,
@@ -368,7 +369,8 @@ async function seed() {
         title: 'migration',
         text: 'Morbi non quam nec dui luctus rutrum.',
         productId: 10,
-        userId: 2
+        userId: 2,
+        isFeatured: true
       },
       {
         id: 3,
@@ -376,24 +378,27 @@ async function seed() {
         title: 'Vision-oriented',
         text: 'Sed ante. Vivamus tortor. Duis mattis egestas metus.',
         productId: 5,
-        userId: 2
+        userId: 2,
+        isFeatured: false
       },
       {
         id: 4,
-        rating: 1,
+        rating: 3,
         title: 'cohesive',
         text: 'Morbi non quam nec dui luctus rutrum. Nulla tellus.',
         productId: 10,
-        userId: 1
+        userId: 1,
+        isFeatured: false
       },
       {
         id: 5,
-        rating: 0,
+        rating: 5,
         title: 'Business-focused',
         text:
           'In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.',
         productId: 1,
-        userId: 1
+        userId: 1,
+        isFeatured: true
       },
       {
         id: 6,
@@ -402,16 +407,18 @@ async function seed() {
         text:
           'In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.',
         productId: 1,
-        userId: 1
+        userId: 1,
+        isFeatured: false
       },
       {
         id: 7,
-        rating: 1,
+        rating: 4,
         title: 'Business-focused',
         text:
           'In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.',
         productId: 1,
-        userId: 1
+        userId: 1,
+        isFeatured: true
       }
     ])
   ])

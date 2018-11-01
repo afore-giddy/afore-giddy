@@ -3,14 +3,38 @@ import axios from 'axios'
 //Action types
 const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
 const GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT'
+const GET_FEATURED_PRODUCTS = 'GET_FEATURED_PRODUCTS'
 
 //Initial State
-const initialState = {
+export const initialState = {
   allProducts: [],
   selectedProduct: [
     {
       make: '',
       price: '$',
+      collection: {name: ''},
+      imageArray: [{default: ''}],
+      reviews: []
+    }
+  ],
+  featuredProducts: [
+    {
+      make: '',
+      price: '$55',
+      collection: {name: ''},
+      imageArray: [{default: ''}],
+      reviews: []
+    },
+    {
+      make: '',
+      price: '$100',
+      collection: {name: ''},
+      imageArray: [{default: ''}],
+      reviews: []
+    },
+    {
+      make: '',
+      price: '$25',
       collection: {name: ''},
       imageArray: [{default: ''}],
       reviews: []
@@ -28,6 +52,11 @@ export const getSingleProduct = selectedProduct => ({
   selectedProduct
 })
 
+export const getFeaturedProducts = featuredProducts => ({
+  type: GET_FEATURED_PRODUCTS,
+  featuredProducts
+})
+
 //Thunk
 export const fetchAllProducts = () => async dispatch => {
   let res = await axios.get('/api/products')
@@ -41,6 +70,13 @@ export const fetchSingleProduct = productId => async dispatch => {
   dispatch(getSingleProduct(product))
 }
 
+export const fetchFeaturedProducts = () => async dispatch => {
+  let res = await axios.get('/api/products/featured')
+  console.log("featured res", res)
+  let featured = res.data
+  dispatch(getFeaturedProducts(featured))
+}
+
 //Reducer
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -48,6 +84,8 @@ const productsReducer = (state = initialState, action) => {
       return {...state, allProducts: action.allProducts}
     case GET_SINGLE_PRODUCT:
       return {...state, selectedProduct: action.selectedProduct}
+    case GET_FEATURED_PRODUCTS:
+      return {...state, featuredProducts: action.featuredProducts}
     default:
       return state
   }
