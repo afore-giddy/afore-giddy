@@ -307,6 +307,18 @@ Object.defineProperty(exports, "Signup", {
     return _authForm.Signup;
   }
 });
+Object.defineProperty(exports, "Billing", {
+  enumerable: true,
+  get: function get() {
+    return _orderForm.Billing;
+  }
+});
+Object.defineProperty(exports, "Shipping", {
+  enumerable: true,
+  get: function get() {
+    return _orderForm.Shipping;
+  }
+});
 
 var _navbar = _interopRequireDefault(__webpack_require__(/*! ./navbar */ "./client/components/navbar.js"));
 
@@ -315,6 +327,8 @@ var _footer = _interopRequireDefault(__webpack_require__(/*! ./footer */ "./clie
 var _userHome = _interopRequireDefault(__webpack_require__(/*! ./user-home */ "./client/components/user-home.js"));
 
 var _authForm = __webpack_require__(/*! ./auth-form */ "./client/components/auth-form.js");
+
+var _orderForm = __webpack_require__(/*! ./order-form */ "./client/components/order-form.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -357,13 +371,19 @@ var Navbar = function Navbar(_ref) {
   }, "All Cars"), _react.default.createElement("a", {
     href: "#",
     onClick: handleClick
-  }, "Logout")) : _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
+  }, "Logout"), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/cart"
+  }, "Shopping Cart")) : _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
+    to: "/home"
+  }, "Home"), _react.default.createElement(_reactRouterDom.Link, {
     to: "/login"
   }, "Login"), _react.default.createElement(_reactRouterDom.Link, {
     to: "/signup"
   }, "Sign Up"), _react.default.createElement(_reactRouterDom.Link, {
     to: "/all-cars"
-  }, "All Cars"))), _react.default.createElement("hr", null));
+  }, "All Cars"), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/cart"
+  }, "Shopping Cart"))), _react.default.createElement("hr", null));
 };
 /**
  * CONTAINER
@@ -394,6 +414,141 @@ exports.default = _default;
 Navbar.propTypes = {
   handleClick: _propTypes.default.func.isRequired,
   isLoggedIn: _propTypes.default.bool.isRequired
+};
+
+/***/ }),
+
+/***/ "./client/components/order-form.js":
+/*!*****************************************!*\
+  !*** ./client/components/order-form.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Billing = exports.Shipping = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _store = __webpack_require__(/*! ../store */ "./client/store/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * COMPONENT
+ */
+var OrderForm = function OrderForm(props) {
+  var name = props.name,
+      displayName = props.displayName,
+      handleSubmit = props.handleSubmit,
+      error = props.error;
+  return _react.default.createElement("div", null, _react.default.createElement("form", {
+    onSubmit: handleSubmit,
+    name: name
+  }, _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "firstName"
+  }, _react.default.createElement("small", null, "First Name")), _react.default.createElement("input", {
+    name: "firstName",
+    type: "text"
+  }), _react.default.createElement("label", {
+    htmlFor: "lastName"
+  }, _react.default.createElement("small", null, "Last Name")), _react.default.createElement("input", {
+    name: "lastName",
+    type: "text"
+  }), _react.default.createElement("label", {
+    htmlFor: "streetName"
+  }, _react.default.createElement("small", null, "Strret Name")), _react.default.createElement("input", {
+    name: "streetName",
+    type: "text"
+  }), _react.default.createElement("label", {
+    htmlFor: "city"
+  }, _react.default.createElement("small", null, "City")), _react.default.createElement("input", {
+    name: "city",
+    type: "text"
+  }), _react.default.createElement("label", {
+    htmlFor: "state"
+  }, _react.default.createElement("small", null, "State")), _react.default.createElement("input", {
+    name: "state",
+    type: "text"
+  }), _react.default.createElement("label", {
+    htmlFor: "zipcode"
+  }, _react.default.createElement("small", null, "Zipcode")), _react.default.createElement("input", {
+    name: "zipcode",
+    type: "text"
+  }), _react.default.createElement("label", {
+    htmlFor: "phoneNumber"
+  }, _react.default.createElement("small", null, "Phone Number")), _react.default.createElement("input", {
+    name: "phoneNumber",
+    type: "text"
+  }), _react.default.createElement("label", {
+    htmlFor: "email"
+  }, _react.default.createElement("small", null, "Email")), _react.default.createElement("input", {
+    name: "email",
+    type: "text"
+  })), _react.default.createElement("div", null, _react.default.createElement("button", {
+    type: "submit"
+  }, displayName)), error && error.response && _react.default.createElement("div", null, " ", error.response.data, " ")), _react.default.createElement("a", {
+    href: "/auth/google"
+  }, displayName, " with Google"));
+};
+/**
+ * CONTAINER
+ *   Note that we have two different sets of 'mapStateToProps' functions -
+ *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
+ *   function, and share the same Component. This is a good example of how we
+ *   can stay DRY with interfaces that are very similar to each other!
+ */
+
+
+var mapShipping = function mapShipping(state) {
+  return {
+    name: 'shipping',
+    displayName: 'Place Order',
+    error: state.user.error
+  };
+};
+
+var mapBilling = function mapBilling(state) {
+  return {
+    name: 'billing',
+    displayName: 'Place Order',
+    error: state.user.error
+  };
+};
+
+var mapDispatch = function mapDispatch(dispatch) {
+  return {
+    handleSubmit: function handleSubmit(evt) {
+      evt.preventDefault();
+      var formName = evt.target.name;
+      var email = evt.target.email.value;
+      dispatch((0, _store.auth)(email, formName));
+    }
+  };
+};
+
+var Shipping = (0, _reactRedux.connect)(mapShipping, mapDispatch)(OrderForm);
+exports.Shipping = Shipping;
+var Billing = (0, _reactRedux.connect)(mapBilling, mapDispatch)(OrderForm);
+/**
+ * PROP TYPES
+ */
+
+exports.Billing = Billing;
+OrderForm.propTypes = {
+  name: _propTypes.default.string.isRequired,
+  displayName: _propTypes.default.string.isRequired,
+  handleSubmit: _propTypes.default.func.isRequired,
+  error: _propTypes.default.object
 };
 
 /***/ }),
@@ -785,7 +940,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 var UserHome = function UserHome(props) {
   var email = props.email;
-  return _react.default.createElement("div", null, _react.default.createElement("h3", null, "Welcome, ", email));
+  return _react.default.createElement("div", null, _react.default.createElement("h3", null, "Welcome, ", email), _react.default.createElement("button", {
+    type: "submit"
+  }, "Edit User information"), _react.default.createElement("button", {
+    type: "submit"
+  }, "View Cart"), _react.default.createElement("button", {
+    type: "submit"
+  }, "Track Orders"));
 };
 /**
  * CONTAINER
@@ -953,16 +1114,36 @@ function (_Component) {
       var isLoggedIn = this.props.isLoggedIn;
       return _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
+        path: "/home",
+        component: _components.UserHome
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
         path: "/signup",
         component: _components.Signup
       }), _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/login",
         component: _components.Login
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/order",
+        component: _components.Shipping
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/cart",
+        component: _components.Shipping
       }), isLoggedIn && _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/home",
         component: _components.UserHome
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/all-cars",
+        component: _product.AllProductList
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/all-cars/:id",
+        component: _product.SelectedCar
       })), _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/all-cars",
