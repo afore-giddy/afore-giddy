@@ -7,6 +7,7 @@ const SingleReviewCard = props => {
   return (
     <div className="single-review-card-container">
       <h3><span>{review.title}</span></h3>
+      <h4>{review.rating} Stars</h4>
       <span>{review.text}</span>
     </div>
   )

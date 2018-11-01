@@ -1,6 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchSingleProduct} from '../../store'
+import {
+  fetchSingleProduct,
+  fetchProductReviews,
+  getProductReviews
+} from '../../store'
+import SingleReviewCard from '../singleReviewCard'
 
 class SelectedCar extends React.Component {
   constructor(props) {
@@ -17,6 +22,7 @@ class SelectedCar extends React.Component {
 
   componentDidMount() {
     this.props.getSelectedCar(this.props.match.params.id)
+    this.props.getProductReviews(this.props.match.params.id)
   }
 
   quantityIncrement() {
@@ -75,7 +81,8 @@ class SelectedCar extends React.Component {
 
   render() {
     const car = this.props.selectedCar
-    // console.log('car', car[0].imageArray[0])
+    const reviews = this.props.productReviews
+    console.log('review', this.props.productReviews)
     const colors = Object.keys(car[0].imageArray[0]).slice(1)
 
     let currentColor = this.state.color
@@ -143,6 +150,10 @@ class SelectedCar extends React.Component {
             </div>
           </div>
         </div>
+        <h2>CUSTOMER REVIEWS</h2>
+        {reviews.map(review => {
+            return <SingleReviewCard key={review.id} review={review} />
+          })}
       </div>
     )
   }
@@ -150,13 +161,15 @@ class SelectedCar extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    selectedCar: state.product.selectedProduct
+    selectedCar: state.product.selectedProduct,
+    productReviews: state.review.productReviews
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getSelectedCar: id => dispatch(fetchSingleProduct(id))
+    getSelectedCar: id => dispatch(fetchSingleProduct(id)),
+    getProductReviews: id => dispatch(fetchProductReviews(id))
   }
 }
 
