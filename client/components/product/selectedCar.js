@@ -6,17 +6,68 @@ class SelectedCar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      quantity: 0
+      quantity: 1
     }
+    this.quantityIncrement = this.quantityIncrement.bind(this)
+    this.quantityDecrement = this.quantityDecrement.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
     this.props.getSelectedCar(this.props.match.params.id)
   }
 
+  quantityIncrement() {
+    let qty = this.state.quantity
+    qty++
+    this.setState({
+      quantity: qty
+    })
+    console.log(this.state)
+  }
+  quantityDecrement() {
+    let qty = this.state.quantity
+    if (qty > 1) {
+      qty--
+      this.setState({
+        quantity: qty
+      })
+    } else {
+      console.log('cant do that')
+    }
+  }
+  handleSubmit() {
+    if (localStorage.cart) {
+      let newCart = {
+        id: this.props.selectedCar[0].id,
+        quantity: this.state.quantity,
+        price: this.props.selectedCar[0].price
+      }
+
+      let localCart = localStorage.getItem('cart')
+      let existingCart = JSON.parse(localCart)
+      console.log(localCart)
+
+      let updatedCart = JSON.stringify({
+        ...existingCart,
+        id: this.props.selectedCar[0].id,
+        quantity: this.state.quantity,
+        price: this.props.selectedCar[0].price
+      })
+      console.log('updatedcart', updatedCart)
+      localStorage.setItem('cart', `[${updatedCart}]`)
+    } else {
+      let cart = JSON.stringify({
+        id: this.props.selectedCar[0].id,
+        quantity: this.state.quantity,
+        price: this.props.selectedCar[0].price
+      })
+      localStorage.setItem('cart', `[${cart}]`)
+    }
+  }
+
   render() {
     const car = this.props.selectedCar
-    console.log(car[0])
     return (
       <div>
         <div className="selected-car-card-top-container">
@@ -34,21 +85,41 @@ class SelectedCar extends React.Component {
               <div className="reviews">{`Total Reviews: ${
                 car[0].reviews.length
               }`}</div>
-              <select>
-                <option>Color</option>
-              </select>
-              <div className="side-cart-quantity">
-                <span>Quantity</span>
-                <div className="side-cart-quantity-button-container">
-                  <button className="side-cart-quantity-btn">-</button>
-                  <span className="side-cart-quantity-state">
-                    {this.state.quantity}
-                  </span>
-                  <button className="side-cart-quantity-btn">+</button>
+              <form className="side-cart-form">
+                <select>
+                  <option>Color</option>
+                </select>
+                <div className="side-cart-quantity">
+                  <span>Quantity</span>
+                  <div className="side-cart-quantity-button-container">
+                    <button
+                      type="button"
+                      className="side-cart-quantity-btn"
+                      onClick={this.quantityDecrement}
+                    >
+                      -
+                    </button>
+                    <span className="side-cart-quantity-state">
+                      {this.state.quantity}
+                    </span>
+                    <button
+                      type="button"
+                      className="side-cart-quantity-btn"
+                      onClick={this.quantityIncrement}
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <button className="add-to-cart-btn">Add To Cart</button>
-              <button className="purchase-btn">Buy It Now</button>
+                <button
+                  type="button"
+                  className="add-to-cart-btn"
+                  onClick={this.handleSubmit}
+                >
+                  Add To Cart
+                </button>
+                <button className="purchase-btn">Buy It Now</button>
+              </form>
             </div>
           </div>
         </div>
