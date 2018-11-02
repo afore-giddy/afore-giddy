@@ -342,7 +342,7 @@ async function seed() {
           }
         ],
         onSale: false,
-        isFeatured: true,
+        isFeatured: false,
         description:
           'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.',
         collectionId: 1,
@@ -350,6 +350,114 @@ async function seed() {
         engineType: 'V8',
         transmission: 'Standard',
         acceleration: 3.4,
+        colors: 'Blue'
+      },
+      {
+        id: 11,
+        make: 'Veyron',
+        price: 11116393,
+        imageArray: [
+          {
+            default:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+            Red:
+              'http://ichef.bbci.co.uk/wwfeatures/wm/live/1280_640/images/live/p0/2s/v6/p02sv6qt.jpg',
+            Gold:
+              'https://arvandplak.ir/wp-content/uploads/2015/04/Black-and-Gold-Bugatti-Veyron-0.jpg',
+            Black:
+              'https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Bugatti_Veyron_16.4_%E2%80%93_Frontansicht_%283%29%2C_5._April_2012%2C_D%C3%BCsseldorf.jpg/1200px-Bugatti_Veyron_16.4_%E2%80%93_Frontansicht_%283%29%2C_5._April_2012%2C_D%C3%BCsseldorf.jpg'
+          }
+        ],
+        onSale: false,
+        isFeatured: false,
+        description:
+          'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.',
+        collectionId: 3,
+        maxSpeed: 200,
+        engineType: 'V8',
+        transmission: 'Standard',
+        acceleration: 3.7,
+        colors: 'Blue'
+      },
+      {
+        id: 12,
+        make: 'Chiron',
+        price: 13116400,
+        imageArray: [
+          {
+            default:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+            Red:
+              'https://assets.bugatti.com/fileadmin/_processed_/sei/p54/se-image-a530be779d19ef35bba0bc4302629317.jpg',
+            Gold:
+              'https://assets.bugatti.com/fileadmin/_processed_/sei/p54/se-image-4d7e0aefef47f54a3b7f7c4c8d619141.jpg',
+            Blue:
+              'https://assets.bugatti.com/fileadmin/_processed_/sei/p54/se-image-e6678a2b1c56c59044f81a3742c784d4.jpg'
+          }
+        ],
+        onSale: false,
+        isFeatured: false,
+        description:
+          'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.',
+        collectionId: 3,
+        maxSpeed: 187,
+        engineType: 'V8',
+        transmission: 'Standard',
+        acceleration: 3.3,
+        colors: 'Blue'
+      },
+      {
+        id: 13,
+        make: 'Levante',
+        price: 11119000,
+        imageArray: [
+          {
+            default:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+            Red:
+              'https://auto.ndtvimg.com/car-images/big/maserati/levante/maserati-levante.jpg?v=14',
+            White:
+              'https://di-uploads-pod11.dealerinspire.com/reevesimportmotorcars/uploads/2017/11/2019-cayenne-turbo-_4_.jpg',
+            Blue:
+              'https://www.fckerbeck.com/galleria_images/2560/2560_main_l.jpg'
+          }
+        ],
+        onSale: false,
+        isFeatured: false,
+        description:
+          'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.',
+        collectionId: 4,
+        maxSpeed: 165,
+        engineType: 'V8',
+        transmission: 'Standard',
+        acceleration: 3.0,
+        colors: 'Blue'
+      },
+      {
+        id: 14,
+        make: 'GranTurismo',
+        price: 14019000,
+        imageArray: [
+          {
+            default:
+              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+            Red:
+              'https://autoweik.com/wp-content/uploads/2018/06/2019-maserati-granturismo-front-picture.jpg',
+            White:
+              'https://i.pinimg.com/originals/45/d4/b8/45d4b847e04725e177e6b8f6e907dc71.jpg',
+            Blue:
+              'https://mastercarreview.com/wp-content/uploads/2018/07/2019-maserati-granturismo-interior-hd-images.jpgg'
+          }
+        ],
+        onSale: false,
+        isFeatured: true,
+        description:
+          'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.',
+        collectionId: 4,
+        maxSpeed: 210,
+        engineType: 'V8',
+        transmission: 'Standard',
+        acceleration: 3.8,
         colors: 'Blue'
       }
     ])
