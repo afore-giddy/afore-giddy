@@ -22,7 +22,7 @@ class MainPage extends React.Component {
   render() {
     return (
       <div>
-        <div className="featured-product-list-container">
+        <div className="product-list-container">
           {this.props.featuredList.map(product => {
             return <SingleProductCard key={product.id} product={product} />
           })}
