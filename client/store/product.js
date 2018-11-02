@@ -72,7 +72,10 @@ export const fetchSingleProduct = productId => async dispatch => {
 
 export const fetchFeaturedProducts = () => async dispatch => {
   let res = await axios.get('/api/products/featured')
+<<<<<<< HEAD
+=======
   console.log('featured res', res)
+>>>>>>> master
   let featured = res.data
   dispatch(getFeaturedProducts(featured))
 }

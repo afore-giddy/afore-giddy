@@ -9,6 +9,7 @@ import {
   MainPage,
   Billing,
   Shipping,
+  SelectedCollectionList,
   Cart
 } from './components'
 import {AllProductList, SelectedCar} from './components/product'
@@ -38,6 +39,11 @@ class Routes extends Component {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/order" component={Shipping} />
+        <Route
+          exact
+          path="/collections/:id"
+          component={SelectedCollectionList}
+        />
         <Route exact path="/cart" component={Cart} />
         {isLoggedIn && (
           <Switch>
@@ -45,6 +51,11 @@ class Routes extends Component {
             <Route exact path="/home" component={UserHome} />
             <Route exact path="/all-cars" component={AllProductList} />
             <Route exact path="/all-cars/:id" component={SelectedCar} />
+            <Route
+              exact
+              path="/collections/:id"
+              component={SelectedCollectionList}
+            />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

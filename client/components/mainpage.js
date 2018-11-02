@@ -40,7 +40,6 @@ class MainPage extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log('state.review.featuredReviews: ', state.review.featuredReviews)
   return {
     featuredList: state.product.featuredProducts,
     featuredReviews: state.review.featuredReviews

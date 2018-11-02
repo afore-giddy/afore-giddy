@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Collections, Product} = require('../../db/models')
+const {Collection, Product} = require('../../db/models')
 module.exports = router
 
 //get all collections
@@ -18,7 +18,10 @@ router.get('/:id', async (req, res, next) => {
     const collectionProducts = await Product.findAll({
       where: {
         collectionId: req.params.id
-      }
+      },
+      include: [{
+        model: Collection
+      }]
     })
 
     !collectionProducts ? res.status(404).send('That collection is not in our inventory') : res.send(collectionProducts)
