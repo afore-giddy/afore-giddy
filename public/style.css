@@ -191,3 +191,9 @@ form div {
   height: 35px;
   color: #e4e4e4;
 }
+/* THIS IS THE CART STYLES*/
+
+.single-cart-container img {
+  height: 30px;
+  width: 30px;
+}
