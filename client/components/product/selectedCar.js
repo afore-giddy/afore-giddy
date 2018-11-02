@@ -59,7 +59,7 @@ class SelectedCar extends React.Component {
         quantity: this.state.quantity,
         price: this.props.selectedCar[0].price,
         color: this.state.color,
-        image: carImage
+        imageArray: [carImage]
       }
 
       let localCart = localStorage.getItem('cart')
@@ -155,8 +155,8 @@ class SelectedCar extends React.Component {
         </div>
         <h2>CUSTOMER REVIEWS</h2>
         {reviews.map(review => {
-            return <SingleReviewCard key={review.id} review={review} />
-          })}
+          return <SingleReviewCard key={review.id} review={review} />
+        })}
       </div>
     )
   }
