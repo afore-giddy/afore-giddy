@@ -5,14 +5,9 @@ import CheckoutForm from './stripe-form'
 class PaymentMethod extends Component {
   render() {
     return (
-      <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
-        <div className="example">
-          <h1>React Stripe Elements Example</h1>
-          <Elements>
-            <CheckoutForm />
-          </Elements>
-        </div>
-      </StripeProvider>
+      <div className="example">
+        <CheckoutForm name={'tyler swartz'} />
+      </div>
     )
   }
 }
