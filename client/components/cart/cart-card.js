@@ -12,20 +12,21 @@ class CartCard extends Component {
   }
 
   render() {
+    const {handleSubmit, id} = this.props
     const {quantity, color, imageArray} = this.props.state
     const {make, price} = this.props.selectedCar[0]
-    console.log('LOLOLOLOLOLOLOLOL', this.props.selectedCar[0])
-    console.log('PPPPPPPPPPPPP', this.props.state)
     return (
       <div>
-        <div>
+        <div className="single-cart-container">
           <img src={imageArray[0]} />
         </div>
         <h2>{make}</h2>
         <h2>{color}</h2>
         <h2>{price}</h2>
         <h2>{quantity}</h2>
-        <button type="submit">REMOVE FROM CART</button>
+        <button onClick={() => handleSubmit(id)} type="submit">
+          REMOVE FROM CART
+        </button>
       </div>
     )
   }

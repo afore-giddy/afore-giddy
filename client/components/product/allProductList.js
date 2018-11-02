@@ -16,7 +16,6 @@ class AllProductList extends React.Component {
   }
 
   render() {
-    console.log('MAMAMAMAMAMAMAMAMAMAMAMA', this.props.match.params.id)
 
     return (
       <div className="product-list-container">
