@@ -82,7 +82,7 @@ class SelectedCar extends React.Component {
   render() {
     const car = this.props.selectedCar
     const reviews = this.props.productReviews
-    console.log('review', this.props.productReviews)
+
     const colors = Object.keys(car[0].imageArray[0]).slice(1)
 
     let currentColor = this.state.color

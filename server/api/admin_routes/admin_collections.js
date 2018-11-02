@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Collection} = require('../../db/models')
+const {Collection, Product} = require('../../db/models')
 module.exports = router
 
 //admin routes for collections
@@ -14,10 +14,17 @@ router.get('/collections', async (req, res, next) => {
   }
 })
 
-//get collection by id
+//get collection and its products by id
 router.get('/collections/:id', async (req, res, next) => {
   try {
-    const collection = await Collection.findById(req.params.id)
+    const collection = await Collection.findAll({
+      where: {
+        id: req.params.id
+      },
+      include: [{
+        model: Product
+      }]
+    })
 
     !collection ? res.status(404).send('That collection is not in our database!') : res.send(collection)
   } catch (err) {

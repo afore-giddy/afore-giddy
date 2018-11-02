@@ -23,15 +23,6 @@ form div {
   display: inline-block;
 }
 
-.product-list-container {
-  display: flex;
-  flex-direction: row;
-  width: 95%;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: auto;
-}
-
 /* Single Product Card */
 .single-product-card-container {
   display: flex;

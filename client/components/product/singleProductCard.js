@@ -5,8 +5,7 @@ import {Link} from 'react-router-dom'
 const SingleProductCard = props => {
   const product = props.product
   const collection = props.product.collection
-  console.log(props.name, 'THE NAME')
-  console.log(props.product, 'THEPRODUCT')
+
   return (
     <div className="single-product-card-container">
       <Link to={`/all-cars/${product.id}`}>
@@ -14,7 +13,7 @@ const SingleProductCard = props => {
         {props.name === 'order' ? (
           <span />
         ) : (
-          <span>{`${collection.name}: ${product.make}`}</span>
+          <span>{`$ ${product.make}`}</span>
         )}
         <span>{`$${product.price}`}</span>
 
