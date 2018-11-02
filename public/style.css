@@ -192,7 +192,15 @@ form div {
   color: #e4e4e4;
 }
 
+
 .checkout {
   width: 30%;
   margin: auto;
+
+/* THIS IS THE CART STYLES*/
+
+.single-cart-container img {
+  height: 30px;
+  width: 30px;
+
 }
