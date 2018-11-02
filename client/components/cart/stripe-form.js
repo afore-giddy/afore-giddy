@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import axios from 'axios'
 import {
   CardElement,
   injectStripe,
@@ -19,7 +20,7 @@ const CURRENCY = 'USD'
 const fromUSDToCent = amount => amount * 100
 
 const successPayment = data => {
-  alert('Payment Successful')
+  alert('Afore Giddy - Payment Successful')
 }
 
 const errorPayment = data => {
