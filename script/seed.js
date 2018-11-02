@@ -54,24 +54,28 @@ async function seed() {
       {
         id: 1,
         name: 'Lambo',
-        description: 'Nulla facilisi.'
+        description: 'Nulla facilisi.',
+        image: 'http://www.carlogos.org/logo/Lamborghini-logo-1920x1080.png'
       },
       {
         id: 2,
         name: 'Lotus',
-        description: 'Aenean fermentum.'
+        description: 'Aenean fermentum.',
+        image: 'http://www.carlogos.org/logo/Lotus-logo-3000x3000.png'
       },
       {
         id: 3,
         name: 'Bugoti',
         description:
-          'Curabitur gravida nisi at nibh. In hac habitasse platea dictumst.'
+          'Curabitur gravida nisi at nibh. In hac habitasse platea dictumst.',
+        image: 'https://banner2.kisspng.com/20171220/exq/bugatti-logo-png-5a3a261e5991e9.87829451151376028636699311.jpg'
       },
       {
         id: 4,
         name: 'Masserati',
         description:
-          'Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.'
+          'Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.',
+        image: 'https://banner2.kisspng.com/20180406/rew/kisspng-maserati-granturismo-car-logo-wall-decal-5ac71f7ae63143.7450419915229991629429.jpg'
       }
     ])
   ])
