@@ -9,6 +9,10 @@ const Collection = db.define('collection', {
   description: {
     type: Sequelize.TEXT,
     allowNull: false
+  },
+  image: {
+    type: Sequelize.STRING,
+    allowNull: false
   }
 })
 

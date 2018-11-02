@@ -9,7 +9,8 @@ import {
   MainPage,
   Billing,
   Shipping,
-  Cart
+  Cart,
+  SingleCollectionCard
 } from './components'
 import {AllProductList, SelectedCar} from './components/product'
 import {me} from './store'
@@ -45,12 +46,16 @@ class Routes extends Component {
             <Route exact path="/home" component={UserHome} />
             <Route exact path="/all-cars" component={AllProductList} />
             <Route exact path="/all-cars/:id" component={SelectedCar} />
+            <Route exact path="/collections" component={AllProductList} />
+            <Route exact path="/collections/:id" component={AllProductList} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
         <Route exact path="/all-cars" component={AllProductList} />
         <Route exact path="/all-cars/:id" component={SelectedCar} />
         <Route exact path="/payment-method" component={PaymentMethod} />
+        <Route exact path="/collections" component={AllProductList} />
+        <Route exact path="/collections/:id" component={AllProductList} />
       </Switch>
     )
   }
