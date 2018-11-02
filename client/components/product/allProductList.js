@@ -14,6 +14,7 @@ class AllProductList extends React.Component {
   }
 
   render() {
+    console.log('MAMAMAMAMAMAMAMAMAMAMAMA', this.props)
     return (
       <div className="product-list-container">
         {this.props.productList.map(product => {

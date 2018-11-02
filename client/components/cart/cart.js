@@ -8,24 +8,25 @@ class Cart extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentCart: []
+      localCart: []
     }
   }
   componentDidMount() {
     const cart = localStorage.cart
-    const items = cart.split('&').map(item => JSON.parse(item))
-    this.setState({currentCart: items})
+    const items = cart ? cart.split('&').map(item => JSON.parse(item)) : []
+    this.setState({localCart: items})
   }
 
   render() {
+    console.log('HUHUHUHHUHUHUHUHUHUHUH', this.props.state)
     return (
       <div>
         <h2>SHOPPING CART</h2>
         <br />
         <br />
         <br />
-        {this.state.currentCart.map((item, i) => (
-          <CartCard key={i} state={this.state} />
+        {this.state.localCart.map((item, i) => (
+          <CartCard key={i} state={item} />
         ))}
         <Link to="/home">
           <button type="submit">X</button>
