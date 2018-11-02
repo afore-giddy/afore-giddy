@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom'
 import {fetchAllProducts} from '../../store'
 import SingleProductCard from './singleProductCard'
 
-
 class AllProductList extends React.Component {
   constructor(props) {
     super(props)
@@ -15,6 +14,7 @@ class AllProductList extends React.Component {
   }
 
   render() {
+    console.log('MAMAMAMAMAMAMAMAMAMAMAMA', this.props)
     return (
       <div className="product-list-container">
         {this.props.productList.map(product => {
