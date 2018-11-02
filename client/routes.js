@@ -9,10 +9,12 @@ import {
   MainPage,
   Billing,
   Shipping,
-  SelectedCollectionList
+  SelectedCollectionList,
+  Cart
 } from './components'
 import {AllProductList, SelectedCar} from './components/product'
 import {me} from './store'
+import PaymentMethod from './components/cart/payment-method'
 
 /**
  * COMPONENT
@@ -37,20 +39,29 @@ class Routes extends Component {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/order" component={Shipping} />
-        <Route exact path="/cart" component={Shipping} />
-        <Route exact path="/collections/:id" component={SelectedCollectionList} />
+        <Route
+          exact
+          path="/collections/:id"
+          component={SelectedCollectionList}
+        />
+        <Route exact path="/cart" component={Cart} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route exact path="/home" component={UserHome} />
             <Route exact path="/all-cars" component={AllProductList} />
             <Route exact path="/all-cars/:id" component={SelectedCar} />
-            <Route exact path="/collections/:id" component={SelectedCollectionList} />
+            <Route
+              exact
+              path="/collections/:id"
+              component={SelectedCollectionList}
+            />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
         <Route exact path="/all-cars" component={AllProductList} />
         <Route exact path="/all-cars/:id" component={SelectedCar} />
+        <Route exact path="/payment-method" component={PaymentMethod} />
       </Switch>
     )
   }
