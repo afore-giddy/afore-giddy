@@ -1,46 +1,64 @@
 import React, {Component} from 'react'
-import {CardElement, injectStripe} from 'react-stripe-elements'
+import axios from 'axios'
+import {
+  CardElement,
+  injectStripe,
+  PostalCodeElement,
+  CardCVCElement,
+  CardNumberElement,
+  PaymentRequestButtonElement
+} from 'react-stripe-elements'
+import StripeCheckout from 'react-stripe-checkout'
 import {connect} from 'react-redux'
 import placeOrder from '../../store'
 
-class CheckoutForm extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {complete: false}
-    this.submit = this.submit.bind(this)
-  }
+import STRIPE_PUBLISHABLE from './constants/stripe'
+import PAYMENT_SERVER_URL from './constants/server'
 
-  async submit(ev) {
-    let {token} = await this.props.stripe.createToken({name: 'Name'})
-    let response = await fetch('/charge', {
-      method: 'POST',
-      headers: {'Content-Type': 'text/plain'},
-      body: token.id
+const CURRENCY = 'USD'
+
+const fromUSDToCent = amount => amount * 100
+
+const successPayment = data => {
+  alert('Afore Giddy - Payment Successful')
+}
+
+const errorPayment = data => {
+  alert('Payment Error')
+}
+
+const onToken = (amount, description) => token =>
+  axios
+    .post(PAYMENT_SERVER_URL, {
+      description,
+      source: token.id,
+      currency: CURRENCY,
+      amount: fromUSDToCent(amount)
     })
-    if (response.ok) this.setState({complete: true})
-  }
+    .then(successPayment)
+    .catch(errorPayment)
 
-  render() {
-    if (this.state.complete) return <h1>Purchase Complete</h1>
-
-    return (
-      <div className="checkout">
-        <p>Would you like to complete the purchase?</p>
-        <CardElement />
-        <button onClick={this.submit}>Send</button>
-      </div>
-    )
-  }
+const CheckoutForm = props => {
+  return (
+    <StripeCheckout
+      name={name}
+      description={'Purchase from Afore Giddy'}
+      amount={fromUSDToCent(100)}
+      token={onToken(100, 'Purchase from Afore Giddy')}
+      currency={CURRENCY}
+      stripeKey={STRIPE_PUBLISHABLE}
+    />
+  )
 }
 
-const inject = injectStripe(CheckoutForm)
+// const inject = injectStripe(CheckoutForm)
 
-const mapDispatchToProps = dispatch => {
-  return {
-    postOrder: order => dispatch(placeOrder(order))
-  }
-}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     postOrder: order => dispatch(placeOrder(order))
+//   }
+// }
 
-const connected = connect(null, mapDispatchToProps)(inject)
+// const connected = connect(null, mapDispatchToProps)(inject)
 
-export default connected
+export default CheckoutForm

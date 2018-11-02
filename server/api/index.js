@@ -15,6 +15,10 @@ router.use('/admin', require('./admin_routes/admin_products'))
 router.use('/admin', require('./admin_routes/admin_orders'))
 router.use('/admin', require('./admin_routes/admin_reviews'))
 
+//stripe routes
+
+// router.use('/stripe', require('./stripe/'))
+
 router.use((req, res, next) => {
   const error = new Error('Not Found')
   error.status = 404
