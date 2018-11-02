@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Row, Well} from 'react-dom'
 import {Link} from 'react-router-dom'
 import CartCard from './cart-card'
+import {fetchAllProducts} from '../../store'
 
 class Cart extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class Cart extends Component {
   }
 
   render() {
-    console.log('HUHUHUHHUHUHUHUHUHUHUH', this.props.state)
+    console.log('HUHUHUHHUHUHUHUHUHUHUH', this.props.productList)
     return (
       <div>
         <h2>SHOPPING CART</h2>
@@ -45,9 +46,15 @@ class Cart extends Component {
   }
 }
 
-// const mapStateToProps = state => {}
+const mapStateToProps = state => {
+  return {
+    productList: state.product.allProducts
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    getAllProducts: () => dispatch(fetchAllProducts())
+  }
+}
 
-// const mapDispatchToProps = dispatch => {}
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Cart)
-export default Cart
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

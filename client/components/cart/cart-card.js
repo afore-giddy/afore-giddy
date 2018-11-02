@@ -1,25 +1,31 @@
 import React, {Component, Image} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {fetchAllProducts} from '../../store'
+import {fetchSingleProduct} from '../../store'
 
 class CartCard extends Component {
   constructor(props) {
     super(props)
   }
   componentDidMount() {
-    this.props.getAllProducts()
+    this.props.getSelectedCar(this.props.state.id)
   }
 
   render() {
-    console.log('HEYHEYHEYHEYEHEYHEYEs', this.state)
-    const {id, quantity, color} = this.props.state
-    console.log('LOLOLOLOLOLOLOLOL', this.props)
+    const {quantity, color, imageArray} = this.props.state
+    const {make, price} = this.props.selectedCar[0]
+    console.log('LOLOLOLOLOLOLOLOL', this.props.selectedCar[0])
+    console.log('PPPPPPPPPPPPP', this.props.state)
     return (
       <div>
-        <h2>{id}</h2>
+        <div>
+          <img src={imageArray[0]} />
+        </div>
+        <h2>{make}</h2>
         <h2>{color}</h2>
+        <h2>{price}</h2>
         <h2>{quantity}</h2>
+        <button type="submit">REMOVE FROM CART</button>
       </div>
     )
   }
@@ -27,12 +33,14 @@ class CartCard extends Component {
 
 const mapStateToProps = state => {
   return {
-    productList: state.product.allProducts
+    selectedCar: state.product.selectedProduct,
+    productReviews: state.review.productReviews
   }
 }
+
 const mapDispatchToProps = dispatch => {
   return {
-    getAllProducts: () => dispatch(fetchAllProducts())
+    getSelectedCar: id => dispatch(fetchSingleProduct(id))
   }
 }
 
