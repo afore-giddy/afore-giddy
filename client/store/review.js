@@ -61,7 +61,7 @@ export const fetchFeaturedReviews = () => async dispatch => {
 }
 
 export const fetchProductReviews = (id) => async dispatch => {
-  let res = await axios.get(`/api/admin/reviews/products/${id}`)
+  let res = await axios.get(`/api/reviews/products/${id}`)
   let reviews = res.data
   dispatch(getProductReviews(reviews))
 }
