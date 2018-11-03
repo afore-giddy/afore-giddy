@@ -64,7 +64,8 @@ const Product = db.define('product', {
       'Blue',
       'Silver',
       'Green',
-      'Yellow'
+      'Yellow',
+      'Gold'
     ),
     allowNull: false
   }
