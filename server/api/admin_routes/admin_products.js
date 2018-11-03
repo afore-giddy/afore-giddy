@@ -2,10 +2,27 @@ const router = require('express').Router()
 const {Product} = require('../../db/models')
 module.exports = router
 
+//admin middleware
+const adminGate = (req, res, next) => {
+  if (req.user && req.user.isAdmin) {
+    next()
+  } else {
+    res.sendStatus(401)
+  }
+}
+
+const idMatchGate = (req, res, next) => {
+  if (req.user && req.user.id === req.params.userId) {
+    next()
+  } else {
+    res.sendStatus(401)
+  }
+}
+
 //admin routes for products
 
 //delete order
-router.delete('/products/:id', async (req, res, next) => {
+router.delete('/products/:id', adminGate, idMatchGate, async (req, res, next) => {
   try {
     const deleted = await Product.destroy({
       where: {
@@ -20,7 +37,7 @@ router.delete('/products/:id', async (req, res, next) => {
 })
 
 //create new product
-router.post('/products', async (req, res, next) => {
+router.post('/products', adminGate, idMatchGate, async (req, res, next) => {
   try {
     res.send(await Product.create(req.body))
   } catch (err) {
@@ -29,7 +46,7 @@ router.post('/products', async (req, res, next) => {
 })
 
 //update product
-router.put('/products/:id', async (req, res, next) => {
+router.put('/products/:id', adminGate, idMatchGate, async (req, res, next) => {
   try {
     const updated = await Product.findById(req.params.id)
     await updated.update(req.body)

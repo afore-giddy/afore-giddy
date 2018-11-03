@@ -17,6 +17,21 @@ router.get('/featured', async (req, res, next) => {
   }
 })
 
+//get reviews for a product
+router.get('/products/:productId', async (req, res, next) => {
+  try {
+    const productReviews = await Review.findAll({
+      where: {
+        productId: req.params.productId
+      }
+    })
+
+    !productReviews ? res.status(404).send('There are no reviews for that product!') : res.send(productReviews)
+  } catch (err) {
+    next(err)
+  }
+})
+
 //create new review
 router.post('/', async (req, res, next) => {
   try {
