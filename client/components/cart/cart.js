@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
-import {Row, Well} from 'react-dom'
 import {Link} from 'react-router-dom'
 import CartCard from './cart-card'
 import {fetchAllProducts} from '../../store'
