@@ -3,7 +3,7 @@ const Product = require('./product')
 const Review = require('./review')
 const Collection = require('./collection')
 const Order = require('./order')
-const orderProduct = require('./orderProduct')
+const OrderProduct = require('./orderProduct')
 
 Review.belongsTo(Product)
 Review.belongsTo(User)
@@ -17,8 +17,8 @@ Collection.hasMany(Product)
 User.hasMany(Order)
 Order.belongsTo(User)
 
-Order.belongsToMany(Product, {through: orderProduct})
-Product.belongsToMany(Order, {through: orderProduct})
+Order.belongsToMany(Product, {through: OrderProduct})
+Product.belongsToMany(Order, {through: OrderProduct})
 
 module.exports = {
   User,
@@ -26,5 +26,5 @@ module.exports = {
   Review,
   Collection,
   Order,
-  orderProduct
+  OrderProduct
 }
