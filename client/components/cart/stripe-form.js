@@ -15,35 +15,6 @@ import placeOrder from '../../store'
 import STRIPE_PUBLISHABLE from './constants/stripe'
 import PAYMENT_SERVER_URL from './constants/server'
 
-// const CURRENCY = 'USD'
-
-// const fromUSDToCent = amount => amount * 100
-
-// const successPayment = async data => {
-//   console.log('about to process payment')
-//   props.postOrder({
-//     status: 'Completed',
-//     userId: 1,
-//     total: 100
-//   })
-//   console.log('post success')
-// }
-
-// const errorPayment = data => {
-//   alert('Payment Error')
-// }
-
-// const onToken = (amount, description) => token =>
-//   axios
-//     .post(PAYMENT_SERVER_URL, {
-//       description,
-//       source: token.id,
-//       currency: CURRENCY,
-//       amount: fromUSDToCent(amount)
-//     })
-//     .then(successPayment)
-//     .catch(errorPayment)
-
 class CheckoutForm extends React.Component {
   constructor(props) {
     super(props)
@@ -52,18 +23,7 @@ class CheckoutForm extends React.Component {
   fromUSDToCent = amount => amount * 100
 
   successPayment = async data => {
-    // this.props.placeOrder({
-    //   status: 'Completed',
-    //   total: 200,
-    //   cart: [
-    //     {
-    //       id: 2,
-    //       finalPrice: 100,
-    //       quantity: 1
-    //     }
-    //   ]
-    // })
-    alert('fuck year')
+    alert('success')
   }
 
   errorPayment = data => {
