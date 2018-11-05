@@ -58,7 +58,7 @@ class SelectedCar extends React.Component {
     const {quantity, color} = this.state
     const {selectedCar} = this.props
     const {id} = this.props.currentUser
-    selectedCar[0].quanity = quantity
+    selectedCar[0].quantity = quantity
     selectedCar[0].color = color
     if (!this.props.currentUser.id) {
       console.log('NO USER NO USER')
