@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 //Action types
-const GET_FEATURED_REVIEWs = 'GET_FEATURED_REVIEWs'
-const GET_ALL_REVIEWs = 'GET_ALL_REVIEWs'
+const GET_FEATURED_REVIEWS = 'GET_FEATURED_REVIEWS'
+const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS'
 const GET_PRODUCT_REVIEWS = 'GET_PRODUCT_REVIEWS'
 
 //Initial State
@@ -33,12 +33,12 @@ export const defaultReview = {
 
 //Action Creators
 export const getAllReviews = allReviews => ({
-  type: GET_ALL_REVIEWs,
+  type: GET_ALL_REVIEWS,
   allReviews
 })
 
 export const getFeaturedReviews = featuredReviews => ({
-  type: GET_FEATURED_REVIEWs,
+  type: GET_FEATURED_REVIEWS,
   featuredReviews
 })
 
@@ -69,9 +69,9 @@ export const fetchProductReviews = (id) => async dispatch => {
 //Reducer
 const reviewsReducer = (state = defaultReview, action) => {
   switch (action.type) {
-    case GET_ALL_REVIEWs:
+    case GET_ALL_REVIEWS:
       return {...state, allReviews: action.allReviews}
-    case GET_FEATURED_REVIEWs:
+    case GET_FEATURED_REVIEWS:
       return {...state, featuredReviews: action.featuredReviews}
     case GET_PRODUCT_REVIEWS:
       return {...state, productReviews: action.productReviews}

@@ -1,8 +1,9 @@
 const router = require('express').Router()
-const {User} = require('../../db/models')
+const {User, Order, Review} = require('../../db/models')
+const idMatchCheck = require('../utilities')
 module.exports = router
 
-router.get('/', async (req, res, next) => {
+router.get('/', idMatchCheck, async (req, res, next) => {
   try {
     res.json(req.user)
   } catch (err) {
@@ -34,10 +35,30 @@ router.post('/', async (req, res, next) => {
   }
 })
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', idMatchCheck, async (req, res, next) => {
   try {
     const id = req.params.id
-    await User.update(req.body, {where: {id}})
+    const {
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      address,
+      billingAddress
+    } = req.body
+    await User.update(
+      {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        address,
+        billingAddress
+      },
+      {
+        where: {id}
+      }
+    )
     const updatedUser = await User.findById(id)
     if (!updatedUser) {
       const error = Error(404, 'UserNotFound')
@@ -50,7 +71,7 @@ router.put('/:id', async (req, res, next) => {
   }
 })
 
-router.put('/cart/:id', async (req, res, next) => {
+router.put('/cart/:id', idMatchCheck, async (req, res, next) => {
   try {
     const id = req.params.id
     await User.update({cart: req.body}, {where: {id}})
@@ -66,7 +87,7 @@ router.put('/cart/:id', async (req, res, next) => {
   }
 })
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', idMatchCheck, async (req, res, next) => {
   try {
     const id = req.params.id
     const user = await User.findById({where: {id}})

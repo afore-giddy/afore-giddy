@@ -1,28 +1,12 @@
 const router = require('express').Router()
 const {Collection} = require('../../db/models')
+const adminCheck = require('../utilities')
 module.exports = router
-
-//admin middleware
-const adminGate = (req, res, next) => {
-  if (req.user && req.user.isAdmin) {
-    next()
-  } else {
-    res.sendStatus(401)
-  }
-}
-
-const idMatchGate = (req, res, next) => {
-  if (req.user && req.user.id === req.params.userId) {
-    next()
-  } else {
-    res.sendStatus(401)
-  }
-}
 
 //admin routes for collections
 
 //get collection by id
-router.get('/collections/:id', adminGate, idMatchGate, async (req, res, next) => {
+router.get('/collections/:id', adminCheck, async (req, res, next) => {
   try {
     const collection = await Collection.findById(req.params.id)
 
@@ -33,7 +17,7 @@ router.get('/collections/:id', adminGate, idMatchGate, async (req, res, next) =>
 })
 
 //delete collection
-router.delete('/collections/:id', adminGate, idMatchGate, async (req, res, next) => {
+router.delete('/collections/:id', adminCheck, async (req, res, next) => {
   try {
     const deleted = await Collection.destroy({
       where: {
@@ -48,7 +32,7 @@ router.delete('/collections/:id', adminGate, idMatchGate, async (req, res, next)
 })
 
 //create new collection
-router.post('/collections', adminGate, idMatchGate, async (req, res, next) => {
+router.post('/collections', adminCheck, async (req, res, next) => {
   try {
     res.send(await Collection.create(req.body))
   } catch (err) {
@@ -57,7 +41,7 @@ router.post('/collections', adminGate, idMatchGate, async (req, res, next) => {
 })
 
 //update collection
-router.put('/collections/:id', adminGate, idMatchGate, async (req, res, next) => {
+router.put('/collections/:id', adminCheck, async (req, res, next) => {
   try {
     const updated = await Collection.findById(req.params.id)
     await updated.update(req.body)
