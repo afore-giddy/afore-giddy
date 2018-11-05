@@ -1,28 +1,12 @@
 const router = require('express').Router()
 const {Order, Product} = require('../../db/models')
+const adminCheck = require('../utilities')
 module.exports = router
-
-//admin middleware
-const adminGate = (req, res, next) => {
-  if (req.user && req.user.isAdmin) {
-    next()
-  } else {
-    res.sendStatus(401)
-  }
-}
-
-const idMatchGate = (req, res, next) => {
-  if (req.user && req.user.id === req.params.userId) {
-    next()
-  } else {
-    res.sendStatus(401)
-  }
-}
 
 //admin routes for orders
 
 //get all orders
-router.get('/orders', adminGate, idMatchGate, async (req, res, next) => {
+router.get('/orders', adminCheck, async (req, res, next) => {
   try {
     const orders = await Order.findAll()
     res.send(orders)
@@ -32,7 +16,7 @@ router.get('/orders', adminGate, idMatchGate, async (req, res, next) => {
 })
 
 //get order by id
-router.get('/orders/:id', adminGate, idMatchGate, async (req, res, next) => {
+router.get('/orders/:id', adminCheck, async (req, res, next) => {
   try {
     const order = await Order.findById(req.params.id)
 
@@ -43,7 +27,7 @@ router.get('/orders/:id', adminGate, idMatchGate, async (req, res, next) => {
 })
 
 //delete order
-router.delete('/orders/:id', adminGate, idMatchGate, async (req, res, next) => {
+router.delete('/orders/:id', adminCheck, async (req, res, next) => {
   try {
     const deleted = await Order.destroy({
       where: {

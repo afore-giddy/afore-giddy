@@ -2,12 +2,12 @@ const router = require('express').Router()
 module.exports = router
 
 //regular routes
-router.use('/users', require('./regular_routes/users'))
-router.use('/products', require('./regular_routes/products'))
-router.use('/orders', require('./regular_routes/orders'))
-router.use('/reviews', require('./regular_routes/reviews'))
-router.use('/collections', require('./regular_routes/collections'))
-router.use('/cart', require('./regular_routes/cart'))
+router.use('/users', require('./nonadmin_routes/users'))
+router.use('/products', require('./nonadmin_routes/products'))
+router.use('/orders', require('./nonadmin_routes/orders'))
+router.use('/reviews', require('./nonadmin_routes/reviews'))
+router.use('/collections', require('./nonadmin_routes/collections'))
+router.use('/cart', require('./nonadmin_routes/cart'))
 
 //admin routes
 router.use('/admin', require('./admin_routes/admin_users'))
