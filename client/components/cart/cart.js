@@ -20,9 +20,11 @@ class Cart extends Component {
   handleRemove(eventId) {
     this.props.removeItemFromCart(eventId)
     console.log('BEFORE THE SETSTATE', this.state)
-    this.setState({updateCounter: this.updateCounter++})
     console.log('AFTER THE SETSTATE', this.state)
     this.props.fetchCart()
+    let counter = this.state.updateCounter
+    counter++
+    this.setState({updateCounter: counter})
   }
 
   render() {
