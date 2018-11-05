@@ -50,6 +50,23 @@ router.put('/:id', async (req, res, next) => {
   }
 })
 
+router.put('/cart/:id', async (req, res, next) => {
+  try {
+    const id = req.params.id
+    await User.update({cart: req.body}, {where: {id}})
+    const updatedUser = await User.findById(id)
+    if (!updatedUser) {
+      const error = Error(404, 'UserNotFound')
+      error.status = 404
+      return next(error)
+    }
+    console.log('THIS IS THE UPDATED USER', updatedUser)
+    res.json(updatedUser)
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.delete('/:id', async (req, res, next) => {
   try {
     const id = req.params.id

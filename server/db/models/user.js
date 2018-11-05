@@ -25,6 +25,9 @@ const User = db.define('user', {
     type: Sequelize.BOOLEAN,
     defaultValue: false
   },
+  cart: {
+    type: Sequelize.ARRAY(Sequelize.JSON)
+  },
   email: {
     type: Sequelize.STRING,
     unique: true

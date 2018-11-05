@@ -3,38 +3,32 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import CartCard from './cart-card'
 import {fetchAllProducts} from '../../store'
+import {fetchCart, updateCart, removeItemFromCart} from '../../store/cart'
 
 class Cart extends Component {
   constructor(props) {
     super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
     this.state = {
-      localCart: []
+      updateCounter: 0
     }
+    this.handleRemove = this.handleRemove.bind(this)
   }
   componentDidMount() {
-    const cart = localStorage.cart
-    if (cart) {
-      const items = cart ? cart.split('&').map(item => JSON.parse(item)) : []
-      this.setState({localCart: items})
-    }
+    this.props.fetchCart()
   }
 
-  handleSubmit(eventId) {
-    const cart = localStorage.cart
-    if (cart) {
-      const items = cart ? cart.split('&').map(item => JSON.parse(item)) : []
-      items.splice(eventId, 1)
-
-      this.setState({localCart: items})
-    }
+  handleRemove(eventId) {
+    this.props.removeItemFromCart(eventId)
+    console.log('BEFORE THE SETSTATE', this.state)
+    console.log('AFTER THE SETSTATE', this.state)
+    // this.props.fetchCart()
+    let counter = this.state.updateCounter
+    counter++
+    this.setState({updateCounter: counter})
   }
 
   render() {
-    if (localStorage.cart) {
-      const cart = localStorage.cart.split('&').map(item => JSON.parse(item))
-      let total = cart.map(item => item.price).reduce((a, b) => a + b)
-    }
+    const {currentCart} = this.props
 
     return (
       <div>
@@ -42,12 +36,12 @@ class Cart extends Component {
         <br />
         <br />
         <br />
-        {this.state.localCart.map((item, i) => (
+        {currentCart.map((item, i) => (
           <CartCard
-            id={i}
             key={i}
+            cartId={i}
             state={item}
-            handleSubmit={this.handleSubmit}
+            handleRemove={this.handleRemove}
           />
         ))}
         <Link to="/home">
@@ -69,13 +63,10 @@ class Cart extends Component {
 
 const mapStateToProps = state => {
   return {
-    productList: state.product.allProducts
+    productList: state.product.allProducts,
+    currentCart: state.cart.currentCart
   }
 }
-const mapDispatchToProps = dispatch => {
-  return {
-    getAllProducts: () => dispatch(fetchAllProducts())
-  }
-}
+const mapDispatchToProps = {fetchCart, removeItemFromCart}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

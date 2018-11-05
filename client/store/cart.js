@@ -3,6 +3,7 @@ import axios from 'axios'
 //Action types
 const GET_CART = 'GET_CART'
 const ADD_TO_CART = 'ADD_TO_CART'
+const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const RESET_CART = 'RESET_CART'
 
 //Initial State
@@ -20,6 +21,12 @@ export const addToCart = cart => ({
   type: ADD_TO_CART,
   cart
 })
+
+export const removeFromCart = cart => ({
+  type: REMOVE_FROM_CART,
+  cart
+})
+
 export const resetCart = () => ({
   type: RESET_CART
 })
@@ -31,10 +38,18 @@ export const fetchCart = () => async dispatch => {
   dispatch(getCart(cart))
 }
 
-export const updateCart = () => async dispatch => {
-  let res = await axios.put('/api/cart')
+export const updateCart = item => async dispatch => {
+  let res = await axios.put('/api/cart', item)
   let cart = res.data
   dispatch(addToCart(cart))
+}
+
+export const removeItemFromCart = id => async dispatch => {
+  console.log('IN THE REDUCER', id)
+  let res = await axios.put(`/api/cart/${id}`)
+  let item = res.data
+  console.log(item)
+  dispatch(removeFromCart(item))
 }
 
 export const emptyCart = () => async dispatch => {
@@ -48,7 +63,9 @@ const cartReducer = (state = initialState, action) => {
     case GET_CART:
       return {...state, currentCart: action.cart}
     case ADD_TO_CART:
-      return {...state, currentCart: [...state.currentCart, action.cart]}
+      return {...state, currentCart: [...action.cart]}
+    case REMOVE_FROM_CART:
+      return {...state, currentCart: action.cart}
     case RESET_CART:
       return {...state, currentCart: []}
     default:
