@@ -37,8 +37,6 @@ router.post('/', async (req, res, next) => {
       source: req.body.id
     })
 
-    console.log('statttis in the route', status)
-
     const orderId = order.id
     const cart = req.body.cart
     cart.forEach(async product => {
