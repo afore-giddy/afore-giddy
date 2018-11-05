@@ -3,9 +3,11 @@ import {connect} from 'react-redux'
 import {
   fetchSingleProduct,
   fetchProductReviews,
-  getProductReviews
+  me,
+  updateUserCart
 } from '../../store'
 import SingleReviewCard from '../singleReviewCard'
+import {fetchCart, updateCart} from '../../store/cart'
 
 class SelectedCar extends React.Component {
   constructor(props) {
@@ -21,8 +23,10 @@ class SelectedCar extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getSelectedCar(this.props.match.params.id)
-    this.props.getProductReviews(this.props.match.params.id)
+    this.props.fetchSingleProduct(this.props.match.params.id)
+    this.props.fetchProductReviews(this.props.match.params.id)
+    this.props.fetchCart()
+    this.props.me()
   }
 
   quantityIncrement() {
@@ -31,7 +35,6 @@ class SelectedCar extends React.Component {
     this.setState({
       quantity: qty
     })
-    console.log(this.state)
   }
   quantityDecrement() {
     let qty = this.state.quantity
@@ -52,33 +55,20 @@ class SelectedCar extends React.Component {
   }
 
   handleSubmit() {
-    const carImage = this.props.selectedCar[0].imageArray[0][this.state.color]
-    if (localStorage.cart) {
-      let newCartObj = {
-        id: this.props.selectedCar[0].id,
-        quantity: this.state.quantity,
-        price: this.props.selectedCar[0].price,
-        color: this.state.color,
-        imageArray: [carImage]
-      }
-
-      let localCart = localStorage.getItem('cart')
-
-      let newCart = JSON.stringify({newCartObj})
-      let finalCart = newCart.slice(14, newCart.length - 1)
-
-      let updatedCart = localCart + '&' + finalCart
-
-      localStorage.setItem('cart', updatedCart)
+    const {quantity, color} = this.state
+    const {selectedCar} = this.props
+    const {id} = this.props.currentUser
+    selectedCar[0].quanity = quantity
+    selectedCar[0].color = color
+    if (!this.props.currentUser.id) {
+      console.log('NO USER NO USER')
+      this.props.updateCart(selectedCar[0])
+      //if no user
     } else {
-      let cart = JSON.stringify({
-        id: this.props.selectedCar[0].id,
-        quantity: this.state.quantity,
-        price: this.props.selectedCar[0].price,
-        color: this.state.color,
-        imageArray: [carImage]
-      })
-      localStorage.setItem('cart', cart)
+      // user
+      console.log('USER uSER ')
+      this.props.updateCart(selectedCar[0])
+      this.props.updateUserCart(selectedCar[0], id)
     }
   }
 
@@ -165,16 +155,26 @@ class SelectedCar extends React.Component {
 const mapStateToProps = state => {
   return {
     selectedCar: state.product.selectedProduct,
-    productReviews: state.review.productReviews
+    productReviews: state.review.productReviews,
+    currentCart: state.cart.currentCart,
+    currentUser: state.user
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getSelectedCar: id => dispatch(fetchSingleProduct(id)),
-    getProductReviews: id => dispatch(fetchProductReviews(id))
-  }
+const mapDispatchToProps = {
+  fetchSingleProduct,
+  fetchProductReviews,
+  fetchCart,
+  updateCart,
+  me,
+  updateUserCart
 }
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     getSelectedCar: id => dispatch(fetchSingleProduct(id)),
+//     getProductReviews: id => dispatch(fetchProductReviews(id))
+//   }
+// }
 
 const Connected = connect(mapStateToProps, mapDispatchToProps)(SelectedCar)
 
