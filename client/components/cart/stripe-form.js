@@ -6,7 +6,8 @@ import {
   PostalCodeElement,
   CardCVCElement,
   CardNumberElement,
-  PaymentRequestButtonElement
+  PaymentRequestButtonElement,
+  StripeProvider
 } from 'react-stripe-elements'
 import StripeCheckout from 'react-stripe-checkout'
 import {connect} from 'react-redux'
@@ -31,18 +32,23 @@ class CheckoutForm extends React.Component {
   }
 
   onToken = (amount, description) => token => {
+    console.log('this is the cart', this.props.currentCart)
     console.log('this is the amount', amount)
+
     axios
       .post('/api/orders', {
         status: 'Completed',
         total: amount,
-        cart: this.props.currentCart
+        cart: this.props.currentCart,
+        description: description,
+        id: token.id
       })
       .then(this.successPayment)
       .catch(this.errorPayment)
   }
 
   render() {
+    console.log('my cart', this.props.currentCart)
     const cart = this.props.currentCart
     let total = cart
       .map(product => {

@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Order, Product, User, OrderProduct} = require('../../db/models')
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 module.exports = router
 
 //routes for orders
@@ -26,6 +27,17 @@ router.post('/', async (req, res, next) => {
       userId: req.body.userId,
       total: req.body.total
     })
+
+    console.log('req.body', req.body)
+
+    let {status} = await stripe.charges.create({
+      amount: Number(order.total),
+      currency: 'usd',
+      description: req.body.description,
+      source: req.body.id
+    })
+
+    console.log('statttis in the route', status)
 
     const orderId = order.id
     const cart = req.body.cart
