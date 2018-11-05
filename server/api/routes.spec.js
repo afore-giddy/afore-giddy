@@ -6,40 +6,48 @@ const db = require('../db')
 const app = require('../index')
 const User = db.model('user')
 const Product = db.model('product')
-const Order = db.model('order')
+const Collection = db.model('collection')
+const Review = db.model('review')
 
-describe('User routes', () => {
+describe('Review GET routes', () => {
   beforeEach(() => {
     return db.sync({force: true})
   })
 
-  describe('/api/admin/users/', () => {
-    const codysEmail = 'cody@email.com'
+  describe('/api/reviews/featured', () => {
+    const testTitle = 'leading edge'
+    const featured = true
 
     beforeEach(() => {
-      return User.create({
-        firstName: 'Jeanine',
-        lastName: 'Cossentine',
-        phoneNumber: '400-187-9525',
-        creditCard: '3574672923346668',
-        address: '440 Merchant Court',
-        billingAddress: '65478 Beilfuss Center',
-        isAdmin: false,
-        email: 'cody@email.com',
-        password: '123'
+      return Review.create({
+        id: 1,
+        rating: 2,
+        title: 'leading edge',
+        text:
+          'Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.',
+        isFeatured: true
       })
     })
 
-    it('GET /api/admin/users', async () => {
+    it('GET /api/reviews/featured', async () => {
       const res = await request(app)
-        .get('/api/admin/users')
+        .get('/api/reviews/featured')
         .expect(200)
 
       expect(res.body).to.be.an('array')
-      expect(res.body[0].email).to.be.equal(codysEmail)
+      expect(res.body[0].title).to.be.equal(testTitle)
     })
-  }) // end describe('/api/users')
-}) // end describe('User routes')
+
+    it('GET /api/reviews/featured', async () => {
+      const res = await request(app)
+        .get('/api/reviews/featured')
+        .expect(200)
+
+      expect(res.body).to.be.an('array')
+      expect(res.body[0].isFeatured).to.be.equal(featured)
+    })
+  }) // end describe('/api/reviews/featured')
+}) // end describe('Review GET routes')
 
 //tests for product routes
 describe('Product routes', () => {
@@ -62,7 +70,7 @@ describe('Product routes', () => {
           }
         ],
         onSale: true,
-        isFeatured: false,
+        isFeatured: true,
         description:
           'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
         maxSpeed: 152,
@@ -81,53 +89,85 @@ describe('Product routes', () => {
       expect(res.body).to.be.an('array')
       expect(res.body[0].make).to.be.equal(productMake)
     })
+
+    it('GET /api/products/featured', async () => {
+      const res = await request(app)
+        .get('/api/products/featured')
+        .expect(200)
+
+      expect(res.body).to.be.an('array')
+      expect(res.body[0].isFeatured).to.be.equal(true)
+    })
+
+    it('GET /api/products/:productId', async () => {
+      const res = await request(app)
+        .get('/api/products/1')
+        .expect(200)
+
+      expect(res.body).to.be.an('array')
+      expect(res.body[0].id).to.be.equal(1)
+    })
   }) // end describe('/api/products')
 }) // end describe('product routes')
 
-//admin routes specs
-describe('Admin routes', () => {
+//Collection routes specs
+describe('Collection routes', () => {
   beforeEach(() => {
     return db.sync({force: true})
   })
 
-  describe('/api/admin/orders', () => {
+  describe('/api/collections', () => {
     const status = 'Processing'
 
     beforeEach(() => {
-      return Order.create({
+      return Collection.create({
         id: 1,
-        total: 3029.91,
-        status: 'Processing',
-        items: [
-          {
-            id: 1,
-            make: 'Grand Caravan',
-            price: 78356.15,
-            imageArray: [
-              {red: 'http://dummyimage.com/400x400.png/dddddd/000000'}
-            ],
-            onSale: true,
-            isFeatured: false,
-            description:
-              'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-            collectionId: 2,
-            maxSpeed: 152,
-            engineType: 'V12',
-            transmission: 'Automatic',
-            acceleration: 3.3,
-            colors: 'Red'
-          }
-        ]
+        name: 'Lambo',
+        description: 'Nulla facilisi.',
+        image: 'http://www.carlogos.org/logo/Lamborghini-logo-1920x1080.png'
       })
     })
 
-    it('GET /api/admin/orders', async () => {
+    it('GET /api/collections', async () => {
       const res = await request(app)
-        .get('/api/admin/orders')
+        .get('/api/collections')
         .expect(200)
 
       expect(res.body).to.be.an('array')
-      expect(res.body[0].status).to.be.equal(status)
+      expect(res.body[0].name).to.be.equal('Lambo')
     })
-  }) // end describe('/api/admin')
-}) // end describe('product routes')
+
+    beforeEach(() => {
+      return Product.create({
+        id: 1,
+        make: 'Aventador',
+        price: 78356.15,
+        imageArray: [
+          {
+            silver:
+              'https://en.wikipedia.org/wiki/Lamborghini_Aventador#/media/File:Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg'
+          }
+        ],
+        onSale: true,
+        isFeatured: true,
+        description:
+          'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+        maxSpeed: 152,
+        engineType: 'V12',
+        transmission: 'Automatic',
+        acceleration: 3.3,
+        colors: 'Silver',
+        collectionId: 1
+      })
+    })
+
+    it('GET /api/collections/:id', async () => {
+      const res = await request(app)
+        .get('/api/collections/1')
+        .expect(200)
+
+      expect(res.body).to.be.an('array')
+      expect(res.body[0].make).to.be.equal('Aventador')
+    })
+  }) // end describe('/api/collections')
+}) // end describe('collection routes')
