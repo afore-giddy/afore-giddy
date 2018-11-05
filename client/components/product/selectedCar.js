@@ -44,7 +44,7 @@ class SelectedCar extends React.Component {
         quantity: qty
       })
     } else {
-      console.log('cant do that')
+      alert('oops')
     }
   }
 
@@ -58,15 +58,11 @@ class SelectedCar extends React.Component {
     const {quantity, color} = this.state
     const {selectedCar} = this.props
     const {id} = this.props.currentUser
-    selectedCar[0].quanity = quantity
+    selectedCar[0].quantity = quantity
     selectedCar[0].color = color
     if (!this.props.currentUser.id) {
-      console.log('NO USER NO USER')
       this.props.updateCart(selectedCar[0])
-      //if no user
     } else {
-      // user
-      console.log('USER uSER ')
       this.props.updateCart(selectedCar[0])
       this.props.updateUserCart(selectedCar[0], id)
     }
@@ -169,12 +165,6 @@ const mapDispatchToProps = {
   me,
   updateUserCart
 }
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     getSelectedCar: id => dispatch(fetchSingleProduct(id)),
-//     getProductReviews: id => dispatch(fetchProductReviews(id))
-//   }
-// }
 
 const Connected = connect(mapStateToProps, mapDispatchToProps)(SelectedCar)
 

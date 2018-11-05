@@ -1,10 +1,8 @@
 const router = require('express').Router()
-const {User, Order, Review} = require('../../db/models')
+const {User} = require('../../db/models')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
-  console.log('INSIDE THE FETCH CART')
-
   try {
     const cart = req.user
     if (cart) {
@@ -29,7 +27,7 @@ router.put('/', async (req, res, next) => {
     } else {
       req.session.cart = []
       req.session.cart.unshift(item)
-      res.json(req.session.cart)
+      res.json(item)
     }
   } catch (err) {
     next(err)
@@ -37,19 +35,16 @@ router.put('/', async (req, res, next) => {
 })
 
 router.put('/:id', async (req, res, next) => {
-  console.log('HHHKJHFKLJDSFLKJBDSLKHFBSLDJHBKHBF')
   try {
     if (req.body.id) {
       const id = req.params.id
       const updatedUser = await User.findById(id)
-      const oldCart = updatedUser.cart
+      const oldCart = updatedUser.cart ? updatedUser.cart : []
       const newCart = oldCart.concat(req.body)
       updatedUser.cart = newCart
-      console.log('ADDING OOOOOOOOOOOOOOOOO', newCart.length)
       await updatedUser.save()
       res.json(updatedUser)
     } else {
-      console.log('REMOVING IIIIIIIIIIIIIIIII')
       const id = req.params.id
       if (req.user) {
         const updatedUser = await User.findById(req.user.id)
@@ -65,24 +60,6 @@ router.put('/:id', async (req, res, next) => {
         res.json(req.session.cart)
       }
     }
-  } catch (err) {
-    next(err)
-  }
-})
-
-router.put('/:id/:id', async (req, res, next) => {
-  console.log('UHUHHUHUHUHUHUHUHUHUHUH')
-  try {
-    const id = req.params.id
-    await User.update({cart: req.body}, {where: {id}})
-    const updatedUser = await User.findById(id)
-    if (!updatedUser) {
-      const error = Error(404, 'UserNotFound')
-      error.status = 404
-      return next(error)
-    }
-    console.log('THIS IS THE UPDATED USER', updatedUser)
-    res.json(updatedUser)
   } catch (err) {
     next(err)
   }

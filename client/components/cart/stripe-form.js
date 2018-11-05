@@ -31,34 +31,30 @@ class CheckoutForm extends React.Component {
   }
 
   onToken = (amount, description) => token => {
+    console.log('this is the amount', amount)
     axios
       .post('/api/orders', {
         status: 'Completed',
-        total: 200,
-        cart: [
-          {
-            id: 2,
-            finalPrice: 100,
-            quantity: 1
-          },
-          {
-            id: 3,
-            finalPrice: 200,
-            quantity: 100
-          }
-        ]
+        total: amount,
+        cart: this.props.currentCart
       })
       .then(this.successPayment)
       .catch(this.errorPayment)
   }
 
   render() {
+    const cart = this.props.currentCart
+    let total = cart
+      .map(product => {
+        return product.quantity * product.price
+      })
+      .reduce((a, b) => a + b, 0)
     return (
       <StripeCheckout
         name={name}
         description={'Purchase from Afore Giddy'}
-        amount={() => this.fromUSDToCent(100)}
-        token={this.onToken(100, 'Purchase from Afore Giddy')}
+        amount={total => this.fromUSDToCent(total)}
+        token={this.onToken(total, 'Purchase from Afore Giddy')}
         currency={'USD'}
         stripeKey={STRIPE_PUBLISHABLE}
       />
@@ -68,12 +64,18 @@ class CheckoutForm extends React.Component {
 
 // const inject = injectStripe(CheckoutForm)
 
+const mapStateToProps = state => {
+  return {
+    currentCart: state.cart.currentCart
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     placeOrder: order => dispatch(placeOrder(order))
   }
 }
 
-const connected = connect(null, mapDispatchToProps)(CheckoutForm)
+const connected = connect(mapStateToProps, mapDispatchToProps)(CheckoutForm)
 
 export default connected

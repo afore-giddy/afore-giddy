@@ -46,17 +46,19 @@ router.put('/:id', idMatchCheck, async (req, res, next) => {
       address,
       billingAddress
     } = req.body
-    await User.update({
-      firstName,
-      lastName,
-      email,
-      phoneNumber,
-      address,
-      billingAddress
-    },
-    {
-      where: {id}
-    })
+    await User.update(
+      {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        address,
+        billingAddress
+      },
+      {
+        where: {id}
+      }
+    )
     const updatedUser = await User.findById(id)
     if (!updatedUser) {
       const error = Error(404, 'UserNotFound')
@@ -79,7 +81,6 @@ router.put('/cart/:id', idMatchCheck, async (req, res, next) => {
       error.status = 404
       return next(error)
     }
-    console.log('THIS IS THE UPDATED USER', updatedUser)
     res.json(updatedUser)
   } catch (err) {
     next(err)
