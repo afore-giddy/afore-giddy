@@ -18,8 +18,8 @@ Collection.hasMany(Product)
 User.hasMany(Order)
 Order.belongsTo(User)
 
-Order.belongsToMany(Product, {through: orderProduct})
-Product.belongsToMany(Order, {through: orderProduct})
+Order.belongsToMany(Product, {through: OrderProduct})
+Product.belongsToMany(Order, {through: OrderProduct})
 
 Cart.belongsTo(User)
 

@@ -9,15 +9,24 @@ import {MainPage} from './index'
 export const UserHome = props => {
   const {email} = props
 
-  return (
-    <div>
-      <h3>Welcome, {email}</h3>
-      <button type="submit">Edit User information</button>
-      <button type="submit">View Cart</button>
-      <button type="submit">Track Orders</button>
-      <MainPage />
+  if (email) {
+    return (
+      <div>
+        <h3>Welcome, {email}!</h3>
+        <button type="submit">Edit User information</button>
+        <button type="submit">View Cart</button>
+        <button type="submit">Track Orders</button>
+        <MainPage />
     </div>
-  )
+    )
+  } else {
+    return (
+      <div>
+        <h3>Welcome!</h3>
+        <MainPage />
+      </div>
+    )
+  }
 }
 
 /**
