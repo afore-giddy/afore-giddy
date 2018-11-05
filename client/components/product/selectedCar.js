@@ -55,7 +55,6 @@ class SelectedCar extends React.Component {
   }
 
   handleSubmit() {
-    console.log('INSIDE THE HANLDE SYNUTUB')
     const {quantity, color} = this.state
     const {selectedCar} = this.props
     const {id} = this.props.currentUser

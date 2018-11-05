@@ -41,23 +41,29 @@ router.put('/:id', async (req, res, next) => {
   try {
     if (req.body.id) {
       const id = req.params.id
-      // await User.update({cart: req.body}, {where: {id}})
       const updatedUser = await User.findById(id)
-      // updatedUser.cart = []
       const oldCart = updatedUser.cart
       const newCart = oldCart.concat(req.body)
       updatedUser.cart = newCart
       console.log('ADDING OOOOOOOOOOOOOOOOO', newCart.length)
       await updatedUser.save()
-      // console.log('THIS IS THE UPDATED USER', updatedUser)
       res.json(updatedUser)
     } else {
       console.log('REMOVING IIIIIIIIIIIIIIIII')
-      const id = Number(req.params.id)
-      req.session.cart = req.session.cart
-        .slice(0, id)
-        .concat(req.session.cart.slice(id + 1))
-      res.json(req.session.cart)
+      const id = req.params.id
+      if (req.user) {
+        const updatedUser = await User.findById(req.user.id)
+        const oldCart = updatedUser.cart
+        const newCart = oldCart.slice(0, id).concat(oldCart.slice(id + 1))
+        updatedUser.cart = newCart
+        await updatedUser.save()
+        res.json(updatedUser.cart)
+      } else {
+        req.session.cart = req.session.cart
+          .slice(0, id)
+          .concat(req.session.cart.slice(id + 1))
+        res.json(req.session.cart)
+      }
     }
   } catch (err) {
     next(err)

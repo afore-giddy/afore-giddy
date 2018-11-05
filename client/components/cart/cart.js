@@ -21,7 +21,7 @@ class Cart extends Component {
     this.props.removeItemFromCart(eventId)
     console.log('BEFORE THE SETSTATE', this.state)
     console.log('AFTER THE SETSTATE', this.state)
-    this.props.fetchCart()
+    // this.props.fetchCart()
     let counter = this.state.updateCounter
     counter++
     this.setState({updateCounter: counter})
