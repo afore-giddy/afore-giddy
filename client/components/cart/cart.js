@@ -36,14 +36,18 @@ class Cart extends Component {
         <br />
         <br />
         <br />
-        {currentCart.map((item, i) => (
-          <CartCard
-            key={i}
-            cartId={i}
-            state={item}
-            handleRemove={this.handleRemove}
-          />
-        ))}
+        {currentCart ? (
+          currentCart.map((item, i) => (
+            <CartCard
+              key={i}
+              cartId={i}
+              state={item}
+              handleRemove={this.handleRemove}
+            />
+          ))
+        ) : (
+          <h3>YOUR CART IS EMPTY</h3>
+        )}
         <Link to="/home">
           <button type="submit">X</button>
         </Link>

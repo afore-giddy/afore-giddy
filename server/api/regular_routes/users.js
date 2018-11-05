@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, Order, Review} = require('../../db/models')
+const {User} = require('../../db/models')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -60,7 +60,6 @@ router.put('/cart/:id', async (req, res, next) => {
       error.status = 404
       return next(error)
     }
-    console.log('THIS IS THE UPDATED USER', updatedUser)
     res.json(updatedUser)
   } catch (err) {
     next(err)

@@ -40,7 +40,7 @@ export const fetchCart = () => async dispatch => {
 
 export const updateCart = item => async dispatch => {
   let res = await axios.put('/api/cart', item)
-  let cart = res.data
+  let cart = item
   dispatch(addToCart(cart))
 }
 
@@ -63,7 +63,7 @@ const cartReducer = (state = initialState, action) => {
     case GET_CART:
       return {...state, currentCart: action.cart}
     case ADD_TO_CART:
-      return {...state, currentCart: [...action.cart]}
+      return {...state, currentCart: [...state.currentCart, action.cart]}
     case REMOVE_FROM_CART:
       return {...state, currentCart: action.cart}
     case RESET_CART:
