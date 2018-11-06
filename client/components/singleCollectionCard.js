@@ -1,17 +1,20 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import { Card, Icon, Image } from 'semantic-ui-react'
 
 const SingleCollectionCard = props => {
   const collection = props.collection
   return (
-    <div className="single-product-card-container">
-      <Link to={`/collections/${collection.id}`}>
-        <img src={collection.image} />
-        <span>{collection.name}</span>
-        <span>{collection.description}</span>
-      </Link>
-    </div>
+    <Link to={`/collections/${collection.id}`}>
+    <Card className="single-product-card-container">
+      <Card.Content>
+        <Image id="single-product-card-container-img" src={collection.image} />
+        <Card.Header>{collection.name}</Card.Header>
+        <Card.Meta>{collection.description}</Card.Meta>
+      </Card.Content>
+    </Card>
+    </Link>
   )
 }
 
