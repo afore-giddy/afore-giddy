@@ -28,11 +28,13 @@ class MainPage extends React.Component {
           })}
         </div>
 
-        <div className="review-list-container">
+        <div>
           <h2>OUR CUSTOMERS SAY</h2>
-          {this.props.featuredReviews.map(review => {
-            return <SingleReviewCard key={review.id} review={review} />
-          })}
+          <div  className="product-list-container">
+            {this.props.featuredReviews.map(review => {
+              return <SingleReviewCard key={review.id} review={review} />
+            })}
+          </div>
         </div>
       </div>
     )

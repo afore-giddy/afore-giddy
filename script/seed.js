@@ -480,8 +480,8 @@ async function seed() {
       {
         id: 2,
         rating: 4,
-        title: 'migration',
-        text: 'Morbi non quam nec dui luctus rutrum.',
+        title: 'Migration',
+        text: 'Morbi non quam nec dui luctus rutrum. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.',
         productId: 10,
         userId: 2,
         isFeatured: true
