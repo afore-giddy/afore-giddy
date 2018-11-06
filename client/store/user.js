@@ -35,8 +35,6 @@ export const me = () => async dispatch => {
 export const updateUserCart = (item, id) => async dispatch => {
   try {
     const newUser = await axios.put(`/api/cart/${id}`, item)
-    // const res = await axios.get(`/${id}`)
-    console.log('INSDE THE REDUCER UUUUUUUU', newUser.data)
     dispatch(updateUser(newUser.data))
   } catch (err) {
     console.error(err)

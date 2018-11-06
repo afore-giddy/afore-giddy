@@ -17,7 +17,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
             Logout
           </a>
           <Link to="/cart">Shopping Cart</Link>
-          <Link to="/payment-method">Checkout</Link>
+          {/* <Link to="/payment-method">Checkout</Link> */}
         </div>
       ) : (
         <div>
@@ -28,7 +28,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <Link to="/all-cars">All Cars</Link>
           <Link to="/collections">Collections</Link>
           <Link to="/cart">Shopping Cart</Link>
-          <Link to="/payment-method">Checkout</Link>
+          {/* <Link to="/payment-method">Checkout</Link> */}
         </div>
       )}
     </nav>
