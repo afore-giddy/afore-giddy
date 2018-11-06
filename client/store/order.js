@@ -9,7 +9,6 @@ const PLACE_ORDER = 'PLACE_ORDER'
 export const placeOrder = order => ({type: PLACE_ORDER, order})
 
 export const postOrder = order => async dispatch => {
-  console.log('in the order think')
   try {
     await axios.post('/api/orders', order)
     dispatch(placeOrder(order))

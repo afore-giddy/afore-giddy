@@ -4,7 +4,6 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
   Signup,
-  UserHome,
   Login,
   MainPage,
   Billing,
@@ -13,6 +12,7 @@ import {
   SingleCollectionCard
 } from './components'
 import {AllProductList, SelectedCar} from './components/product'
+import {UserProfile, UserHome} from './components/user'
 import {me} from './store'
 import PaymentMethod from './components/cart/payment-method'
 
@@ -48,6 +48,7 @@ class Routes extends Component {
             <Route exact path="/all-cars/:id" component={SelectedCar} />
             <Route exact path="/collections" component={AllProductList} />
             <Route exact path="/collections/:id" component={AllProductList} />
+            <Route exact path="/users/:id" component={UserProfile} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

@@ -35,9 +35,10 @@ router.post('/', async (req, res, next) => {
   }
 })
 
-router.put('/:id', idMatchCheck, async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
   try {
     const id = req.params.id
+    console.log('idddddddd: ', id)
     const {
       firstName,
       lastName,

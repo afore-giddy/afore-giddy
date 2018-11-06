@@ -5,7 +5,6 @@
  */
 export {default as Navbar} from './navbar'
 export {default as Footer} from './footer'
-export {default as UserHome} from './user-home'
 export {default as MainPage} from './mainpage'
 export {default as SingleReviewCard} from './singleReviewCard'
 export {default as SingleCollectionCard} from './singleCollectionCard'
