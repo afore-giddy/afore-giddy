@@ -7,6 +7,7 @@ import {
   updateUserCart
 } from '../../store'
 import SingleReviewCard from '../singleReviewCard'
+import {Button, Label} from 'semantic-ui-react'
 import {fetchCart, updateCart} from '../../store/cart'
 
 class SelectedCar extends React.Component {
@@ -108,33 +109,33 @@ class SelectedCar extends React.Component {
                 <div className="side-cart-quantity">
                   <span>Quantity</span>
                   <div className="side-cart-quantity-button-container">
-                    <button
+                    <Button
                       type="button"
-                      className="side-cart-quantity-btn"
+                      // className="side-cart-quantity-btn"
                       onClick={this.quantityDecrement}
                     >
                       -
-                    </button>
-                    <span className="side-cart-quantity-state">
-                      {this.state.quantity}
-                    </span>
-                    <button
+                    </Button>
+                    {/* <span className="side-cart-quantity-state"> */}
+                    <Label>{this.state.quantity}</Label>
+                    {/* </span> */}
+                    <Button
                       type="button"
-                      className="side-cart-quantity-btn"
+                      // className="side-cart-quantity-btn"
                       onClick={this.quantityIncrement}
                     >
                       +
-                    </button>
+                    </Button>
                   </div>
                 </div>
-                <button
+                <Button
                   type="button"
                   className="add-to-cart-btn"
                   onClick={this.handleSubmit}
                 >
                   Add To Cart
-                </button>
-                <button className="purchase-btn">Buy It Now</button>
+                </Button>
+                <Button className="purchase-btn">Buy It Now</Button>
               </form>
             </div>
           </div>
