@@ -2,7 +2,6 @@ import React from 'react'
 
 class UserForm extends React.Component {
   render() {
-    console.log('propsssss: ', this.props)
     return (
       <div>
           <form onSubmit={this.props.handleSubmit}>
