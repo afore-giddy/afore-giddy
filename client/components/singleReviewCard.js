@@ -6,7 +6,7 @@ const SingleReviewCard = props => {
   const review = props.review
   return (
     <Card.Group>
-      <Card className="single-review-card-container">
+      <Card className="single-product-card-container">
         <Card.Content>
           <Card.Header>{review.title}</Card.Header>
           <Card.Meta>{review.rating} Stars</Card.Meta>
