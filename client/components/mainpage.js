@@ -8,6 +8,7 @@ import {
 } from '../store'
 import SingleProductCard from './product/singleProductCard'
 import SingleReviewCard from './singleReviewCard'
+import { Grid, Menu } from 'semantic-ui-react'
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -21,22 +22,20 @@ class MainPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="product-list-container">
-          {this.props.featuredList.map(product => {
-            return <SingleProductCard key={product.id} product={product} />
-          })}
-        </div>
-
-        <div>
-          <h2>OUR CUSTOMERS SAY</h2>
-          <div  className="product-list-container">
-            {this.props.featuredReviews.map(review => {
-              return <SingleReviewCard key={review.id} review={review} />
+        <Grid padded centered>
+          <Grid.Row container columns={3}>
+            {this.props.featuredList.map(product => {
+              return <Grid.Column width={4}><SingleProductCard key={product.id} product={product} /></Grid.Column>
             })}
-          </div>
-        </div>
-      </div>
+          </Grid.Row>
+
+         <h2>OUR CUSTOMERS SAY:</h2>
+          <Grid.Row container columns={3}>
+            {this.props.featuredReviews.map(review => {
+              return <Grid.Column width={4}><SingleReviewCard key={review.id} review={review} /></Grid.Column>
+            })}
+          </Grid.Row>
+        </Grid>
     )
   }
 }

@@ -69,7 +69,7 @@ async function seed() {
         description:
           'Curabitur gravida nisi at nibh. In hac habitasse platea dictumst.',
         image:
-          'https://banner2.kisspng.com/20171220/exq/bugatti-logo-png-5a3a261e5991e9.87829451151376028636699311.jpg'
+          'https://s8096.pcdn.co/wp-content/uploads/2014/10/bugatti-logo.jpg'
       },
       {
         id: 4,
@@ -77,7 +77,7 @@ async function seed() {
         description:
           'Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.',
         image:
-          'https://banner2.kisspng.com/20180406/rew/kisspng-maserati-granturismo-car-logo-wall-decal-5ac71f7ae63143.7450419915229991629429.jpg'
+          'http://www.carstuff.com.tw/media/k2/items/cache/2a1efaf12d575df75b411da94af12a4a_L.jpg'
       }
     ])
   ])
