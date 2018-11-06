@@ -48,7 +48,7 @@ class CheckoutForm extends React.Component {
   }
 
   render() {
-    console.log('my cart', this.props.currentCart)
+    console.log('HSUFKLJSDNFISUHGFK', this.props)
     const cart = this.props.currentCart
     let total = cart
       .map(product => {
@@ -78,7 +78,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    placeOrder: order => dispatch(placeOrder(order))
+    placeOrder: order => dispatch(placeOrder(order)),
+    currentUser: this.props.state.user
   }
 }
 
