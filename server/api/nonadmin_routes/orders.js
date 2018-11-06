@@ -28,7 +28,7 @@ router.post('/', async (req, res, next) => {
       total: req.body.total
     })
 
-    console.log('req.body', req.body)
+    // console.log('req.body', req.body)
 
     let status = await stripe.charges.create({
       amount: Number(order.total),
@@ -37,16 +37,16 @@ router.post('/', async (req, res, next) => {
       source: req.body.id
     })
 
-    const orderId = order.id
-    const cart = req.body.cart
-    cart.forEach(async product => {
-      await OrderProduct.create({
-        quantity: product.quantity,
-        finalPrice: product.finalPrice,
-        orderId: orderId,
-        productId: product.id
-      })
-    })
+    // const orderId = order.id
+    // const cart = req.body.cart
+    // cart.forEach(async product => {
+    //   await OrderProduct.create({
+    //     quantity: product.quantity,
+    //     finalPrice: product.finalPrice,
+    //     orderId: orderId,
+    //     productId: product.id
+    //   })
+    // })
 
     res.send(order)
   } catch (err) {
