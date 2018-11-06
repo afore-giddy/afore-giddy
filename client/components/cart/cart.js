@@ -26,7 +26,6 @@ class Cart extends Component {
   }
 
   render() {
-    console.log('IJOJFIUHSDFSDFJSEGFJYSGE', this.props.currentUser.length)
     const {currentCart} = this.props
 
     return (
@@ -50,7 +49,6 @@ class Cart extends Component {
         <br />
         <br />
         <br />
-
         {/* <h2>SHIPPING AND TAXES</h2> */}
         <Fragment>
           <Statistic color="green">
@@ -83,7 +81,7 @@ class Cart extends Component {
           ) : (
             <h1>nothing in cart</h1>
           )}
-        </div>
+        </div>`
       </div>
     )
   }

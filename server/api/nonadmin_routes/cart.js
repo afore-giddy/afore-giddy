@@ -66,9 +66,21 @@ router.put('/:id', async (req, res, next) => {
 })
 
 router.delete('/', async (req, res, next) => {
+  console.log('INSIDE THE API ROUTE', req.user.cart)
   try {
-    req.session.cart = []
-    res.json(req.session.cart)
+    const user = req.user
+    if (user) {
+      user.cart = []
+      await user.save()
+      res.json(user.cart)
+    } else if (!req.session.cart) {
+      req.session.cart = []
+      res.json(req.session.cart)
+    } else {
+      req.session.cart = []
+      req.session.save()
+      res.json(req.session.cart)
+    }
   } catch (err) {
     next(err)
   }
