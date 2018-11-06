@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-const Navbar = ({handleClick, isLoggedIn}) => (
+
+
+const Navbar = ({handleClick, isLoggedIn, userId}) => (
   <div>
     <h1>CARS CARS CARS</h1>
     <nav>
@@ -18,6 +20,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           </a>
           <Link to="/cart">Shopping Cart</Link>
           <Link to="/payment-method">Checkout</Link>
+          <Link to={`/users/${userId}`}>User</Link>
         </div>
       ) : (
         <div>
@@ -41,7 +44,8 @@ const Navbar = ({handleClick, isLoggedIn}) => (
  */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    userId: state.user.id
   }
 }
 
