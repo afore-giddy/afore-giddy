@@ -11,17 +11,14 @@ export const UserHome = props => {
 
   if (email) {
     return (
-      <div>
-        <h3>Welcome, {email}!</h3>
-        {/*<button type="submit">Edit User information</button>
-        <button type="submit">View Cart</button>
-        <button type="submit">Track Orders</button>*/}
+      <div className="user-home">
+        <h2>Welcome, {email}!</h2>
         <MainPage />
     </div>
     )
   } else {
     return (
-      <div>
+      <div className="user-home">
         <h3>Welcome!</h3>
         <MainPage />
       </div>

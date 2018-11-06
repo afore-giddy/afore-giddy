@@ -1,6 +1,7 @@
 body {
   font-family: sans-serif;
 }
+
 span {
   font-family: sans-serif;
 }
@@ -21,6 +22,10 @@ nav a {
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+.user-home {
+  text-align: center;
 }
 
 .product-list-container {

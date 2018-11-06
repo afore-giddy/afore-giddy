@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import {fetchAllProducts, fetchCollections} from '../../store'
 import SingleProductCard from './singleProductCard'
 import SingleCollectionCard from '../singleCollectionCard'
+import { Grid, Menu } from 'semantic-ui-react'
 
 class AllProductList extends React.Component {
   constructor(props) {
@@ -18,19 +19,21 @@ class AllProductList extends React.Component {
   render() {
 
     return (
-      <div className="product-list-container">
+      <Grid padded centered>
+      <Grid.Row container columns={3}>
         {this.props.match.path === "/all-cars" &&
           this.props.productList.map(product => {
-          return <SingleProductCard key={product.id} product={product} />
+          return <Grid.Column width={4}><SingleProductCard key={product.id} product={product} /></Grid.Column>
         })}
         {this.props.match.path === '/collections/:id' && this.props.productList.filter(product => product.collectionId === +this.props.match.params.id).map(product => {
-          return <SingleProductCard key={product.id} product={product} />
+          return <Grid.Column width={4}><SingleProductCard key={product.id} product={product} /></Grid.Column>
         })}
         {this.props.match.path === "/collections" &&
           this.props.collectionList.map(collection => {
-          return <SingleCollectionCard key={collection.id} collection={collection} />
+          return <Grid.Column width={4}><SingleCollectionCard key={collection.id} collection={collection} /></Grid.Column>
         })}
-      </div>
+      </Grid.Row>
+      </Grid>
     )
   }
 }

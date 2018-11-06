@@ -23,9 +23,6 @@ const Navbar = ({handleClick, isLoggedIn, userId}) => (
             <Menu.Item>COLLECTIONS</Menu.Item>
           </Link>
 
-          {/* <a href="#" onClick={handleClick}>
-            Logout
-          </a> */}
           <Menu.Menu position="right">
             <Link to={`/users/${userId}`}>
               <Menu.Item>USER INFO</Menu.Item>
