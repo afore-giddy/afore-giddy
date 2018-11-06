@@ -78,8 +78,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    placeOrder: order => dispatch(placeOrder(order)),
-    currentUser: this.props.state.user
+    placeOrder: order => dispatch(placeOrder(order))
   }
 }
 
