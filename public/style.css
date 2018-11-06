@@ -29,7 +29,6 @@ form div {
   width: 95%;
   justify-content: center;
   flex-wrap: wrap;
-  margin: auto;
 }
 
 /* Single Product Card */
@@ -50,9 +49,9 @@ form div {
   width: 97%;
 }
 
-.single-product-card-container img {
-  height: 375px;
-  width: 375px;
+#single-product-card-container-img {
+  height: 265px;
+  width: 265px;
 }
 
 .single-product-card-container span {
