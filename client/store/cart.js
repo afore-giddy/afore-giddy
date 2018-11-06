@@ -45,17 +45,15 @@ export const updateCart = item => async dispatch => {
 }
 
 export const removeItemFromCart = id => async dispatch => {
-  console.log('IN THE REDUCER', id)
   let res = await axios.put(`/api/cart/${id}`)
   let item = res.data
-  console.log(item)
   dispatch(removeFromCart(item))
 }
 
 export const emptyCart = () => async dispatch => {
   let res = await axios.delete('/api/cart')
   let cart = res.data
-  dispatch(resetCart(cart))
+  dispatch(resetCart())
 }
 //Reducer
 const cartReducer = (state = initialState, action) => {

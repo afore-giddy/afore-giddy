@@ -12,6 +12,7 @@ import {
 import StripeCheckout from 'react-stripe-checkout'
 import {connect} from 'react-redux'
 import placeOrder from '../../store'
+import {emptyCart} from '../../store/cart'
 
 import STRIPE_PUBLISHABLE from './constants/stripe'
 import PAYMENT_SERVER_URL from './constants/server'
@@ -32,23 +33,21 @@ class CheckoutForm extends React.Component {
   }
 
   onToken = (amount, description) => token => {
-    console.log('this is the cart', this.props.currentCart)
-    console.log('this is the amount', amount)
-
     axios
       .post('/api/orders', {
         status: 'Completed',
         total: amount,
         cart: this.props.currentCart,
         description: description,
-        id: token.id
+        id: token.id,
+        userId: this.props.user.id
       })
       .then(this.successPayment)
       .catch(this.errorPayment)
+    this.props.emptyCart()
   }
 
   render() {
-    console.log('HSUFKLJSDNFISUHGFK', this.props.currentCart)
     const cart = this.props.currentCart
     let total = cart
       .map(product => {
@@ -72,15 +71,12 @@ class CheckoutForm extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    currentCart: state.cart.currentCart
+    currentCart: state.cart.currentCart,
+    user: state.user
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    placeOrder: order => dispatch(placeOrder(order))
-  }
-}
+const mapDispatchToProps = {emptyCart, placeOrder}
 
 const connected = connect(mapStateToProps, mapDispatchToProps)(CheckoutForm)
 

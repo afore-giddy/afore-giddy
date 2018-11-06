@@ -1,9 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {me} from '../../store'
+import {me, getOrderByUser} from '../../store'
 import UserForm from './userForm'
 import {editUserInfo} from '../../store'
+import SingleOrder from './single-order'
 
 class UserPage extends React.Component {
   constructor(props) {
@@ -19,6 +20,9 @@ class UserPage extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+  componentDidMount() {
+    this.props.getOrderByUser(this.props.user)
+  }
 
   handleChange(evt) {
     this.setState({
@@ -32,9 +36,14 @@ class UserPage extends React.Component {
   }
 
   render() {
-    console.log('JOJFLAFLKJDHFLKJH', this.props.user.id)
+    const {orders} = this.props
     return (
       <div>
+        {orders ? (
+          orders.map(item => <SingleOrder key={item.id} order={item} />)
+        ) : (
+          <h3>YOU HAVE NO ORDERS</h3>
+        )}
         <h2>User Profile</h2>
         <UserForm
           handleChange={this.handleChange}
@@ -53,13 +62,10 @@ class UserPage extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    orders: state.order.allOrders
   }
 }
-const mapDispatchToProps = dispatch => {
-  return {
-    editUser: (user, id) => dispatch(editUserInfo(user, id))
-  }
-}
+const mapDispatchToProps = {getOrderByUser, editUserInfo}
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPage)
