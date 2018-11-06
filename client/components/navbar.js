@@ -38,12 +38,28 @@ const Navbar = ({handleClick, isLoggedIn, userId}) => (
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/all-cars">All Cars</Link>
-          <Link to="/collections">Collections</Link>
-          <Link to="/cart">Shopping Cart</Link>
+          <Menu secondary>
+            <Link to="/home">
+              <Menu.Item>HOME</Menu.Item>
+            </Link>
+            <Link to="/all-cars">
+              <Menu.Item>CARS</Menu.Item>
+            </Link>
+            <Link to="/collections">
+              <Menu.Item>COLLECTIONS</Menu.Item>
+            </Link>
+            <Menu.Menu position="right">
+              <Link to="/cart">
+                <Menu.Item>SHOPPING CART</Menu.Item>
+              </Link>
+              <Link to="/login">
+                <Menu.Item>LOGIN</Menu.Item>
+              </Link>
+              <Link to="/signup">
+                <Menu.Item>SIGN UP</Menu.Item>
+              </Link>
+            </Menu.Menu>
+          </Menu>
         </div>
       )}
     </nav>
