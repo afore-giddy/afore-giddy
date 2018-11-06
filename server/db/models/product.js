@@ -46,7 +46,7 @@ const Product = db.define('product', {
     allowNull: false
   },
   acceleration: {
-    type: Sequelize.DECIMAL,
+    type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
       min: 0,
@@ -72,3 +72,7 @@ const Product = db.define('product', {
 })
 
 module.exports = Product
+
+Product.prototype.correctMake = function(carMake) {
+  return this.make === carMake
+}

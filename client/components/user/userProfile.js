@@ -32,7 +32,7 @@ class UserPage extends React.Component {
   }
 
   render() {
-
+    console.log('JOJFLAFLKJDHFLKJH', this.props.user.id)
     return (
       <div>
         <h2>User Profile</h2>
@@ -51,10 +51,15 @@ class UserPage extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
 const mapDispatchToProps = dispatch => {
   return {
     editUser: (user, id) => dispatch(editUserInfo(user, id))
   }
 }
 
-export default connect(null, mapDispatchToProps)(UserPage)
+export default connect(mapStateToProps, mapDispatchToProps)(UserPage)
