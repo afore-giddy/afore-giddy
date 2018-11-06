@@ -30,7 +30,7 @@ router.post('/', async (req, res, next) => {
 
     console.log('req.body', req.body)
 
-    let {status} = await stripe.charges.create({
+    let status = await stripe.charges.create({
       amount: Number(order.total),
       currency: 'usd',
       description: req.body.description,
