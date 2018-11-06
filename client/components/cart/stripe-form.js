@@ -48,7 +48,7 @@ class CheckoutForm extends React.Component {
   }
 
   render() {
-    console.log('HSUFKLJSDNFISUHGFK', this.props)
+    console.log('HSUFKLJSDNFISUHGFK', this.props.currentCart)
     const cart = this.props.currentCart
     let total = cart
       .map(product => {

@@ -7,6 +7,9 @@ const orderProduct = db.define('orderProduct', {
   },
   finalPrice: {
     type: Sequelize.INTEGER
+  },
+  color: {
+    type: Sequelize.STRING
   }
 })
 
