@@ -12,8 +12,11 @@ export default class SingleOrder extends Component {
     return (
       <div>
         <Card>
-          {total}
-          {status}
+          <Card.Content>
+            <Card.Header> $ {total}</Card.Header>
+            <Card.Meta>{status}</Card.Meta>
+            <Card.Description />
+          </Card.Content>
         </Card>
       </div>
     )

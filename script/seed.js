@@ -53,8 +53,9 @@ async function seed() {
     Collection.bulkCreate([
       {
         id: 1,
-        name: 'Lambo',
-        description: 'Nulla facilisi fermentum. Curabitur gravida nisi at nibh.',
+        name: 'Lamborghini',
+        description:
+          'Nulla facilisi fermentum. Curabitur gravida nisi at nibh.',
         image: 'http://www.carlogos.org/logo/Lamborghini-logo-1920x1080.png'
       },
       {
@@ -73,7 +74,7 @@ async function seed() {
       },
       {
         id: 4,
-        name: 'Masserati',
+        name: 'Dream Cars',
         description:
           'Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.',
         image:
@@ -86,18 +87,16 @@ async function seed() {
     Product.bulkCreate([
       {
         id: 1,
-        make: 'Aventador',
+        make: 'Exos',
         price: 7835615,
         imageArray: [
           {
-            default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+            default: 'https://www.lotuscars.com/sites/default/files/Front.jpg',
             Red:
-              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA4eyjvxvIKvZ0iw1vige4ZJGdwPLoaX3FJVA0cyPZlp7hMNZC',
             Yellow:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
-            Black:
-              'https://upload.wikimedia.org/wikipedia/commons/8/87/Black_Lamborghini_Aventador_%287560011520%29.jpg'
+              'https://pictures.topspeed.com/IMG/jpg/201511/lotus-elise-sport-11.jpg',
+            Black: 'https://www.lotuscars.com/sites/default/files/Front.jpg'
           }
         ],
         onSale: true,
@@ -113,25 +112,21 @@ async function seed() {
       },
       {
         id: 2,
-        make: 'Insight',
+        make: 'Ecto 1',
         price: 8064228,
         imageArray: [
           {
-            default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
-            Red:
-              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
-            Yellow:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
-            Black:
-              'https://upload.wikimedia.org/wikipedia/commons/8/87/Black_Lamborghini_Aventador_%287560011520%29.jpg'
+            default: 'https://i.ytimg.com/vi/gAwqvynkMeY/maxresdefault.jpg',
+            Red: 'https://i.ytimg.com/vi/gAwqvynkMeY/maxresdefault.jpg',
+            Yellow: 'https://i.ytimg.com/vi/gAwqvynkMeY/maxresdefault.jpg',
+            Black: 'https://i.ytimg.com/vi/gAwqvynkMeY/maxresdefault.jpg'
           }
         ],
         onSale: true,
         isFeatured: false,
         description:
           'Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-        collectionId: 2,
+        collectionId: 4,
         maxSpeed: 278,
         engineType: 'V8',
         transmission: 'Standard',
@@ -140,14 +135,14 @@ async function seed() {
       },
       {
         id: 3,
-        make: 'Rio',
+        make: 'Aventador',
         price: 8807253,
         imageArray: [
           {
             default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtGz_vFWq1foqdqVZkOre3b1XVCUJqeCieOdCyxGJGa7059Lsz',
             Red:
-              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5CTkV1GwxhK3uGqU9ad-TgYMvixsC7u09f0p1Il3ySnI8HfZMpg',
             Yellow:
               'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
             Black:
@@ -167,7 +162,7 @@ async function seed() {
       },
       {
         id: 4,
-        make: 'Bonneville',
+        make: 'Gellato',
         price: 7179787,
         imageArray: [
           {
@@ -199,13 +194,13 @@ async function seed() {
         imageArray: [
           {
             default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+              'https://content.autotrader.com/content/dam/autotrader/articles/Cars/Lamborghini/Huracan/2018/2018LamborghiniHuracanOverview/2018%20Lamborghini%20Huracan%20(1).jpg',
             Red:
-              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
+              'http://eu.cdn.autosonshow.tv/2645/retail/PURPLEHURACAN/e01_md.jpg?0612',
             Yellow:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
+              'http://eu.cdn.autosonshow.tv/2645/retail/PURPLEHURACAN/e01_md.jpg?0612',
             Black:
-              'https://upload.wikimedia.org/wikipedia/commons/8/87/Black_Lamborghini_Aventador_%287560011520%29.jpg'
+              'http://eu.cdn.autosonshow.tv/2645/retail/PURPLEHURACAN/e01_md.jpg?0612'
           }
         ],
         onSale: true,
@@ -220,26 +215,26 @@ async function seed() {
         colors: 'White'
       },
       {
-        id: 6,
-        make: 'C-Class',
+        id: 8,
+        make: 'Mach Racer',
         price: 8076433,
         imageArray: [
           {
             default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+              'https://qph.fs.quoracdn.net/main-qimg-dcbc1b57b956a7647406c0bc65086c2f',
             Red:
-              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
+              'https://qph.fs.quoracdn.net/main-qimg-dcbc1b57b956a7647406c0bc65086c2f',
             Yellow:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
+              'https://qph.fs.quoracdn.net/main-qimg-dcbc1b57b956a7647406c0bc65086c2f',
             Black:
-              'https://upload.wikimedia.org/wikipedia/commons/8/87/Black_Lamborghini_Aventador_%287560011520%29.jpg'
+              'https://qph.fs.quoracdn.net/main-qimg-dcbc1b57b956a7647406c0bc65086c2f'
           }
         ],
         onSale: false,
         isFeatured: false,
         description:
           'Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.',
-        collectionId: 1,
+        collectionId: 4,
         maxSpeed: 123,
         engineType: 'Electric',
         transmission: 'Standard',
@@ -248,25 +243,25 @@ async function seed() {
       },
       {
         id: 7,
-        make: 'Town & Country',
+        make: 'Tron Bike',
         price: 7823343,
         imageArray: [
           {
             default:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg',
+              'https://i.amz.mshcdn.com/cNTX0FTu6ieNf__Z94I4eiroHaA=/950x534/filters:quality(90)/2015%2F05%2F11%2F7b%2Ftronthumb.87dc2.jpg',
             Red:
-              'https://upload.wikimedia.org/wikipedia/commons/c/cc/Red_Lamborghini.svg',
+              'https://i.amz.mshcdn.com/cNTX0FTu6ieNf__Z94I4eiroHaA=/950x534/filters:quality(90)/2015%2F05%2F11%2F7b%2Ftronthumb.87dc2.jpg',
             Yellow:
-              'https://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_Lamborghini_Gallardo.jpg',
+              'https://i.amz.mshcdn.com/cNTX0FTu6ieNf__Z94I4eiroHaA=/950x534/filters:quality(90)/2015%2F05%2F11%2F7b%2Ftronthumb.87dc2.jpg',
             Black:
-              'https://upload.wikimedia.org/wikipedia/commons/8/87/Black_Lamborghini_Aventador_%287560011520%29.jpg'
+              'https://i.amz.mshcdn.com/cNTX0FTu6ieNf__Z94I4eiroHaA=/950x534/filters:quality(90)/2015%2F05%2F11%2F7b%2Ftronthumb.87dc2.jpg'
           }
         ],
         onSale: true,
         isFeatured: true,
         description:
           'Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\n\nIn congue. Etiam justo. Etiam pretium iaculis justo.',
-        collectionId: 1,
+        collectionId: 4,
         maxSpeed: 101,
         engineType: 'Electric',
         transmission: 'Standard',
@@ -274,7 +269,7 @@ async function seed() {
         colors: 'Black'
       },
       {
-        id: 8,
+        id: 6,
         make: 'Elantra',
         price: 9605771,
         imageArray: [
@@ -481,7 +476,8 @@ async function seed() {
         id: 2,
         rating: 4,
         title: 'Migration',
-        text: 'Morbi non quam nec dui luctus rutrum. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.',
+        text:
+          'Morbi non quam nec dui luctus rutrum. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.',
         productId: 10,
         userId: 2,
         isFeatured: true

@@ -5,6 +5,7 @@ import {me, getOrderByUser} from '../../store'
 import UserForm from './userForm'
 import {editUserInfo} from '../../store'
 import SingleOrder from './single-order'
+import {Button, Card, Header} from 'semantic-ui-react'
 
 class UserPage extends React.Component {
   constructor(props) {
@@ -36,9 +37,15 @@ class UserPage extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     const {orders} = this.props
     return (
       <div>
+        <Header
+          as="h2"
+          content="Account Settings"
+          subheader="A list of your Orders"
+        />
         {orders ? (
           orders.map(item => <SingleOrder key={item.id} order={item} />)
         ) : (
