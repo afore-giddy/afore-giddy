@@ -39,6 +39,8 @@ const Navbar = ({handleClick, isLoggedIn, userId}) => (
         <div>
           {/* The navbar will show these links before you log in */}
           <Menu secondary>
+            <Menu.Item>CARS CARS CARS</Menu.Item>
+
             <Link to="/home">
               <Menu.Item>HOME</Menu.Item>
             </Link>

@@ -25,10 +25,36 @@ import {logout} from '../store'
 const Footer = ({handleClick, isLoggedIn, userId}) => (
   <div>
     <hr />
-      <nav>
-        {isLoggedIn ? (
+    <nav>
+      {isLoggedIn ? (
+        <Menu secondary>
+          {/* The Footer will show these links after you log in */}
+          <Link to="/home">
+            <Menu.Item>HOME</Menu.Item>
+          </Link>
+          <Link to="/all-cars">
+            <Menu.Item>CARS</Menu.Item>
+          </Link>
+          <Link to="/collections">
+            <Menu.Item>COLLECTIONS</Menu.Item>
+          </Link>
+
+          <Menu.Menu position="right">
+            <Link to={`/users/${userId}`}>
+              <Menu.Item>USER INFO</Menu.Item>
+            </Link>
+            <Link to="/cart">
+              <Menu.Item>SHOPPING CART</Menu.Item>
+            </Link>
+            <Link to="/home" onClick={handleClick}>
+              <Menu.Item>LOGOUT</Menu.Item>
+            </Link>
+          </Menu.Menu>
+        </Menu>
+      ) : (
+        <div>
+          {/* The Footer will show these links before you log in */}
           <Menu secondary>
-            {/* The Footer will show these links after you log in */}
             <Link to="/home">
               <Menu.Item>HOME</Menu.Item>
             </Link>
@@ -38,31 +64,21 @@ const Footer = ({handleClick, isLoggedIn, userId}) => (
             <Link to="/collections">
               <Menu.Item>COLLECTIONS</Menu.Item>
             </Link>
-
             <Menu.Menu position="right">
-              <Link to={`/users/${userId}`}>
-                <Menu.Item>USER INFO</Menu.Item>
-              </Link>
               <Link to="/cart">
                 <Menu.Item>SHOPPING CART</Menu.Item>
               </Link>
-              <Link to="/home" onClick={handleClick}>
-                <Menu.Item>LOGOUT</Menu.Item>
+              <Link to="/login">
+                <Menu.Item>LOGIN</Menu.Item>
+              </Link>
+              <Link to="/signup">
+                <Menu.Item>SIGN UP</Menu.Item>
               </Link>
             </Menu.Menu>
           </Menu>
-        ) : (
-          <div>
-            {/* The Footer will show these links before you log in */}
-            <Link to="/home">Home</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
-            <Link to="/all-cars">All Cars</Link>
-            <Link to="/collections">Collections</Link>
-            <Link to="/cart">Shopping Cart</Link>
-          </div>
-        )}
-      </nav>
+        </div>
+      )}
+    </nav>
   </div>
 )
 
